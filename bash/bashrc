@@ -29,6 +29,7 @@ alias top='top -d1'
 # Disable ctrl-s freezing
 stty -ixon
 
+# Clear terminal on CTRL-L
 bind -x '"\C-l": clear;'
 
 source prompt.sh
