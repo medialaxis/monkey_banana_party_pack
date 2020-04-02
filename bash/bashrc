@@ -14,8 +14,6 @@ export EDITOR=vim
 alias cal='cal -mw'
 alias top='top -d1'
 
-# Enable the 'z' command.
-# [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 # Disable ctrl-s freezing
 stty -ixon
@@ -28,5 +26,6 @@ source terminal.sh
 source fzf.sh
 source ls.sh
 source /usr/share/lf/lfcd.sh
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 popd > /dev/null
