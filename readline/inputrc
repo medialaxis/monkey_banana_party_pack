@@ -1,24 +1,72 @@
+# Configuration file for readline
+
+# Set commandline editing to vi mode
 set editing-mode vi
-set match-hidden-files off
+
+# Blink matching parenthesis (see LS_COLORS)
+set blink-matching-paren on
+
+# Colorize file types (see LS_COLORS)
+set colored-stats on
+
+# Colorize the common prefix when tab completing.
+set colored-completion-prefix on
+
+# Case insensitive completion
 set completion-ignore-case on
-set visible-stats on
-set show-all-if-ambiguous on
+
+# Treat '-' and '_' as same
+set completion-map-case on
+
+# Complete matching .files. If off, then a leading '.' must be provided.
+set match-hidden-files off
+
+# When showing the completion menu (ctrl-t), display the prefix once first
+# before cycling.
 set menu-complete-display-prefix on
+
+# On first tab, shows the partial completion up to ambiguity. On second tab,
+# shows a list of completions.
+set show-all-if-unmodified off
+
+# Like show-all-if-unmodified, but both steps are performed at once.
+# Overrides show-all-if-unmodified.
+set show-all-if-ambiguous on
+
+# When completing from a cursor placed, in the middle of a word, does not
+# duplicate characters already in the word.
+set skip-completed-text on
+
+# Append a character to file according to type (e.g. '*' to executables)
+set visible-stats off
 
 $if mode=vi
   set keymap vi-insert
+  # Search history. Must match the first characters
   "\e[A": history-search-backward
   "\e[B": history-search-forward
+
+  # Search history. Must match the substring
+#  "\e[A": history-substring-search-backward
+#  "\e[B": history-substring-search-forward
+
+  # Cycle tab completions.
   "\C-t": menu-complete
   
   set keymap vi-command
+  # Search history. Must match the first characters
   "\e[A": history-search-backward
   "\e[B": history-search-forward
+
+  # Search history. Must match the substring
+#  "\e[A": history-substring-search-backward
+#  "\e[B": history-substring-search-forward
+
+  # Cycle tab completions.
   "\C-t": menu-complete
 $endif
 
-# "\M-o": "\C-p\C-a\M-f"
-
+# Not sure what this does. Performs history expansion when pressing space.
 $if Bash
     Space: magic-space
 $endif
