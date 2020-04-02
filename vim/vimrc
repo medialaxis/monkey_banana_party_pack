@@ -1,0 +1,375 @@
+" File: .vimrc
+"
+" Description:
+" The main configuration file for the VIM editor.
+"
+"
+" Copyright (C) 2002-2020, Andreas Edlund
+
+" Disable vi compatibility
+set nocompatible
+
+" Set the completion mode to match the longest common part and show a
+" menu for all the alternatives. Only in command mode.
+set wildmode=list:longest
+
+" Display command line’s tab complete options as a menu. Only in command mode.
+set wildmenu
+
+" Ignore case when completing files and directories. Only in command mode.
+set wildignorecase
+
+" Turns on syntax highlighting
+syntax on
+
+
+" Sets the text width. The editor wraps the text if it exeeds this number.
+" set textwidth=72
+
+" Sets the size of the indentations.
+set shiftwidth=4
+
+" Uses spaces instead of tabs.
+set expandtab
+
+" Enables filetype sensitive configuration files located in ftplugin/.
+filetype plugin indent on
+
+" Customizes the c indentation see tha vim manual for more.
+set cinoptions+=g0
+
+" Indent lambda expressions properly.
+set cinoptions+=j1
+
+" Shows matching parenthesis and brackets
+set showmatch
+
+" Custom digraphs.
+digraph bn 8469  " ℕ
+digraph l- 8866  " ⊢
+digraph l= 8872  " ⊨
+
+" Unicode abbreviations.
+iabbrev _FA ∀
+iabbrev _TE ∃
+iabbrev _-> →
+iabbrev _<- ←
+iabbrev _<> ↔
+iabbrev _AN ∧
+iabbrev _OR ∨
+iabbrev _NO ¬
+iabbrev _+- ±
+" iabbrev _-T ⊥
+iabbrev _bn ℕ
+iabbrev _OK ✓
+iabbrev _XX ✗
+iabbrev _:- ⊢
+iabbrev _:= ⊨
+iabbrev _y* η
+" iabbrev _(U ∩
+" iabbrev _)U ∪
+" iabbrev _(C ⊂
+" iabbrev _)C ⊃
+" iabbrev _(_ ⊆
+" iabbrev _)_ ⊇
+iabbrev _(- ∈
+iabbrev _-) ∋
+" iabbrev _/0 ∅
+" iabbrev _=3 ≡
+iabbrev _!= ≠
+iabbrev _=< ≤
+iabbrev _>= ≥
+iabbrev _i* ι
+" iabbrev _*X ×
+iabbrev _Ob ∘
+
+" Abbreviations
+iabbrev _ae Andreas Edlund
+iabbrev _mail andreas@myrstacken.net
+iabbrev _www myrstacken.net
+iabbrev _date <C-R>=strftime("%d %b %Y")<CR>
+
+" Set the default colorscheme
+colorscheme desert
+
+set backspace=2
+
+" Modeline support
+set modeline
+
+" Set up some useful keyboard mappings
+nnoremap <F2> :e scratch<CR>
+nnoremap <F4> :!snap<CR><CR>
+nnoremap <F5> :w<CR>
+nnoremap <F6> :checktime<CR>
+
+" Set minimum window height
+set wmh=0
+
+" English dictionary
+set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
+set complete-=k complete+=k
+
+" Highlight trailing whitespace.
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+" Quick split screen navigation.
+" nnoremap <C-J> <C-W>j<C-W>_
+" nnoremap <C-K> <C-W>k<C-W>_
+
+" Show the line and column number on the bottom line.
+set ruler
+
+" Case insensistive
+set ignorecase
+
+" Incremental search. While typing the search pattern, the cursor will
+" move incrementally to the first match so far.
+set incsearch
+
+" The terminal background
+set background=dark
+
+" The status line is always visible, not just when there are multiple
+" windows.
+set laststatus=2
+
+" Set the format of the status line.
+set statusline=%<%f\ %h%m%y%r%=Byte:\ [%03b\ 0x%02B],\ Cursor:\ %-14.(%l,%c%V%)\ %P
+
+" Set the default encoding
+set encoding=utf-8
+
+" Precede each line with its line number.
+" set number
+
+" Precede each line with its line number relative to the cursor.
+" set relativenumber
+
+" Show partial command in the last line of the screen
+set showcmd
+
+" File used for QuickFix mode (the one where you can use :cn and :cp for
+" :make). :cf to read the file.
+set errorfile=/tmp/output.log
+
+" Persistent undo. Save the undo tree on save and load the undo tree on edit.
+set undofile
+
+" Enable entering of unicode characters using <char1> <BS> <char2>
+" set digraph
+
+" Errorformat for javac in ant
+function AndroidStyle()
+    set errorformat=\ \%#[javac]\ \%f:\%l:\ error:\ \%m
+endfunction
+
+" Set syntax highlighting colors
+hi Type ctermfg=lightgreen
+hi Comment ctermfg=darkcyan
+hi Statement ctermfg=yellow
+hi Constant ctermfg=lightred
+hi String ctermfg=lightyellow
+
+" Highlight selected words
+set hlsearch
+
+" Insert function and file descriptions
+" nnoremap ,file :-1read ~/skeletons/file.txt<CR>
+" nnoremap ,func :-1read ~/skeletons/function.txt<CR>
+" nnoremap ,dbg :-1read ~/skeletons/dbg.txt<CR>
+
+" Hack that allows me to just bang the 'jk' buttons to generate escape (in
+" insert mode)
+" inoremap jk <Esc>
+" inoremap kj <Esc>
+" inoremap jj <Esc>
+
+" Typing both characters puts the cursor between them
+" inoremap <> <><Left>
+" inoremap () ()<Left>
+" inoremap {} {}<Left>
+" inoremap [] []<Left>
+" inoremap "" ""<Left>
+" inoremap '' ''<Left>
+" inoremap `` ``<Left>
+
+" Stronger versions than hjkl
+noremap K {
+noremap J }
+noremap H ^
+noremap L $
+
+" Make Y behave as CD. I.e. yank to end of line
+nnoremap Y y$
+
+" Avoid breaking a line in the middle of a word
+" set linebreak
+
+" Highlight the last column
+" set colorcolumn=80
+
+" The number of screen lines to keep above and below the cursor.
+set scrolloff=1
+
+" The number of screen columns to keep to the left and right of the cursor.
+set sidescrolloff=5
+
+" Automatically re-read files if unmodified inside Vim.
+set autoread
+
+" Check and reload (after updatetime ms) all modified files after any cursor movement
+au CursorHold * :checktime
+
+" How long until writing swp files, or triggering CursorHold
+set updatetime=1000
+
+" Directory to store backup files.
+set backupdir=~/.cache/vim
+
+" Directory to store swap files.
+set dir=~/.cache/vim
+
+" Directory to store undofile.
+set undodir=~/.cache/vim
+
+" Useful when moving over long wrapped lines
+nnoremap k gk
+nnoremap j gj
+
+" Navigating the clist
+nnoremap ,q :cf<CR>
+nnoremap ,w :cc<CR>
+nnoremap ,e :cprev<CR>
+nnoremap ,r :cnext<CR>
+
+" Tags
+nnoremap ,a g<C-]>
+nnoremap ,s <C-T>
+nnoremap ,d <C-W>g}
+
+" Make it easier to enter command mode
+nnoremap ,z :
+
+" Reopen the current file
+nnoremap ,x :e!<CR>
+
+" Open file browser
+nnoremap ,c :Ex<CR>
+
+" Switch between alternative files (e.g. .c <-> .h, .cpp <-> .hpp)
+nnoremap ,v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
+
+" Toggle case of the current word
+nnoremap ,u bg~we
+
+" Toggle cursor line/column
+nnoremap ,h :set cursorcolumn!<CR>
+nnoremap ,j :set cursorline!<CR>
+
+" Toggle ability to see whitespace
+nnoremap ,k :set list!<CR>
+
+" Yank and paste data to temporary file (useful to yank/paste between vim
+" sessions on different computers, given that they use the same file paths)
+vnoremap ,y :<c-u>'<,'>w! /tmp/vimtmp<CR>
+nnoremap ,p :r! cat /tmp/vimtmp<CR>
+
+" Toggle paste mode in insert mode (disables autoindentation)
+set pastetoggle=<F3>
+
+" More convenient way of running a macro
+nnoremap Q @q
+
+" Disable swap files
+set noswapfile
+
+" Set cursor shape in insert mode (only works in some terminals)
+" 0: Blinking block
+" 1: Blinking block
+" 2: Solid block
+" 3: Blinking underscore
+" 4: Solid underscore
+" 5: Blinking vertical bar
+" 6: Solid vertical bar
+let &t_SI .= "\<Esc>[6 q"
+
+" Set cursor shape in normal mode (only works in some terminals)
+let &t_EI .= "\<Esc>[2 q"
+
+" Set the timeout waitin for key codes to complete or something. Removed a
+" delay to cursor shape change when leaving insert mode.
+set ttimeoutlen=0
+
+" Debugging
+set completeopt+=preview
+
+" Yank to x windows clipboard register ('+'). This required ctrl-c in other
+" programs.
+" set clipboard=unnamedplus
+
+" Yank to x windows cut register ('*'). This works with simple selection with
+" mouse.
+set clipboard=unnamed
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+call plug#end()
+
+" (vim-lsp) Register clangd LSP service
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd', '-background-index']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
+" (vim-lsp) Disable auto insertion of #include
+let g:lsp_insert_text_enabled = 0    
+let g:lsp_text_edit_enabled = 0
+
+" (vim-lsp) Enable/disable error indication column
+let g:lsp_signs_enabled = 0
+
+" (vim-lsp) Enable/disable highlighting errors
+let g:lsp_textprop_enabled = 1
+
+" (asyncomplete) Enable/disable completion popup
+" let g:asyncomplete_auto_popup = 1
+
+" Jump to declaration/definition using language server protocol
+nnoremap ,f :LspDeclaration<CR>
+nnoremap ,g :LspDefinition<CR>
+
+" (ultisnips) Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" (ultisnips) If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" (fzf.vim) Mapping selecting mappings
+" nmap <leader><tab> <plug>(fzf-maps-n)
+" xmap <leader><tab> <plug>(fzf-maps-x)
+" omap <leader><tab> <plug>(fzf-maps-o)
+
+" (fzf.vim) Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" (fzf.vim) Advanced customization using Vim function
+" imap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
