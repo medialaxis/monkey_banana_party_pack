@@ -1,0 +1,24 @@
+set editing-mode vi
+set match-hidden-files off
+set completion-ignore-case on
+set visible-stats on
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+
+$if mode=vi
+  set keymap vi-insert
+  "\e[A": history-search-backward
+  "\e[B": history-search-forward
+  "\C-t": menu-complete
+  
+  set keymap vi-command
+  "\e[A": history-search-backward
+  "\e[B": history-search-forward
+  "\C-t": menu-complete
+$endif
+
+# "\M-o": "\C-p\C-a\M-f"
+
+$if Bash
+    Space: magic-space
+$endif
