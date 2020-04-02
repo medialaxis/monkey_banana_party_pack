@@ -1,13 +1,4 @@
-if [[ $TERM == "9term" ]]; then
-	alias ls='ls --color=none'
-	alias man='man -P cat'
-	export GIT_PAGER=cat
-else
-	alias ls='ls --color=auto'
-fi
-
-#PS1='[\u@\h \W]\$ '
-#PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\n\$\[\033[00m\] '
+alias ls='ls --color=auto'
 
 green='\e[1;32m'
 red='\e[1;31m'
@@ -45,15 +36,7 @@ else
     PROMPT_COMMAND="history -a"
 fi
 
-if [[ $TERM == "9term" ]]; then
-        PROMPT_COMMAND="$PROMPT_COMMAND;awd"
-fi
-
-if [[ $TERM == "9term" ]]; then
-	PS1="$ "
-else
-	PS1="\[\033[01;32m\]\u@\h\[\033[01;33m\] \w\n\[\$(smiley_color)\]\$(smiley_face) \[\033[01;34m\]\$\[\033[00m\] "
-fi
+PS1="\[\033[01;32m\]\u@\h\[\033[01;33m\] \w\n\[\$(smiley_color)\]\$(smiley_face) \[\033[01;34m\]\$\[\033[00m\] "
 
 eval $(dircolors -b ~/.dir_colors)
 
@@ -65,7 +48,6 @@ export EDITOR=vim
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
-alias escreen='exec screen'
 alias cal='cal -mw'
 alias top='top -d1'
 
