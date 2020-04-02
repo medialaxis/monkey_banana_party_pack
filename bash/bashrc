@@ -2,18 +2,26 @@ export TOP=$(realpath $(dirname $BASH_SOURCE)/..)
 
 pushd "$TOP/bash" > /dev/null
 
-shopt -s histappend
+# Enable minor spell checking for directory names.
 shopt -s cdspell
+
+# If a command name names a directory, change to that directory.
 shopt -s autocd
+
+# Add multiline commands to history
+shopt -s cmdhist
+
+# Hostname completion after @
+shopt -s hostcomplete
 
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+
 export EDITOR=vim
 
 alias cal='cal -mw'
 alias top='top -d1'
-
 
 # Disable ctrl-s freezing
 stty -ixon

@@ -6,6 +6,9 @@ else
     PROMPT_COMMAND="history -a"
 fi
 
+# Append to history rather than overwriting it.
+shopt -s histappend
+
 # Causes all previous lines matching the current line to be removed from the
 # history list before that line is saved
 export HISTCONTROL=ignoredups
