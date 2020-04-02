@@ -27,4 +27,4 @@ smiley_face()
     fi
 }
 
-PS1="\[${bold}${green}\]\u@\h\[${bold}${yellow}\] \w\n\[\$(smiley_color)\]\$(smiley_face) \[${bold}${blue}\]\$${reset} "
+PS1="\[${bold}${green}\]\u@\h\[${bold}${yellow}\] \w\n\[\$(smiley_color)\]\$(smiley_face) \[${bold}${blue}\]\$\[${reset}\] "
