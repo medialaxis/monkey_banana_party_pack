@@ -6,17 +6,11 @@ shopt -s histappend
 shopt -s cdspell
 shopt -s autocd
 
-eval $(dircolors -b ~/.dir_colors)
-
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export EDITOR=vim
 
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias ll='ls -l'
-alias lla='ls -la'
 alias cal='cal -mw'
 alias top='top -d1'
 
@@ -32,6 +26,7 @@ source prompt.sh
 source history.sh
 source terminal.sh
 source fzf.sh
+source ls.sh
 source /usr/share/lf/lfcd.sh
 
 popd > /dev/null
