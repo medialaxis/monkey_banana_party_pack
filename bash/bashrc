@@ -32,6 +32,9 @@ stty -ixon
 # Clear terminal on CTRL-L
 bind -x '"\C-l": clear;'
 
+# Clear the prompt first
+PROMPT_COMMAND=""
+
 source prompt.sh
 source history.sh
 source terminal.sh
