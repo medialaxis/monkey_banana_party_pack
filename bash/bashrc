@@ -33,8 +33,9 @@ stty -ixon
 # Clear terminal on CTRL-L
 bind -x '"\C-l": clear;'
 
-# Clear the prompt first
-PROMPT_COMMAND=""
+# Clear the prompt first. This is the default prompt command. This prints a
+# text in the terminal window title.
+PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 
 source prompt.sh
 source history.sh
