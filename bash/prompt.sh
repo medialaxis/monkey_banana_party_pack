@@ -9,18 +9,16 @@ reset="$(tput sgr0)"
 
 smiley_color()
 {
-    if [ $? = 0 ]; then
+    if [ $OK = 0 ]; then
         echo -n "${bold}${green}"
-        return 0
     else
         echo -n "${bold}${red}"
-        return 1
     fi
 }
 
 smiley_face()
 {
-    if [ $? = 0 ]; then
+    if [ $OK = 0 ]; then
         echo -n ":)"
     else
         echo -n ":("

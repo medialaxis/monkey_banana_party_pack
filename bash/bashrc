@@ -40,4 +40,8 @@ source ls.sh
 source /usr/share/lf/lfcd.sh
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
+# This must be added last so that the exit code is saved before any other
+# commands clobber it.
+PROMPT_COMMAND="OK=\$?; $PROMPT_COMMAND"
+
 popd > /dev/null
