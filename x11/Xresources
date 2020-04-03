@@ -1,1 +1,3 @@
+# https://wiki.archlinux.org/index.php/X_resources
+
 #include ".config/monkey_banana_party_pack/x11/Xresources.d/rxvt-unicode"
