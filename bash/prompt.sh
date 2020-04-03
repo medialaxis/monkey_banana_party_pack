@@ -5,6 +5,7 @@ red="$(tput setaf 1)"
 green="$(tput setaf 2)"
 yellow="$(tput setaf 3)"
 blue="$(tput setaf 4)"
+white="$(tput setaf 15)"
 reset="$(tput sgr0)"
 
 smiley_color()
@@ -25,4 +26,12 @@ smiley_face()
     fi
 }
 
-PS1="\[${bold}${green}\]\u@\h\[${bold}${yellow}\] \w\n\[\$(smiley_color)\]\$(smiley_face) \[${bold}${blue}\]\$\[${reset}\] "
+git_branch()
+{
+    local branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    if [[ -n "$branch" ]]; then
+        echo -n "($branch) "
+    fi
+}
+
+PS1="\[${bold}${green}\]\u@\h \[${bold}${white}\]\$(git_branch)\[${bold}${yellow}\]\w\n\[\$(smiley_color)\]\$(smiley_face) \[${bold}${blue}\]\$\[${reset}\] "
