@@ -1,0 +1,16 @@
+#!/bin/bash
+
+usage()
+{
+    echo "$(basename $0) my-repo.git"
+}
+
+if [[ "$#" != "1" ]]; then
+    usage
+    exit 1
+fi
+
+repo=$1
+
+chown -R root:users ${repo}
+chmod -R g+rwxs ${repo}
