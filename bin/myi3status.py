@@ -4,6 +4,10 @@ import json
 import subprocess
 import sys
 
+def system_state():
+    cp = subprocess.run('systemctl show --property=SystemState', shell=True, capture_output=True)
+    return cp.stdout.decode().strip().split('=')[1]
+
 def main(argv):
     with subprocess.Popen('i3status', shell=True, stdout=subprocess.PIPE) as ps:
         for line in ps.stdout:
@@ -13,4 +17,5 @@ def main(argv):
                 pass
 
 if __name__ == '__main__':
+    print(system_state())
     main(sys.argv)
