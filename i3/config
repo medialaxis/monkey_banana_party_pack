@@ -166,3 +166,4 @@ show_marks yes
 exec --no-startup-id feh --bg-fill wallpapers/fEnPnsY.jpg
 exec --no-startup-id redshift-gtk -l 58:16
 exec --no-startup-id mykeyboard
+exec --no-startup-id udiskie -t -N
