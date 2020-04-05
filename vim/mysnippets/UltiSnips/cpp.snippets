@@ -4,6 +4,59 @@ extends c
 
 priority -49
 
+snippet forr "" b
+for (auto& ${1:x}: ${2:coll}) {
+    ${VISUAL}$0
+}
+endsnippet
+
+snippet vector "" w
+std::vector<${1:type}>
+endsnippet
+
+snippet list "" w
+std::list<${1:type}>
+endsnippet
+
+snippet map "" w
+std::map<${1:key}, ${2:value}>
+endsnippet
+
+snippet opt "" w
+std::optional<${VISUAL}$0>
+endsnippet
+
+snippet uptr "" w
+std::unique_ptr<${VISUAL}$0>
+endsnippet
+
+snippet sptr "" w
+std::shared_ptr<${VISUAL}$0>
+endsnippet
+
+snippet scast "" w
+static_cast<${1:type}>(${VISUAL}$0)
+endsnippet
+
+snippet dcast "" w
+dynamic_cast<${1:type}>(${VISUAL}$0)
+endsnippet
+
+snippet ccast "" w
+const_cast<${1:type}>(${VISUAL}$0)
+endsnippet
+
+snippet rcast "" w
+reinterpret_cast<${1:type}>(${VISUAL}$0)
+endsnippet
+
+snippet cls "" b
+class ${1:MyClass}
+{
+public:
+};
+endsnippet
+
 snippet cls5 "" b
 class ${1:MyClass}
 {
