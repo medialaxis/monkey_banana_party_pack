@@ -9,20 +9,32 @@ def system_state():
     return cp.stdout.decode().strip().split('=')[1]
 
 def update_status(status):
+    state_str = system_state()
+    if state_str == "running":
+        color = "#00FF00";
+    else:
+        color = "#FF0000";
+
     state = {
             "name": "system_state",
-            "color": "#00FF00",
-            "full_text": system_state(),
+            "color": color,
+            "full_text": state_str,
             }
+
     return [state] + status
 
 def main(argv):
-    with subprocess.Popen('i3status', shell=True, stdout=subprocess.PIPE) as ps:
+    with subprocess.Popen('i3status', shell=True, stdout=subprocess.PIPE, bufsize=0, text=True) as ps:
         for line in ps.stdout:
-            try:
-                print(json.dumps(update_status(json.loads(line[1:]))))
-            except json.JSONDecodeError:
-                pass
+           if line[0] == '{':
+               sys.stdout.write(line)
+           elif line[0:2] == "[\n":
+               sys.stdout.write(line)
+           elif line[0:2] == "[{":
+               print(f"{json.dumps(update_status(json.loads(line)))}")
+           elif line[0] in [',']:
+               print(f",{json.dumps(update_status(json.loads(line[1:])))}")
+           sys.stdout.flush()
 
 if __name__ == '__main__':
     main(sys.argv)
