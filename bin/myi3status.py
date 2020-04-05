@@ -8,6 +8,10 @@ def system_state():
     cp = subprocess.run('systemctl show --property=SystemState', shell=True, capture_output=True)
     return cp.stdout.decode().strip().split('=')[1]
 
+def video_memory():
+    cp = subprocess.run("nvidia-smi -q -x | xmllint --xpath 'string(/nvidia_smi_log/gpu/fb_memory_usage/free)' -", shell=True, capture_output=True)
+    return cp.stdout.decode().strip()
+
 def update_status(status):
     state_str = system_state()
     if state_str == "running":
@@ -16,12 +20,16 @@ def update_status(status):
         color = "#FF0000";
 
     state = {
-            "name": "system_state",
             "color": color,
             "full_text": f"sys: {state_str}",
             }
 
-    return [state] + status
+    vmem = {
+            "color": "#FFFFFF",
+            "full_text": f"vmem {video_memory()}",
+            }
+
+    return [state, vmem] + status
 
 def main(argv):
     with subprocess.Popen('i3status', shell=True, stdout=subprocess.PIPE, bufsize=0, text=True) as ps:
