@@ -20,16 +20,28 @@ def update_status(status):
         color = "#FF0000";
 
     state = {
+            "name": "system_state",
             "color": color,
             "full_text": f"sys: {state_str}",
             }
 
     vmem = {
+            "name": "vmem",
             "color": "#FFFFFF",
             "full_text": f"vmem {video_memory()}",
             }
 
-    return [state, vmem] + status
+    status = [state] + status
+
+    new_status = []
+    for item in status:
+        if item["name"] == "memory":
+            new_status.append(item)
+            new_status.append(vmem)
+        else:
+            new_status.append(item)
+
+    return new_status
 
 def main(argv):
     with subprocess.Popen('i3status', shell=True, stdout=subprocess.PIPE, bufsize=0, text=True) as ps:
