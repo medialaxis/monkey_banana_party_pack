@@ -1,0 +1,9 @@
+Host farnsworth
+        ControlMaster auto
+        ControlPath /home/andreas/.ssh/%r@%h:%p
+	HostName farnsworth.myrstacken.net
+	Port 122
+
+Host pi
+        HostName 155.4.195.133
+        User pi
