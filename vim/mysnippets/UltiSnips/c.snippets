@@ -48,6 +48,20 @@ struct ${1:type}
 };
 endsnippet
 
+snippet main "" b
+int main(int argc, char *argv[])
+{
+    return 0;
+}
+endsnippet
+
+snippet fun0 "" b
+void fun0(void)
+{
+    $0
+}
+endsnippet
+
 snippet memsetp "" b
 memset(${1:x}, 0, sizeof(*$1));
 endsnippet
