@@ -53,19 +53,19 @@ tztime local {
 }
 
 load {
-        format = "%1min"
+        format = "load: %1min"
 }
 
 disk "/" {
-        format = "/ %avail"
+        format = "/: %avail"
 }
 
 disk "/mnt/extra" {
-        format = "/mnt/extra %avail"
+        format = "/mnt/extra: %avail"
 }
 
 memory {
-        format = "mem %available"
+        format = "mem: %available"
         threshold_degraded = 10%
         threshold_critical = 5%
 }

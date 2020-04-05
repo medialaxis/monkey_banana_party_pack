@@ -28,7 +28,7 @@ def update_status(status):
     vmem = {
             "name": "vmem",
             "color": "#FFFFFF",
-            "full_text": f"vmem {video_memory()}",
+            "full_text": f"vmem: {video_memory()}",
             }
 
     status = [state] + status
