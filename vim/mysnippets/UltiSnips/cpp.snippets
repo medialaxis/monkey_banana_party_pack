@@ -70,3 +70,13 @@ public:
     void swap() noexcept {}
 };
 endsnippet
+
+snippet ro5 "" b
+${1:MyClass}() = default;
+$1(const $1& other) = default;
+$1($1&& other) = default;
+~$1() = default;
+$1& operator=(const $1& other) = default;
+$1& operator=($1&& other) = default;
+void swap() noexcept {}
+endsnippet
