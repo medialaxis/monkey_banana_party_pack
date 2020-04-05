@@ -17,4 +17,4 @@ export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 
 # Add timestamp to each history entry
-export HISTTIMEFORMAT="%Y-%m-%d"
+# export HISTTIMEFORMAT="%Y-%m-%d"
