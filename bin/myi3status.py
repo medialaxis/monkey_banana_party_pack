@@ -18,7 +18,7 @@ def update_status(status):
     state = {
             "name": "system_state",
             "color": color,
-            "full_text": state_str,
+            "full_text": f"sys: {state_str}",
             }
 
     return [state] + status
