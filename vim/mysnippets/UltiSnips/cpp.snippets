@@ -3,3 +3,17 @@ priority -50
 extends c
 
 priority -49
+
+snippet cls5 "" b
+class ${1:MyClass}
+{
+public:
+    $1() = default;
+    $1(const $1& other) = default;
+    $1($1&& other) = default;
+    ~$1() = default;
+    $1& operator=(const $1& other) = default;
+    $1& operator=($1&& other) = default;
+    void swap() noexcept {}
+};
+endsnippet
