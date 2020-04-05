@@ -326,6 +326,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 set runtimepath+=~/.config/monkey_banana_party_pack/vim/mysnippets
