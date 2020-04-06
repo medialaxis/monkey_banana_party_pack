@@ -5,6 +5,7 @@ red="$(tput setaf 1)"
 green="$(tput setaf 2)"
 yellow="$(tput setaf 3)"
 blue="$(tput setaf 4)"
+cyan="$(tput setaf 6)"
 white="$(tput setaf 15)"
 reset="$(tput sgr0)"
 
@@ -34,9 +35,16 @@ git_branch()
     fi
 }
 
+is_screen()
+{
+    if [ -n "$STY" ]; then
+        echo -n "(screen) "
+    fi
+}
+
 # This is the default prompt command. This prints a text in the terminal window
 # title.
 TERM_SYNC='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 PROMPT_COMMAND="$TERM_SYNC; $PROMPT_COMMAND"
 
-PS1="\[${bold}${green}\]\u@\h \[${bold}${white}\]\$(git_branch)\[${bold}${yellow}\]\w\n\[\$(smiley_color)\]\$(smiley_face) \[${bold}${blue}\]\$\[${reset}\] "
+PS1="\[${bold}${green}\]\u@\h \[${cyan}\]\$(is_screen)\[${bold}${white}\]\$(git_branch)\[${bold}${yellow}\]\w\n\[\$(smiley_color)\]\$(smiley_face) \[${bold}${blue}\]\$\[${reset}\] "
