@@ -1,0 +1,1 @@
+export ANKI_NOHIGHDPI=1
