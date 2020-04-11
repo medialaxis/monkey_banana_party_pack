@@ -331,6 +331,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
