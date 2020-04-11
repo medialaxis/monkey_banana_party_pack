@@ -266,6 +266,10 @@ nnoremap ,c :Ex<CR>
 " Switch between alternative files (e.g. .c <-> .h, .cpp <-> .hpp)
 nnoremap ,v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
 
+" Navigating the buffers
+nnoremap ,<left> :bp<cr>
+nnoremap ,<right> :bn<cr>
+
 " Toggle case of the current word
 nnoremap ,u bg~we
 
