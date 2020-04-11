@@ -225,6 +225,11 @@ au CursorHold * :checktime
 " How long until writing swp files, or triggering CursorHold
 set updatetime=1000
 
+" Disable visual bell. For some reason, I need to turn visual bell on first in
+" order to disable it.
+set visualbell
+set t_vb=
+
 " Directory to store backup files.
 set backupdir=~/.cache/vim
 
