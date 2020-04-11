@@ -384,3 +384,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " (fzf.vim) Advanced customization using Vim function
 " imap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+" (vim-multiple-cursors) Key bindings
+let g:multi_cursor_select_all_word_key = '<C-h>'
