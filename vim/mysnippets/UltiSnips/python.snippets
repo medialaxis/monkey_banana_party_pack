@@ -11,3 +11,9 @@ snippet fun0 "" b
 def ${1:fun}():
     pass
 endsnippet
+
+snippet argparse "" b
+parser = argparse.ArgumentParser(description="Desc")
+parser.add_argument("-arg", "--argument", help="The argument")
+args = parser.parse_args(argv[1:])
+endsnippet
