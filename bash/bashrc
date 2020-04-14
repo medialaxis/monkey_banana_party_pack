@@ -39,6 +39,7 @@ PROMPT_COMMAND=""
 source prompt.sh
 source history.sh
 source terminal.sh
+source anki.sh
 source fzf.sh
 source ls.sh
 source /usr/share/lf/lfcd.sh

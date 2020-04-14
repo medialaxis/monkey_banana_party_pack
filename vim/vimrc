@@ -225,6 +225,11 @@ au CursorHold * :checktime
 " How long until writing swp files, or triggering CursorHold
 set updatetime=1000
 
+" Disable visual bell. For some reason, I need to turn visual bell on first in
+" order to disable it.
+set visualbell
+set t_vb=
+
 " Directory to store backup files.
 set backupdir=~/.cache/vim
 
@@ -275,6 +280,10 @@ nnoremap ,k :set list!<CR>
 " sessions on different computers, given that they use the same file paths)
 vnoremap ,y :<c-u>'<,'>w! /tmp/vimtmp<CR>
 nnoremap ,p :r! cat /tmp/vimtmp<CR>
+
+" Navigating the buffers
+nnoremap ,n :bp<cr>
+nnoremap ,m :bn<cr>
 
 " Disable ctrl-j because of conflict with ultisnips
 imap <c-j> <Nop>
@@ -331,6 +340,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
@@ -383,3 +393,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " (fzf.vim) Advanced customization using Vim function
 " imap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+" (vim-multiple-cursors) Key bindings
+let g:multi_cursor_select_all_word_key = '<C-h>'
