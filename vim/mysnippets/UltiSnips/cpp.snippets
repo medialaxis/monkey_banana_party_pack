@@ -73,10 +73,10 @@ class ${1:MyClass}
 public:
     $1() = default;
     $1(const $1& other) = default;
-    $1($1&& other) = default;
+    $1($1&& other) noexcept = default;
     ~$1() = default;
     $1& operator=(const $1& other) = default;
-    $1& operator=($1&& other) = default;
+    $1& operator=($1&& other) noexcept = default;
     void swap() noexcept {}
 };
 endsnippet
@@ -84,10 +84,10 @@ endsnippet
 snippet ro5 "" b
 ${1:MyClass}() = default;
 $1(const $1& other) = default;
-$1($1&& other) = default;
+$1($1&& other) noexcept = default;
 ~$1() = default;
 $1& operator=(const $1& other) = default;
-$1& operator=($1&& other) = default;
+$1& operator=($1&& other) noexcept = default;
 void swap() noexcept {}
 endsnippet
 
