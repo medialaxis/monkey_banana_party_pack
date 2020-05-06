@@ -276,6 +276,12 @@ nnoremap ,j :set cursorline!<CR>
 " Toggle ability to see whitespace
 nnoremap ,k :set list!<CR>
 
+" Enable showing whitespace
+set list
+
+" Show trailing whitespace as '_'
+set listchars=trail:_
+
 " Yank and paste data to temporary file (useful to yank/paste between vim
 " sessions on different computers, given that they use the same file paths)
 vnoremap ,y :<c-u>'<,'>w! /tmp/vimtmp<CR>
