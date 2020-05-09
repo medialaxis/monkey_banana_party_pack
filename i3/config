@@ -167,3 +167,7 @@ exec --no-startup-id feh --bg-fill wallpapers/fEnPnsY.jpg
 exec --no-startup-id redshift-gtk -l 58:16
 exec --no-startup-id mykeyboard
 exec --no-startup-id udiskie -t -N
+
+bindsym $mod+i exec --no-startup-id pamixer -d 1
+bindsym $mod+o exec --no-startup-id pamixer -i 1
+bindsym $mod+p exec --no-startup-id pamixer -t
