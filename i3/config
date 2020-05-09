@@ -171,3 +171,4 @@ exec --no-startup-id udiskie -t -N
 bindsym $mod+m exec --no-startup-id pamixer -t
 bindsym $mod+0x2c exec --no-startup-id pamixer -d 1
 bindsym $mod+0x2e exec --no-startup-id pamixer -i 1
+bindsym $mod+0x2d exec --no-startup-id toggle-audio
