@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if pactl list cards | grep "Active Profile" | grep "output:iec958-stereo" > /dev/null; then
+    pactl set-card-profile 1 output:analog-stereo
+else
+    pactl set-card-profile 1 output:iec958-stereo
+fi
