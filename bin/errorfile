@@ -1,1 +1,2 @@
-tee /tmp/output.log
+echo "xxx: Entering directory \`$PWD'" > /tmp/output.log
+tee -a /tmp/output.log
