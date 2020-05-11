@@ -5,6 +5,19 @@ import os
 import argparse
 import util
 import subprocess
+import collections
+import pathlib
+
+
+def _list_dir(dir):
+    try:
+        for path in pathlib.Path(dir).iterdir():
+            if path.is_dir():
+                yield os.path.realpath(str(path))
+    except FileNotFoundError:
+        pass
+    except PermissionError:
+        pass
 
 
 def dir_history_append_cmd(argv):
@@ -17,9 +30,43 @@ def dir_history_append_cmd(argv):
         f.write(f"{os.getcwd()}\n")
 
 
+def list_dir_cmd(argv):
+    parser = argparse.ArgumentParser(description="List directories (use history, breadth first)")
+    args = parser.parse_args(argv[1:])
+
+    history = set()
+
+    with open(f"{os.environ['HOME']}/.local/dir_history/history", "r") as f:
+        for line in f:
+            path = line.strip()
+            if os.path.exists(path):
+                history.add(path)
+
+    visited = set()
+    work = collections.deque(history)
+    work.extend(_list_dir("."))
+
+    while len(work) != 0:
+        path = work.popleft()
+
+        try:
+            print(path)
+        except BrokenPipeError:
+            return 0
+
+        visited.add(path)
+
+        for next_path in _list_dir(path):
+            if next_path not in visited:
+                work.append(next_path)
+
+    return 0
+
+
 def main(argv):
     cmds = {
             "dir_history_append": dir_history_append_cmd,
+            "list_dir": list_dir_cmd
             }
     return cmds[argv[1]](argv[1:])
 
