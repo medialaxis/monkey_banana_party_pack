@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import argparse
+import util
+import subprocess
+
+
+def dir_history_append_cmd(argv):
+    parser = argparse.ArgumentParser(description="Append directory history")
+    args = parser.parse_args(argv[1:])
+
+    os.makedirs(f"{os.environ['HOME']}/.local/dir_history", exist_ok=True)
+
+    with open(f"{os.environ['HOME']}/.local/dir_history/history", "a") as f:
+        f.write(f"{os.getcwd()}\n")
+
+
+def main(argv):
+    cmds = {
+            "dir_history_append": dir_history_append_cmd,
+            }
+    return cmds[argv[1]](argv[1:])
+
+if __name__ == "__main__":
+    main(sys.argv)

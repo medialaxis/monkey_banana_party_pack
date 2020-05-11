@@ -17,6 +17,7 @@ shopt -s hostcomplete
 # Set PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.config/monkey_banana_party_pack/bin:$PATH
+export PATH=$HOME/.config/monkey_banana_party_pack/systool:$PATH
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
