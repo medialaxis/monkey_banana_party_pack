@@ -49,6 +49,9 @@ def list_dir_cmd(argv):
     while len(work) != 0:
         path = work.popleft()
 
+        if path in visited:
+            continue
+
         try:
             print(path)
         except BrokenPipeError:
