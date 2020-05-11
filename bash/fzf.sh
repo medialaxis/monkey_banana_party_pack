@@ -4,4 +4,3 @@ source /usr/share/fzf/key-bindings.bash
 _fzf_setup_completion path git okular vim
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_ALT_C_COMMAND='systool list_dir'
-

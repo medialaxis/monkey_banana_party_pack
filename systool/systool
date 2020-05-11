@@ -42,9 +42,15 @@ def list_dir_cmd(argv):
             if os.path.exists(path):
                 history.add(path)
 
+    for path in history:
+        try:
+            print(path)
+        except BrokenPipeError:
+            return 0
+
     visited = set()
-    work = collections.deque(history)
-    work.extend(_list_dir("."))
+    work = collections.deque()
+    work.append(os.getcwd())
 
     while len(work) != 0:
         path = work.popleft()
@@ -53,7 +59,8 @@ def list_dir_cmd(argv):
             continue
 
         try:
-            print(path)
+            if path not in history:
+                print(path)
         except BrokenPipeError:
             return 0
 
