@@ -44,7 +44,7 @@ def list_dir_cmd(argv):
 
     for path in history:
         try:
-            print(path)
+            print(path, flush=True)
         except BrokenPipeError:
             return 0
 
@@ -60,7 +60,7 @@ def list_dir_cmd(argv):
 
         try:
             if path not in history:
-                print(path)
+                print(path, flush=True)
         except BrokenPipeError:
             return 0
 
@@ -80,5 +80,7 @@ def main(argv):
             }
     return cmds[argv[1]](argv[1:])
 
+
 if __name__ == "__main__":
     main(sys.argv)
+    sys.stderr.close() # Prevent error messages on broken pipe
