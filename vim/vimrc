@@ -250,8 +250,8 @@ nnoremap ,e :cprev<CR>
 nnoremap ,r :cnext<CR>
 
 " Tags
-" nnoremap ,a g<C-]>
-nnoremap ,a :call fzf#vim#tags(expand("<cword>"))<CR>
+nnoremap ,a g<C-]>
+nnoremap ,A :call fzf#vim#tags(expand("<cword>"))<CR>
 nnoremap ,s <C-T>
 nnoremap ,d <C-W>g}
 
