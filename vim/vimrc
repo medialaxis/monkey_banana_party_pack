@@ -320,6 +320,11 @@ let &t_SI .= "\<Esc>[6 q"
 " Set cursor shape in normal mode (only works in some terminals)
 let &t_EI .= "\<Esc>[2 q"
 
+" Disable visual bell entirely. For some reason, one has to *enable* vim's
+" internal visual bell in order to disable it.
+set vb
+set t_vb=
+
 " Set the timeout waitin for key codes to complete or something. Removed a
 " delay to cursor shape change when leaving insert mode.
 set ttimeoutlen=0
