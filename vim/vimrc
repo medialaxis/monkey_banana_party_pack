@@ -250,9 +250,11 @@ nnoremap ,e :cprev<CR>
 nnoremap ,r :cnext<CR>
 
 " Tags
-nnoremap ,a g<C-]>
+" nnoremap ,a g<C-]>
+nnoremap ,a :call fzf#vim#tags(expand("<cword>"))<CR>
 nnoremap ,s <C-T>
-nnoremap ,d <C-W>g}
+nnoremap ,d :call fzf#vim#tags(expand("<cword>"), fzf#vim#with_preview())<CR>
+" nnoremap ,d <C-W>g}
 
 " Make it easier to enter command mode
 nnoremap ,z :
