@@ -27,6 +27,10 @@ export EDITOR=vim
 # Misc aliases
 alias cal='cal -mw'
 alias top='top -d1'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I'        # NOTE: Capital 'I' only prompts if more than tree files are removed.
+alias ln='ln -i'
 
 # Disable ctrl-s freezing
 stty -ixon
