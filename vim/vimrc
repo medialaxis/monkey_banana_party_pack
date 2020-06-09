@@ -376,7 +376,7 @@ let g:lsp_signs_enabled = 0
 let g:lsp_textprop_enabled = 1
 
 " (vim-lsp) Log to file
-let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:lsp_log_file = expand('~/.vim/logs/vim-lsp.log')
 
 " (asyncomplete) Enable/disable completion popup
 " let g:asyncomplete_auto_popup = 1
