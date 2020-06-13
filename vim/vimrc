@@ -22,7 +22,6 @@ set wildignorecase
 " Turns on syntax highlighting
 syntax on
 
-
 " Sets the text width. The editor wraps the text if it exeeds this number.
 " set textwidth=72
 
@@ -32,6 +31,9 @@ set shiftwidth=4
 " Uses spaces instead of tabs.
 set expandtab
 
+" Automatically indent next line based on previous line
+set autoindent
+
 " Enables filetype sensitive configuration files located in ftplugin/.
 filetype plugin indent on
 
@@ -40,6 +42,10 @@ set cinoptions+=g0
 
 " Indent lambda expressions properly.
 set cinoptions+=j1
+
+" Do not indent continuation lines (handles 'template' on its own line, but
+" breaks continuations of expressions)
+set cinoptions+=+0
 
 " Shows matching parenthesis and brackets
 set showmatch
@@ -352,6 +358,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tikhomirov/vim-glsl'
 call plug#end()
 
 set runtimepath+=~/.config/monkey_banana_party_pack/vim/mysnippets
