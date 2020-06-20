@@ -168,6 +168,7 @@ exec --no-startup-id redshift-gtk -l 58:16
 exec --no-startup-id mykeyboard
 exec --no-startup-id toggle-audio init
 exec --no-startup-id udiskie -t -N
+exec --no-startup-id steam -silent
 
 bindsym $mod+m exec --no-startup-id pamixer -t
 bindsym $mod+0x2c exec --no-startup-id pamixer -d 1
