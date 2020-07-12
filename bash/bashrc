@@ -55,4 +55,7 @@ source /usr/share/lf/lfcd.sh
 # commands clobber it.
 PROMPT_COMMAND="OK=\$?; $PROMPT_COMMAND"
 
+# Workaround for bug in QT (corrupts GUI in keepassxc)
+export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
+
 popd > /dev/null
