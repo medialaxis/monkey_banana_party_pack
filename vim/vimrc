@@ -104,7 +104,7 @@ set backspace=2
 set modeline
 
 " Set <leader>
-let mapleader = ","
+let mapleader = " "
 
 " Set up some useful keyboard mappings
 nnoremap <F2> :e scratch<CR>
@@ -265,7 +265,7 @@ nnoremap <leader>s <C-T>
 nnoremap <leader>d <C-W>g}
 
 " Make it easier to enter command mode
-nnoremap <leader>z :
+nnoremap <leader>b :
 
 " Reopen the current file
 nnoremap <leader>x :e!<CR>
@@ -277,7 +277,7 @@ nnoremap <leader>c :Ex<CR>
 nnoremap <leader>v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
 
 " Remove all trailing whitespace
-nnoremap <leader>b :%s/\s\+$//e<CR>
+nnoremap <leader>z :%s/\s\+$//e<CR>
 
 " Toggle case of the current word
 nnoremap <leader>u bg~we
