@@ -103,6 +103,9 @@ set backspace=2
 " Modeline support
 set modeline
 
+" Set <leader>
+let mapleader = ","
+
 " Set up some useful keyboard mappings
 nnoremap <F2> :e scratch<CR>
 nnoremap <F4> :!snap<CR><CR>
@@ -250,41 +253,41 @@ nnoremap k gk
 nnoremap j gj
 
 " Navigating the clist
-nnoremap ,q :cf<CR>
-nnoremap ,w :cc<CR>
-nnoremap ,e :cprev<CR>
-nnoremap ,r :cnext<CR>
+nnoremap <leader>q :cf<CR>
+nnoremap <leader>w :cc<CR>
+nnoremap <leader>e :cprev<CR>
+nnoremap <leader>r :cnext<CR>
 
 " Tags
-nnoremap ,a g<C-]>
-nnoremap ,A :call fzf#vim#tags(expand("<cword>"))<CR>
-nnoremap ,s <C-T>
-nnoremap ,d <C-W>g}
+nnoremap <leader>a g<C-]>
+nnoremap <leader>A :call fzf#vim#tags(expand("<cword>"))<CR>
+nnoremap <leader>s <C-T>
+nnoremap <leader>d <C-W>g}
 
 " Make it easier to enter command mode
-nnoremap ,z :
+nnoremap <leader>z :
 
 " Reopen the current file
-nnoremap ,x :e!<CR>
+nnoremap <leader>x :e!<CR>
 
 " Open file browser
-nnoremap ,c :Ex<CR>
+nnoremap <leader>c :Ex<CR>
 
 " Switch between alternative files (e.g. .c <-> .h, .cpp <-> .hpp)
-nnoremap ,v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
+nnoremap <leader>v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
 
 " Remove all trailing whitespace
-nnoremap ,b :%s/\s\+$//e<CR>
+nnoremap <leader>b :%s/\s\+$//e<CR>
 
 " Toggle case of the current word
-nnoremap ,u bg~we
+nnoremap <leader>u bg~we
 
 " Toggle cursor line/column
-nnoremap ,h :set cursorcolumn!<CR>
-nnoremap ,j :set cursorline!<CR>
+nnoremap <leader>h :set cursorcolumn!<CR>
+nnoremap <leader>j :set cursorline!<CR>
 
 " Toggle ability to see whitespace
-nnoremap ,k :set list!<CR>
+nnoremap <leader>k :set list!<CR>
 
 " Enable showing whitespace
 set list
@@ -294,12 +297,12 @@ set listchars=trail:_
 
 " Yank and paste data to temporary file (useful to yank/paste between vim
 " sessions on different computers, given that they use the same file paths)
-vnoremap ,y :<c-u>'<,'>w! /tmp/vimtmp<CR>
-nnoremap ,p :r! cat /tmp/vimtmp<CR>
+vnoremap <leader>y :<c-u>'<,'>w! /tmp/vimtmp<CR>
+nnoremap <leader>p :r! cat /tmp/vimtmp<CR>
 
 " Navigating the buffers
-nnoremap ,n :bp<cr>
-nnoremap ,m :bn<cr>
+nnoremap <leader>n :bp<cr>
+nnoremap <leader>m :bn<cr>
 
 " Disable ctrl-j because of conflict with ultisnips
 imap <c-j> <Nop>
@@ -389,8 +392,8 @@ let g:lsp_log_file = expand('~/.vim/logs/vim-lsp.log')
 " let g:asyncomplete_auto_popup = 1
 
 " Jump to declaration/definition using language server protocol
-nnoremap ,f :LspDeclaration<CR>
-nnoremap ,g :LspDefinition<CR>
+nnoremap <leader>f :LspDeclaration<CR>
+nnoremap <leader>g :LspDefinition<CR>
 
 " (ultisnips) Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
