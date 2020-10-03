@@ -110,7 +110,8 @@ let mapleader = " "
 nnoremap <F2> :e scratch<CR>
 nnoremap <F4> :!snap<CR><CR>
 nnoremap <F5> :w<CR>
-nnoremap <F6> :checktime<CR>
+nnoremap <F6> :Files<CR>
+nnoremap <F7> :Files<CR>
 
 " Set minimum window height
 set wmh=0
