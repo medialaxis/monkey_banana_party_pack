@@ -1,5 +1,5 @@
 URxvt.scrollBar: false
-URxvt.font:xft:Liberation Mono for Powerline:size=9
+URxvt.font:     xft:Liberation Mono for Powerline:size=9
 
 ! Black
 URxvt.color0:  #000000
