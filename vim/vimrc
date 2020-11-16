@@ -86,6 +86,10 @@ iabbrev _!= ≠
 iabbrev _=< ≤
 iabbrev _>= ≥
 iabbrev _i* ι
+iabbrev _r* ρ
+iabbrev _l* λ
+iabbrev _a* α
+iabbrev _b* β
 " iabbrev _*X ×
 iabbrev _Ob ∘
 
