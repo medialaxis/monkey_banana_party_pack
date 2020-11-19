@@ -7,7 +7,7 @@ xrdb -merge "$HOME/.Xresources"
 redshift-gtk -l 58:16 &
 udiskie -t -N &
 steam -silent &
-toggle-audio init
+monitor-audio &
 mykeyboard
 dwmstatus &
 exec dwm
