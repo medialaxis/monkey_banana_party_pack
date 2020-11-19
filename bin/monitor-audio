@@ -1,7 +1,1 @@
-set_names()
-{
-  pacmd 'update-sink-proplist alsa_output.pci-0000_00_1b.0.iec958-stereo device.description="Headphones"' > /dev/null
-  pacmd 'update-sink-proplist alsa_output.pci-0000_00_1b.0.analog-stereo device.description="Speakers"' > /dev/null
-}
-
-pactl subscribe | grep --line-buffered card | while read x; do set_names; done
+pactl subscribe | grep --line-buffered card | while read x; do update-audio; done
