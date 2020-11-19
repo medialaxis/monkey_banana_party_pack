@@ -5,3 +5,5 @@ if pactl list cards | grep "Active Profile" | grep "output:iec958-stereo" > /dev
 else
     pactl set-card-profile 1 output:iec958-stereo
 fi
+
+update-audio
