@@ -4,12 +4,4 @@
 xrdb -merge "$HOME/.Xresources"
 
 # Start i3
-# exec i3
-
-# Start DWM
-redshift-gtk -l 58:16 &
-udiskie -t -N &
-# steam -silent &
-mykeyboard
-$HOME/wc/dwmstatus/dwmstatus &
-exec $HOME/wc/dwm/dwm
+exec i3
