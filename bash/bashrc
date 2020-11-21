@@ -32,6 +32,7 @@ alias mv='mv -i'
 alias rm='rm -I'        # NOTE: Capital 'I' only prompts if more than tree files are removed.
 alias ln='ln -i'
 alias f='find'
+alias open='xdg-open'
 
 # Disable ctrl-s freezing
 stty -ixon
