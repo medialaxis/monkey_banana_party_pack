@@ -33,6 +33,9 @@ alias rm='rm -I'        # NOTE: Capital 'I' only prompts if more than tree files
 alias ln='ln -i'
 alias f='find'
 alias open='xdg-open'
+alias tp='trash-put'
+alias tl='trash-list'
+alias tr='trash-restore'
 
 # Disable ctrl-s freezing
 stty -ixon
