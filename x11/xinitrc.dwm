@@ -10,4 +10,4 @@ steam -silent &
 update-audio
 mykeyboard
 dwmstatus &
-exec dwm
+while true; do dwm && continue || break; done
