@@ -7,6 +7,8 @@ xrdb -merge "$HOME/.Xresources"
 redshift-gtk -l 58:16 &
 udiskie -t -N &
 steam -silent &
+# Start pulseaudio
+pactl stat > /dev/null
 update-audio
 mykeyboard
 dwmstatus &
