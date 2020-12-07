@@ -428,3 +428,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " (vim-multiple-cursors) Key bindings
 let g:multi_cursor_select_all_word_key = '<C-h>'
+
+" Load .vimlocal if it exists. Useful to setup project-specific settings
+silent! so .vimlocal
