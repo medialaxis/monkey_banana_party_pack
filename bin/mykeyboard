@@ -1,4 +1,4 @@
-setxkbmap -option caps:escape
+setxkbmap -option caps:swapescape
 setxkbmap -layout se
 
 # Set menu key to produce be same as right windows key (useful in i3)
