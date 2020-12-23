@@ -6,4 +6,4 @@ else
     pactl set-card-profile 1 output:iec958-stereo
 fi
 
-update-audio
+# update-audio
