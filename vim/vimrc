@@ -368,7 +368,6 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tikhomirov/vim-glsl'
-Plug 'derekelkins/agda-vim'
 call plug#end()
 
 set runtimepath+=~/.config/monkey_banana_party_pack/vim/mysnippets
