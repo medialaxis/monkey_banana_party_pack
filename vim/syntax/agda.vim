@@ -8,7 +8,7 @@ syntax keyword agdaKeyword as infix infixl infixr mutual primitive renaming rewr
 syntax keyword agdaRecordEntries field constructor
 syntax keyword agdaAccess private public abstract
 syntax keyword agdaInclude import open using hiding
-syntax keyword agdaStructure data record module where
+syntax keyword agdaStructure data record module where instance
 syntax keyword agdaType Set Nat Real Complex Bool
 syntax keyword agdaBool true false
 syntax cluster agdaInComment contains=agdaTODO,agdaFIXME,agdaXXX
