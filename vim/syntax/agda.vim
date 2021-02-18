@@ -4,10 +4,10 @@ if exists("b:current_syntax")
   finish
 endif
 
-syntax keyword agdaKeyword as infix infixl infixr mutual primitive renaming rewrite with syntax postulate
+syntax keyword agdaKeyword infix infixl infixr mutual primitive renaming rewrite with syntax postulate
 syntax keyword agdaRecordEntries field constructor
 syntax keyword agdaAccess private public abstract
-syntax keyword agdaInclude import open using hiding
+syntax keyword agdaInclude import open using hiding as
 syntax keyword agdaStructure data record module where instance
 syntax keyword agdaType Set Nat Real Complex Bool
 syntax keyword agdaBool true false
