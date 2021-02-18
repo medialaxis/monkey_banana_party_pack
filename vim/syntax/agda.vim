@@ -1,55 +1,36 @@
 " File: ~/.vim/syntax/agda.vim
 
-if version < 600
-  syn clear
-elseif exists("b:current_syntax")
+if exists("b:current_syntax")
   finish
 endif
 
-" To tokenize, the best pattern I've found so far is this:
-"   (^|\s|[.(){};])@<=token($|\s|[.(){};])@=
-" The patterns @<= and @= look behind and ahead, respectively, without matching.
+syntax keyword agdaKeyword as infix infixl infixr mutual primitive renaming rewrite with syntax postulate
+syntax keyword agdaRecordEntries field constructor
+syntax keyword agdaAccess private public abstract
+syntax keyword agdaInclude import open using hiding
+syntax keyword agdaStructure data record module where
+syntax keyword agdaType Set Nat Real Complex Bool
+syntax keyword agdaBool true false
+syntax cluster agdaInComment contains=agdaTODO,agdaFIXME,agdaXXX
+syntax keyword agdaTODO contained TODO
+syntax keyword agdaFIXME contained FIXME
+syntax keyword agdaXXX contained XXX
+syntax match agdaLineComment "\v--.*$" contains=@agdaInComment
+syntax match agdaNumber "\v[0-9]+$"
+syntax match agdaNumber "\v[+-][0-9]+$"
+syntax region agdaString start=/\v"/ skip=/\v\\./ end=/\v"/
+syntax match agdaIdentifier "\v[A-Za-z0-9_]"
 
-" `agda --vim` extends these groups:
-"   agdaConstructor
-"   agdaFunction
-"   agdaInfixConstructor
-"   agdaInfixFunction
+highlight link agdaKeyword Keyword
+highlight link agdaStructure Structure
+highlight link agdaType Type
+highlight link agdaBool Boolean
+highlight link agdaTodo Todo
+highlight link agdaInclude Include
+highlight link agdaRecordEntries StorageClass
+highlight link agdaAccess Keyword
+highlight link agdaLineComment Comment
+highlight link agdaNumber Number
+highlight link agdaString String
 
-syn match   agdaKeywords     "\v(^|\s|[.(){};])@<=(abstract|data|hiding|import|as|infix|infixl|infixr|module|mutual|open|primitive|private|public|record|renaming|rewrite|using|where|with|field|constructor|infix|infixl|infixr|syntax)($|\s|[.(){};])@="
-syn match   agdaDubious      "\v(^|\s|[.(){};])@<=(postulate|codata)($|\s|[.(){};])@="
-syn match   agdaOperator     "\v(^|\s|[.(){};])@<=(let|in|forall|&#955;|&#8594;|-\>|:|&#8704;|\=|\||\\)($|\s|[.(){};])@="
-syn match   agdaFunction     "\v(^|\s|[.(){};])@<=(Set[0-9&#8320;-&#8329;]*)($|\s|[.(){};])@="
-syn match   agdaNumber       "\v(^|\s|[.(){};])@<=[0-9]+($|\s|[.(){};])@="
-syn match   agdaCharCode     contained "\\\([0-9]\+\|o[0-7]\+\|x[0-9a-fA-F]\+\|[\"\\'&\\abfnrtv]\|^[A-Z^_\[\\\]]\)"
-syn match   agdaCharCode     contained "\v\\(NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS|US|SP|DEL)"
-syn match   agdaCharCodeErr  contained "\\&\|'''\+"
-syn region  agdaString       start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=agdaCharCode
-syn match   agdaHole         "\v(^|\s|[.(){};])@<=(\?)($|\s|[.(){};])@="
-syn region  agdaX            matchgroup=agdaHole start="{!" end="!}" contains=ALL
-syn match   agdaLineComment  "\v(^|\s|[.(){};])@<=--.*$" contains=@agdaInComment
-syn region  agdaBlockComment start="{-"  end="-}" contains=agdaBlockComment,@agdaInComment
-syn region  agdaPragma       start="{-#" end="#-}"
-syn cluster agdaInComment    contains=agdaTODO,agdaFIXME,agdaXXX
-syn keyword agdaTODO         contained TODO
-syn keyword agdaFIXME        contained FIXME
-syn keyword agdaXXX          contained XXX
-
-hi def link agdaNumber           Number
-hi def link agdaString           String
-hi def link agdaConstructor      Constant
-hi def link agdaCharCode         SpecialChar
-hi def link agdaCharCodeErr      Error
-hi def link agdaHole             WarningMsg
-hi def link agdaDubious          WarningMsg
-hi def link agdaKeywords         Structure
-hi def link agdaFunction         Macro
-hi def link agdaOperator         Operator
-hi def link agdaInfixConstructor Operator
-hi def link agdaInfixFunction    Operator
-hi def link agdaLineComment      Comment
-hi def link agdaBlockComment     Comment
-hi def link agdaPragma           Comment
-hi def      agdaTODO             cterm=bold,underline ctermfg=2 " green
-hi def      agdaFIXME            cterm=bold,underline ctermfg=3 " yellow
-hi def      agdaXXX              cterm=bold,underline ctermfg=1 " red
+let b:current_syntax = "agda"
