@@ -9,7 +9,7 @@ syntax keyword agdaRecordEntries field constructor
 syntax keyword agdaAccess private public abstract
 syntax keyword agdaInclude import open using hiding as
 syntax keyword agdaStructure data record module where instance
-syntax keyword agdaType Set Nat Real Complex Bool
+syntax keyword agdaType Set Set0 Set1 Set2 Set3 Nat Real Complex Bool
 syntax keyword agdaBool true false
 syntax cluster agdaInComment contains=agdaTODO,agdaFIXME,agdaXXX
 syntax keyword agdaTODO contained TODO
