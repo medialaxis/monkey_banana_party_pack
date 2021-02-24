@@ -36,6 +36,7 @@ alias open='xdg-open'
 alias tp='trash-put'
 alias tl='trash-list'
 alias tr='trash-restore'
+alias t='tmux'
 
 # Disable ctrl-s freezing
 stty -ixon

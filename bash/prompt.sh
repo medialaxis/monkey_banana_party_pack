@@ -44,7 +44,7 @@ is_screen()
 
 # This is the default prompt command. This prints a text in the terminal window
 # title.
-TERM_SYNC='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+TERM_SYNC='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 PROMPT_COMMAND="$TERM_SYNC; $PROMPT_COMMAND"
 
 PS1="\[${bold}${green}\]\u@\h \[${cyan}\]\$(is_screen)\[${bold}${white}\]\$(git_branch)\[${bold}${yellow}\]\w\n\[\$(smiley_color)\]\$(smiley_face) \[${bold}${blue}\]\$\[${reset}\] "

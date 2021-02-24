@@ -58,6 +58,7 @@ digraph l= 8872  " ⊨
 " Unicode abbreviations.
 iabbrev _FA ∀
 iabbrev _TE ∃
+iabbrev _dP ∂
 iabbrev _-> →
 iabbrev _<- ←
 iabbrev _<> ↔
@@ -72,6 +73,17 @@ iabbrev _XX ✗
 iabbrev _:- ⊢
 iabbrev _:= ⊨
 iabbrev _y* η
+" iabbrev _/0 ∅
+iabbrev _RT √
+iabbrev _00 ∞
+iabbrev _?- ≃
+iabbrev _?= ≅
+" iabbrev _?2 ≈
+iabbrev _=? ≌
+iabbrev _<* ≪
+iabbrev _*> ≫
+iabbrev _0u ☺
+iabbrev _0U ☻
 " iabbrev _(U ∩
 " iabbrev _)U ∪
 " iabbrev _(C ⊂
@@ -90,8 +102,17 @@ iabbrev _r* ρ
 iabbrev _l* λ
 iabbrev _a* α
 iabbrev _b* β
+iabbrev _t* τ
+iabbrev _p* π
+iabbrev _h* θ
+iabbrev _d* δ
+iabbrev _f* φ
+iabbrev _s* σ
+iabbrev _q* ψ
+iabbrev _w* ω
 " iabbrev _*X ×
 iabbrev _Ob ∘
+iabbrev _ae æ
 
 " Abbreviations
 iabbrev _ae Andreas Edlund
@@ -428,3 +449,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " (vim-multiple-cursors) Key bindings
 let g:multi_cursor_select_all_word_key = '<C-h>'
+
+" Load .vimlocal if it exists. Useful to setup project-specific settings
+silent! so .vimlocal
