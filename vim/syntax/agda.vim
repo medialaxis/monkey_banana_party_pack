@@ -4,7 +4,7 @@ if exists("b:current_syntax")
   finish
 endif
 
-syntax keyword agdaKeyword infix infixl infixr mutual primitive renaming rewrite with syntax postulate forall variable do
+syntax keyword agdaKeyword infix infixl infixr mutual primitive renaming rewrite with syntax postulate forall variable do let in
 syntax keyword agdaRecordEntries field constructor
 syntax keyword agdaAccess private public abstract
 syntax keyword agdaInclude import open using hiding as
