@@ -113,6 +113,7 @@ iabbrev _w* ω
 " iabbrev _*X ×
 iabbrev _Ob ∘
 iabbrev _ae æ
+iabbrev _lub ⊔
 
 " Abbreviations
 iabbrev _ae Andreas Edlund
