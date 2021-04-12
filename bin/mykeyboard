@@ -1,5 +1,5 @@
-setxkbmap -option caps:swapescape
+# setxkbmap -option caps:swapescape
 setxkbmap -layout se
 
 # Set menu key to produce be same as right windows key (useful in i3)
-xmodmap -e 'keycode 135 = Super_R' && xset -r 135
+# xmodmap -e 'keycode 135 = Super_R' && xset -r 135
