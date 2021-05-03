@@ -11,6 +11,6 @@ pasystray &
 # Start pulseaudio
 # pactl stat > /dev/null
 # update-audio
-mykeyboard
+# mykeyboard
 dwmstatus &
 while true; do dwm && continue || break; done
