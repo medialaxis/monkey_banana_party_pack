@@ -231,6 +231,9 @@ let g:lsp_document_code_action_signs_enabled = 0
 " (asyncomplete) Enable/disable completion popup
 " let g:asyncomplete_auto_popup = 1
 
+" (vim-easymotion) List the allowed keys
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+
 " Customizes the c indentation see tha vim manual for more.
 set cinoptions+=g0
 
