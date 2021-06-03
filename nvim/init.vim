@@ -168,6 +168,12 @@ nnoremap <leader>g :LspDefinition<CR>
 " (vim-easymotion) Use birectional word search.
 nmap <leader><leader>w <plug>(easymotion-bd-w)
 
+" (vim-easymotion) Use birectional line search.
+nmap <leader><leader>j <plug>(easymotion-bd-jk)
+
+" (vim-easymotion) Use birectional highlight search.
+nmap <leader><leader>n <plug>(easymotion-bd-n)
+
 " Enable showing whitespace
 set list
 
