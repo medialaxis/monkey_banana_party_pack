@@ -80,6 +80,7 @@ nnoremap <F5> :w<CR>
 nnoremap <F6> :Files<CR>
 nnoremap <F7> :Tags<CR>
 nnoremap <F8> :Ag<CR>
+nnoremap <F9> :Lines<CR>
 
 " Set the format of the status line.
 set statusline=%<%f\ %h%m%y%r%=Byte:\ [%03b\ 0x%02B],\ Cursor:\ %-14.(%l,%c%V%)\ %P
