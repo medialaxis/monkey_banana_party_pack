@@ -188,13 +188,16 @@ let g:lsp_insert_text_enabled = 0
 let g:lsp_text_edit_enabled = 0
 
 " (vim-lsp) Enable/disable error indication column
-let g:lsp_signs_enabled = 0
+let g:lsp_diagnostics_signs_enabled = 0
 
 " (vim-lsp) Enable/disable highlighting errors
 let g:lsp_textprop_enabled = 1
 
 " (vim-lsp) Show error message on status line when cursor is on error.
 let g:lsp_diagnostics_echo_cursor = 1
+
+" (vim-lsp) Show error messages inline in the text
+let g:lsp_diagnostics_virtual_text_enabled = 0
 
 " (vim-lsp) Log to file
 let g:lsp_log_file = expand('~/.local/share/nvim/site/logs/vim-lsp.log')
