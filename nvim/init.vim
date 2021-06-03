@@ -168,7 +168,7 @@ set noswapfile
 set clipboard=unnamed
 
 " Set the default colorscheme
-colorscheme desert
+colorscheme mycolors
 
 " Set syntax highlighting colors
 hi Type ctermfg=lightgreen

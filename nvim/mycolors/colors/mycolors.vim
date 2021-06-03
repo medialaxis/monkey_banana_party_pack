@@ -91,16 +91,17 @@ hi DiffChange	ctermbg=5
 hi DiffDelete	cterm=bold ctermfg=4 ctermbg=6
 hi DiffText	cterm=bold ctermbg=1
 hi Comment	ctermfg=darkcyan
-hi Constant	ctermfg=brown
+hi Constant	ctermfg=lightred
 hi Special	ctermfg=5
 hi Identifier	ctermfg=6
-hi Statement	ctermfg=3
+hi Statement	ctermfg=yellow
 hi PreProc	ctermfg=5
-hi Type		ctermfg=2
+hi Type		ctermfg=lightgreen
 hi Underlined	cterm=underline ctermfg=5
 hi Ignore	cterm=bold ctermfg=7
 hi Ignore	ctermfg=darkgrey
 hi Error	cterm=bold ctermfg=7 ctermbg=1
+hi String	ctermfg=lightyellow
 
 
 "vim: sw=4
