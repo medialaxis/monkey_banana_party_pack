@@ -118,8 +118,6 @@ iabbrev _lub ⊔
 " Abbreviations
 iabbrev _ae Andreas Edlund
 iabbrev _mail andreas@myrstacken.net
-iabbrev _www myrstacken.net
-iabbrev _date <C-R>=strftime("%d %b %Y")<CR>
 
 " Set the default colorscheme
 colorscheme desert
