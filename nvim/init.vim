@@ -202,5 +202,9 @@ let g:lsp_diagnostics_virtual_text_enabled = 0
 " (vim-lsp) Log to file
 let g:lsp_log_file = expand('~/.local/share/nvim/site/logs/vim-lsp.log')
 
+" (vim-lsp) Enable 'A>' signs in the left-most column to indicate an avaiable
+" edit action.
+let g:lsp_document_code_action_signs_enabled = 0
+
 " (asyncomplete) Enable/disable completion popup
 " let g:asyncomplete_auto_popup = 1
