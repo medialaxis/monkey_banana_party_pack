@@ -183,6 +183,15 @@ if executable('clangd')
         \ })
 endif
 
+" (vim-lsp) Register pyls LSP service
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python']
+        \ })
+endif
+
 " (vim-lsp) Disable auto insertion of #include
 let g:lsp_insert_text_enabled = 0
 let g:lsp_text_edit_enabled = 0
