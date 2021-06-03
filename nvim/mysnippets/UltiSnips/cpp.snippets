@@ -1,0 +1,104 @@
+priority -50
+
+extends c
+
+priority -49
+
+snippet forr "" b
+for (auto& ${1:x}: ${2:coll}) {
+    ${VISUAL}$0
+}
+endsnippet
+
+snippet str "" w
+std::string $0
+endsnippet
+
+snippet vec "" w
+std::vector<${VISUAL}$1>$0
+endsnippet
+
+snippet set "" w
+std::set<${VISUAL}$1>$0
+endsnippet
+
+snippet list "" w
+std::list<${VISUAL}$1>$0
+endsnippet
+
+snippet map "" w
+std::map<${1:key}, ${2:value}>$0
+endsnippet
+
+snippet opt "" w
+std::optional<${VISUAL}$1>$0
+endsnippet
+
+snippet uptr "" w
+std::unique_ptr<${VISUAL}$1>$0
+endsnippet
+
+snippet sptr "" w
+std::shared_ptr<${VISUAL}$1>$0
+endsnippet
+
+snippet scast "" w
+static_cast<${1:type}>(${VISUAL}$0)
+endsnippet
+
+snippet dcast "" w
+dynamic_cast<${1:type}>(${VISUAL}$0)
+endsnippet
+
+snippet ccast "" w
+const_cast<${1:type}>(${VISUAL}$0)
+endsnippet
+
+snippet rcast "" w
+reinterpret_cast<${1:type}>(${VISUAL}$0)
+endsnippet
+
+snippet fun0 "" b
+void ${1:fun}()
+{
+}
+endsnippet
+
+snippet lam0 "" w
+[](){${VISUAL}$0}
+endsnippet
+
+snippet cls "" b
+class ${1:MyClass}
+{
+public:
+};
+endsnippet
+
+snippet cls5 "" b
+class ${1:MyClass}
+{
+public:
+    $1() = default;
+    $1(const $1& other) = default;
+    $1($1&& other) noexcept = default;
+    ~$1() = default;
+    $1& operator=(const $1& other) = default;
+    $1& operator=($1&& other) noexcept = default;
+    void swap() noexcept {}
+};
+endsnippet
+
+snippet ro5 "" b
+${1:MyClass}() = default;
+$1(const $1& other) = default;
+$1($1&& other) noexcept = default;
+~$1() = default;
+$1& operator=(const $1& other) = default;
+$1& operator=($1&& other) noexcept = default;
+void swap() noexcept {}
+endsnippet
+
+snippet lgi "" b
+log_info("$0");
+endsnippet

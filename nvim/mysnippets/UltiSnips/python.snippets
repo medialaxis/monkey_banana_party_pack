@@ -1,0 +1,19 @@
+snippet #!3 "" b
+#!/usr/bin/env python3
+endsnippet
+
+snippet main "" b
+if __name__ == '__main__':
+    main(sys.argv)
+endsnippet
+
+snippet fun0 "" b
+def ${1:fun}():
+    pass
+endsnippet
+
+snippet argparse "" b
+parser = argparse.ArgumentParser(description="Desc")
+parser.add_argument("-arg", "--argument", help="The argument")
+args = parser.parse_args(argv[1:])
+endsnippet
