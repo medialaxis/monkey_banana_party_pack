@@ -169,10 +169,3 @@ set clipboard=unnamed
 
 " Set the default colorscheme
 colorscheme mycolors
-
-" Set syntax highlighting colors
-hi Type ctermfg=lightgreen
-hi Comment ctermfg=darkcyan
-hi Statement ctermfg=yellow
-hi Constant ctermfg=lightred
-hi String ctermfg=lightyellow
