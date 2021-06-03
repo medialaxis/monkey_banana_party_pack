@@ -1,3 +1,6 @@
+" Case insensistive
+set ignorecase
+
 " Custom digraphs.
 digraph bn 8469  " ℕ
 digraph l- 8866  " ⊢
