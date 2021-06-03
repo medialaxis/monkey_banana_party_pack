@@ -174,6 +174,9 @@ nmap <leader><leader>j <plug>(easymotion-bd-jk)
 " (vim-easymotion) Use birectional highlight search.
 nmap <leader><leader>n <plug>(easymotion-bd-n)
 
+" (vim-easymotion) Jump to anywhere
+nmap <leader><leader><leader> <plug>(easymotion-jumptoanywhere)
+
 " Enable showing whitespace
 set list
 
