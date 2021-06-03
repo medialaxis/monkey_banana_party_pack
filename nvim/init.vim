@@ -165,6 +165,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <leader>f :LspDeclaration<CR>
 nnoremap <leader>g :LspDefinition<CR>
 
+" (vim-easymotion) Use birectional word search.
+nmap <leader><leader>w <plug>(easymotion-bd-w)
+
 " Enable showing whitespace
 set list
 
