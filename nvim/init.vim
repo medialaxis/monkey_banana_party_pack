@@ -173,3 +173,31 @@ set clipboard=unnamed
 
 " Set the default colorscheme
 colorscheme mycolors
+
+" (vim-lsp) Register clangd LSP service
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd', '-background-index']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
+" (vim-lsp) Disable auto insertion of #include
+let g:lsp_insert_text_enabled = 0
+let g:lsp_text_edit_enabled = 0
+
+" (vim-lsp) Enable/disable error indication column
+let g:lsp_signs_enabled = 0
+
+" (vim-lsp) Enable/disable highlighting errors
+let g:lsp_textprop_enabled = 1
+
+" (vim-lsp) Show error message on status line when cursor is on error.
+let g:lsp_diagnostics_echo_cursor = 1
+
+" (vim-lsp) Log to file
+let g:lsp_log_file = expand('~/.local/share/nvim/site/logs')
+
+" (asyncomplete) Enable/disable completion popup
+" let g:asyncomplete_auto_popup = 1
