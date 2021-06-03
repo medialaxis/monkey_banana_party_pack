@@ -166,3 +166,13 @@ set noswapfile
 " Yank to x windows cut register ('*'). This works with simple selection with
 " mouse.
 set clipboard=unnamed
+
+" Set the default colorscheme
+colorscheme desert
+
+" Set syntax highlighting colors
+hi Type ctermfg=lightgreen
+hi Comment ctermfg=darkcyan
+hi Statement ctermfg=yellow
+hi Constant ctermfg=lightred
+hi String ctermfg=lightyellow
