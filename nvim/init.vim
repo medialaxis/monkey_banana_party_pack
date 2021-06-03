@@ -1,6 +1,19 @@
 " Case insensistive
 set ignorecase
 
+" Set the completion mode to match the longest common part and show a
+" menu for all the alternatives. Only in command mode.
+set wildmode=list:longest
+
+" Ignore case when completing files and directories. Only in command mode.
+set wildignorecase
+
+" Sets the size of the indentations.
+set shiftwidth=4
+
+" Uses spaces instead of tabs.
+set expandtab
+
 " Custom digraphs.
 digraph bn 8469  " ℕ
 digraph l- 8866  " ⊢
@@ -217,3 +230,13 @@ let g:lsp_document_code_action_signs_enabled = 0
 
 " (asyncomplete) Enable/disable completion popup
 " let g:asyncomplete_auto_popup = 1
+
+" Customizes the c indentation see tha vim manual for more.
+set cinoptions+=g0
+
+" Indent lambda expressions properly.
+set cinoptions+=j1
+
+" Do not indent continuation lines (handles 'template' on its own line, but
+" breaks continuations of expressions)
+set cinoptions+=+0
