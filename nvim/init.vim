@@ -127,6 +127,9 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
+" Exit terminal mode
+tnoremap <esc><esc> <c-\><c-n>
+
 " Navigating the clist
 nnoremap <leader>q :cf<CR>
 nnoremap <leader>w :cc<CR>
