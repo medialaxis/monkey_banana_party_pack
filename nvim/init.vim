@@ -137,10 +137,8 @@ nnoremap <leader>e :cprev<CR>
 nnoremap <leader>r :cnext<CR>
 
 " Tags
-nnoremap <leader>a g<C-]>
-nnoremap <leader>A :call fzf#vim#tags(expand("<cword>"))<CR>
+nnoremap <leader>a :call fzf#vim#tags(expand("<cword>"))<CR>
 nnoremap <leader>s <C-T>
-nnoremap <leader>d <C-W>g}
 
 " Make it easier to enter command mode
 nnoremap <leader>b :
