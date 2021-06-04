@@ -121,6 +121,12 @@ set updatetime=1000
 nnoremap k gk
 nnoremap j gj
 
+" Navigate windows
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
 " Navigating the clist
 nnoremap <leader>q :cf<CR>
 nnoremap <leader>w :cc<CR>
