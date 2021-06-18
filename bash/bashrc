@@ -1,6 +1,6 @@
-export TOP=$(realpath $(dirname $BASH_SOURCE)/..)
+export MONKEY=$HOME/.config/monkey_banana_party_pack
 
-pushd "$TOP/bash" > /dev/null
+pushd "$MONKEY/bash" > /dev/null
 
 # Enable minor spell checking for directory names.
 shopt -s cdspell
