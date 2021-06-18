@@ -50,3 +50,7 @@ def dirlist_cmd():
     except BrokenPipeError:
         sys.stderr.close()  # Prevent error messages on broken pipe
         sys.exit(1)
+
+
+def filelist_cmd():
+    pass
