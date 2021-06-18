@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from dirlist_cmd import dirlist_cmd  # type: ignore
+import filelist # type: ignore
 
 if __name__ == "__main__":
-    dirlist_cmd()
+    filelist.dirlist_cmd()
