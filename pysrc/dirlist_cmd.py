@@ -61,6 +61,12 @@ def filelist_cmd():
             except UnicodeEncodeError:
                 pass
 
+        for fn in glob.glob("/etc/**", recursive=True):
+            try:
+                print(fn, flush=True)
+            except UnicodeEncodeError:
+                pass
+
     except KeyboardInterrupt:
         sys.exit(1)
     except BrokenPipeError:
