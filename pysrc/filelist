@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+import dirlist_cmd  # type: ignore
+
+if __name__ == "__main__":
+    dirlist_cmd.filelist_cmd()

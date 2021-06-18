@@ -3,6 +3,7 @@ import os
 import collections
 import pathlib
 import fnmatch
+import glob
 
 
 def _list_dir(dir):
@@ -53,4 +54,15 @@ def dirlist_cmd():
 
 
 def filelist_cmd():
-    pass
+    try:
+        for fn in glob.glob("/mnt/extra/**", recursive=True):
+            try:
+                print(fn, flush=True)
+            except UnicodeEncodeError:
+                pass
+
+    except KeyboardInterrupt:
+        sys.exit(1)
+    except BrokenPipeError:
+        sys.stderr.close()  # Prevent error messages on broken pipe
+        sys.exit(1)
