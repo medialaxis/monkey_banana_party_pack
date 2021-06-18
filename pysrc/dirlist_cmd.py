@@ -7,6 +7,9 @@ import pathlib
 def _list_dir(dir):
     try:
         for path in pathlib.Path(dir).iterdir():
+            if path.is_symlink():
+                continue
+
             if path.is_dir():
                 yield os.path.realpath(str(path))
     except FileNotFoundError:
