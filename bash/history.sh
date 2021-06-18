@@ -1,6 +1,3 @@
-# Deduplicate the directory history file
-sort -u ~/.local/dir_history/history -o ~/.local/dir_history/history
-
 # Append history to history files after every command, not just when existing
 # bash.
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
