@@ -2,6 +2,7 @@ import sys
 import os
 import collections
 import pathlib
+import fnmatch
 
 
 def _list_dir(dir):
@@ -22,7 +23,7 @@ def dirlist_cmd():
     try:
         work = collections.deque()
         work.append(os.getcwd())
-        work.append(os.getenv("HOME"))
+        work.append(f"{os.getenv('HOME')}/wc")
         work.append("/mnt/extra")
 
         visited = set()
@@ -30,6 +31,12 @@ def dirlist_cmd():
             path = work.popleft()
 
             if path in visited:
+                continue
+
+            if fnmatch.fnmatch(path, "*/.git"):
+                continue
+
+            if fnmatch.fnmatch(path, "*/.stack-work"):
                 continue
 
             print(path, flush=True)
