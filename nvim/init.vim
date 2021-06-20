@@ -265,3 +265,7 @@ set cinoptions+=+0
 
 " (vim-sneak) Show target labels (like for easymotion)
 let g:sneak#label = 0
+
+" (vim-sneak) Enable clever-s. Allows repeated use of 's' to cycle between
+" matches.
+let g:sneak#s_next = 1
