@@ -262,3 +262,6 @@ set cinoptions+=j1
 " Do not indent continuation lines (handles 'template' on its own line, but
 " breaks continuations of expressions)
 set cinoptions+=+0
+
+" (vim-sneak) Show target labels (like for easymotion)
+let g:sneak#label = 0
