@@ -26,6 +26,7 @@ def dirlist_cmd():
         work.append(os.getcwd())
         work.append(f"{os.getenv('HOME')}/wc")
         work.append("/mnt/extra")
+        work.append("/run/media")
 
         visited = set()
         while len(work) != 0:
