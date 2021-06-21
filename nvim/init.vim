@@ -275,8 +275,8 @@ let g:sneak#s_next = 1
 set mouse=a
 
 " Set mouse scroll to be a single line only
-:map <scrollwheelup> <c-y>
-:map <scrollwheeldown> <c-e>
+map <scrollwheelup> <c-y>
+map <scrollwheeldown> <c-e>
 
 " Set mouse model (this mostly controls what happens on right clicks)
 set mousemodel=popup
