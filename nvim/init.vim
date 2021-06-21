@@ -270,7 +270,8 @@ let g:sneak#label = 0
 " matches.
 let g:sneak#s_next = 1
 
-" Enable mouse in all modes (=a)
+" Enable mouse in all modes (=a) (hold shift to temporarily disable mouse
+" support, useful when copy-pasting)
 set mouse=a
 
 " Set mouse scroll to be a single line only
