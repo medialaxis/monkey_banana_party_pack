@@ -4,9 +4,10 @@ import collections
 import pathlib
 import fnmatch
 import glob
+from typing import Generator
 
 
-def _list_dir(dir):
+def _list_dir(dir: str) -> Generator[str, None, None]:
     try:
         for path in pathlib.Path(dir).iterdir():
             if path.is_symlink():
@@ -20,8 +21,9 @@ def _list_dir(dir):
         pass
 
 
-def dirlist_cmd():
+def dirlist_cmd() -> None:
     try:
+        work: collections.deque[str]
         work = collections.deque()
         work.append(os.getcwd())
         work.append(f"{os.getenv('HOME')}/wc")
@@ -54,7 +56,7 @@ def dirlist_cmd():
         sys.exit(1)
 
 
-def filelist_cmd():
+def filelist_cmd() -> None:
     try:
         for fn in glob.glob("/mnt/extra/**", recursive=True):
             try:
