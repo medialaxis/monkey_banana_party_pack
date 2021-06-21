@@ -28,8 +28,7 @@ def dirlist_cmd() -> None:
         work.append(PosixPath("/mnt/extra"))
         work.append(PosixPath("/run/media"))
 
-        visited: Set[PosixPath]
-        visited = set()
+        visited: Set[PosixPath] = set()
         while len(work) != 0:
             path = work.popleft()
 
