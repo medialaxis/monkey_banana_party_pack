@@ -275,4 +275,9 @@ set mouse=a
 
 " Set mouse scroll to be a single line only
 :map <scrollwheelup> <c-y>
-:map <s-scrollwheelup> <c-u>
+:map <scrollwheeldown> <c-e>
+
+set mousemodel=extend
+
+" Load all default menus
+source $VIMRUNTIME/menu.vim
