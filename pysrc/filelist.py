@@ -1,11 +1,11 @@
 import sys
 import collections
-from pathlib import PosixPath
+from pathlib import Path
 import glob
 from typing import Iterator, Set
 
 
-def _list_dir(dir_: PosixPath) -> Iterator[PosixPath]:
+def _list_dir(dir_: Path) -> Iterator[Path]:
     try:
         for path in dir_.iterdir():
             if path.is_symlink():
@@ -21,14 +21,14 @@ def _list_dir(dir_: PosixPath) -> Iterator[PosixPath]:
 
 def dirlist_cmd() -> None:
     try:
-        work: collections.deque[PosixPath]
+        work: collections.deque[Path]
         work = collections.deque()
-        work.append(PosixPath.cwd())
-        work.append(PosixPath.home()/"wc")
-        work.append(PosixPath("/mnt/extra"))
-        work.append(PosixPath("/run/media"))
+        work.append(Path.cwd())
+        work.append(Path.home()/"wc")
+        work.append(Path("/mnt/extra"))
+        work.append(Path("/run/media"))
 
-        visited: Set[PosixPath] = set()
+        visited: Set[Path] = set()
         while len(work) != 0:
             path = work.popleft()
 
