@@ -55,13 +55,13 @@ def dirlist_cmd() -> None:
 
 def filelist_cmd() -> None:
     try:
-        for fn in Path("/mnt/extra").glob("**/*"):
+        for fn in Path("/mnt/extra").rglob("*"):
             try:
                 print(fn, flush=True)
             except UnicodeEncodeError:
                 pass
 
-        for fn in Path("/etc").glob("**/*"):
+        for fn in Path("/etc").rglob("*"):
             try:
                 print(fn, flush=True)
             except UnicodeEncodeError:
