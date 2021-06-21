@@ -272,3 +272,7 @@ let g:sneak#s_next = 1
 
 " Enable mouse in all modes (=a)
 set mouse=a
+
+" Set mouse scroll to be a single line only
+:map <scrollwheelup> <c-y>
+:map <s-scrollwheelup> <c-u>
