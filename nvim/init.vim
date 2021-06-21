@@ -277,6 +277,7 @@ set mouse=a
 :map <scrollwheelup> <c-y>
 :map <scrollwheeldown> <c-e>
 
+" Set mouse model
 set mousemodel=extend
 
 " Load all default menus
