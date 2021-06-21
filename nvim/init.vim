@@ -1,3 +1,17 @@
+" Setup all my plugins
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'SirVer/ultisnips'
+Plug 'tikhomirov/vim-glsl'
+Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
+call plug#end()
+
 " Case insensistive
 set ignorecase
 
