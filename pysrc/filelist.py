@@ -1,7 +1,6 @@
 import sys
 import collections
 from pathlib import Path
-import glob
 from typing import Iterator, Set
 
 
