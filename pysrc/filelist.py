@@ -1,20 +1,20 @@
 import sys
 import os
 import collections
-import pathlib
+from pathlib import PosixPath
 import fnmatch
 import glob
-from typing import Iterator
+from typing import Iterator, Set
 
 
-def _list_dir(dir: str) -> Iterator[str]:
+def _list_dir(dir_: PosixPath) -> Iterator[PosixPath]:
     try:
-        for path in pathlib.Path(dir).iterdir():
+        for path in dir_.iterdir():
             if path.is_symlink():
                 continue
 
             if path.is_dir():
-                yield os.path.realpath(str(path))
+                yield path
     except FileNotFoundError:
         pass
     except PermissionError:
@@ -23,13 +23,14 @@ def _list_dir(dir: str) -> Iterator[str]:
 
 def dirlist_cmd() -> None:
     try:
-        work: collections.deque[str]
+        work: collections.deque[PosixPath]
         work = collections.deque()
-        work.append(os.getcwd())
-        work.append(f"{os.getenv('HOME')}/wc")
-        work.append("/mnt/extra")
-        work.append("/run/media")
+        work.append(PosixPath.cwd())
+        work.append(PosixPath(f"{os.getenv('HOME')}/wc"))
+        work.append(PosixPath("/mnt/extra"))
+        work.append(PosixPath("/run/media"))
 
+        visited: Set[PosixPath]
         visited = set()
         while len(work) != 0:
             path = work.popleft()
@@ -37,10 +38,10 @@ def dirlist_cmd() -> None:
             if path in visited:
                 continue
 
-            if fnmatch.fnmatch(path, "*/.git"):
+            if fnmatch.fnmatch(path.as_posix(), "*/.git"):
                 continue
 
-            if fnmatch.fnmatch(path, "*/.stack-work"):
+            if fnmatch.fnmatch(path.as_posix(), "*/.stack-work"):
                 continue
 
             print(path, flush=True)
