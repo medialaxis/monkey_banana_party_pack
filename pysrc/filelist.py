@@ -1,7 +1,6 @@
 import sys
 import collections
 from pathlib import PosixPath
-import fnmatch
 import glob
 from typing import Iterator, Set
 
@@ -37,10 +36,10 @@ def dirlist_cmd() -> None:
             if path in visited:
                 continue
 
-            if fnmatch.fnmatch(path.as_posix(), "*/.git"):
+            if path.match("*/.git"):
                 continue
 
-            if fnmatch.fnmatch(path.as_posix(), "*/.stack-work"):
+            if path.match("*/.stack-work"):
                 continue
 
             print(path, flush=True)
