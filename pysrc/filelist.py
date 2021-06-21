@@ -4,10 +4,10 @@ import collections
 import pathlib
 import fnmatch
 import glob
-from typing import Generator
+from typing import Iterator
 
 
-def _list_dir(dir: str) -> Generator[str, None, None]:
+def _list_dir(dir: str) -> Iterator[str]:
     try:
         for path in pathlib.Path(dir).iterdir():
             if path.is_symlink():
