@@ -279,7 +279,7 @@ set mouse=a
 :map <scrollwheeldown> <c-e>
 
 " Set mouse model (this mostly controls what happens on right clicks)
-set mousemodel=extend
+set mousemodel=popup
 
 " Load all default menus
 source $VIMRUNTIME/menu.vim
