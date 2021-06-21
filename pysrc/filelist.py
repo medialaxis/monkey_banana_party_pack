@@ -1,5 +1,4 @@
 import sys
-import os
 import collections
 from pathlib import PosixPath
 import fnmatch
@@ -26,7 +25,7 @@ def dirlist_cmd() -> None:
         work: collections.deque[PosixPath]
         work = collections.deque()
         work.append(PosixPath.cwd())
-        work.append(PosixPath(f"{os.getenv('HOME')}/wc"))
+        work.append(PosixPath.home()/"wc")
         work.append(PosixPath("/mnt/extra"))
         work.append(PosixPath("/run/media"))
 
