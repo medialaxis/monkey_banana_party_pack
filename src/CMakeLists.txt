@@ -25,6 +25,25 @@ endif()
 
 set(COMMON_COMPILE_OPTIONS -Werror -Wall -g)
 set(COMMON_COMPILE_FEATURES cxx_std_17)
+set(COMMON_LINK_OPTIONS "")
+
+if(GOLD)
+    list(APPEND COMMON_LINK_OPTIONS -fuse-ld=gold)
+endif()
+
+if(ASAN)
+    list(APPEND COMMON_COMPILE_OPTIONS -fsanitize=address)
+    list(APPEND COMMON_LINK_OPTIONS -fsanitize=address)
+endif()
+
+if(COVERAGE)
+    list(APPEND COMMON_COMPILE_OPTIONS --coverage)
+    list(APPEND COMMON_LINK_OPTIONS --coverage)
+endif()
+
+if(OPTIMIZE)
+    list(APPEND COMMON_COMPILE_OPTIONS -O3)
+endif()
 
 add_executable(dirlist
     dirlist.cc)
@@ -32,28 +51,11 @@ add_executable(dirlist
 target_compile_options(dirlist PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(dirlist PUBLIC ${COMMON_COMPILE_FEATURES})
 target_link_libraries(dirlist PUBLIC fmt)
+target_link_options(dirlist PUBLIC ${COMMON_LINK_OPTIONS})
 
 target_link_libraries(dirlist PUBLIC ${JANSSON_LIBRARIES})
 target_include_directories(dirlist PUBLIC ${JANSSON_INCLUDE_DIRS} src/)
 target_compile_options(dirlist PUBLIC ${JANSSON_CFLAGS_OTHER})
-
-if(GOLD)
-    target_link_options(dirlist PUBLIC -fuse-ld=gold)
-endif()
-
-if(ASAN)
-    target_compile_options(dirlist PUBLIC -fsanitize=address)
-    target_link_options(dirlist PUBLIC -fsanitize=address)
-endif()
-
-if(COVERAGE)
-    target_compile_options(dirlist PUBLIC --coverage)
-    target_link_options(dirlist PUBLIC --coverage)
-endif()
-
-if(OPTIMIZE)
-    target_compile_options(dirlist PUBLIC -O3)
-endif()
 
 add_executable(filelist
     filelist.cc)
@@ -61,28 +63,11 @@ add_executable(filelist
 target_compile_options(filelist PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(filelist PUBLIC ${COMMON_COMPILE_FEATURES})
 target_link_libraries(filelist PUBLIC fmt)
+target_link_options(filelist PUBLIC ${COMMON_LINK_OPTIONS})
 
 target_link_libraries(filelist PUBLIC ${JANSSON_LIBRARIES})
 target_include_directories(filelist PUBLIC ${JANSSON_INCLUDE_DIRS} src/)
 target_compile_options(filelist PUBLIC ${JANSSON_CFLAGS_OTHER})
-
-if(GOLD)
-    target_link_options(filelist PUBLIC -fuse-ld=gold)
-endif()
-
-if(ASAN)
-    target_compile_options(filelist PUBLIC -fsanitize=address)
-    target_link_options(filelist PUBLIC -fsanitize=address)
-endif()
-
-if(COVERAGE)
-    target_compile_options(filelist PUBLIC --coverage)
-    target_link_options(filelist PUBLIC --coverage)
-endif()
-
-if(OPTIMIZE)
-    target_compile_options(filelist PUBLIC -O3)
-endif()
 
 add_executable(scandir
     scandir.cc)
@@ -90,25 +75,8 @@ add_executable(scandir
 target_compile_options(scandir PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(scandir PUBLIC ${COMMON_COMPILE_FEATURES})
 target_link_libraries(scandir PUBLIC fmt)
+target_link_options(scandir PUBLIC ${COMMON_LINK_OPTIONS})
 
 target_link_libraries(scandir PUBLIC ${JANSSON_LIBRARIES})
 target_include_directories(scandir PUBLIC ${JANSSON_INCLUDE_DIRS} src/)
 target_compile_options(scandir PUBLIC ${JANSSON_CFLAGS_OTHER})
-
-if(GOLD)
-    target_link_options(scandir PUBLIC -fuse-ld=gold)
-endif()
-
-if(ASAN)
-    target_compile_options(scandir PUBLIC -fsanitize=address)
-    target_link_options(scandir PUBLIC -fsanitize=address)
-endif()
-
-if(COVERAGE)
-    target_compile_options(scandir PUBLIC --coverage)
-    target_link_options(scandir PUBLIC --coverage)
-endif()
-
-if(OPTIMIZE)
-    target_compile_options(scandir PUBLIC -O3)
-endif()
