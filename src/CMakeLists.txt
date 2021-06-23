@@ -23,12 +23,14 @@ if(CCACHE)
     endif()
 endif()
 
+set(COMMON_COMPILE_OPTIONS -Werror -Wall -g)
+set(COMMON_COMPILE_FEATURES cxx_std_17)
+
 add_executable(dirlist
     dirlist.cc)
 
-target_compile_options(dirlist PUBLIC -Werror -Wall -g)
-target_compile_features(dirlist PUBLIC cxx_std_17)
-target_link_options(dirlist PUBLIC -fopenmp)
+target_compile_options(dirlist PUBLIC ${COMMON_COMPILE_OPTIONS})
+target_compile_features(dirlist PUBLIC ${COMMON_COMPILE_FEATURES})
 target_link_libraries(dirlist PUBLIC fmt)
 
 target_link_libraries(dirlist PUBLIC ${JANSSON_LIBRARIES})
@@ -56,9 +58,8 @@ endif()
 add_executable(filelist
     filelist.cc)
 
-target_compile_options(filelist PUBLIC -Werror -Wall -g)
-target_compile_features(filelist PUBLIC cxx_std_17)
-target_link_options(filelist PUBLIC -fopenmp)
+target_compile_options(filelist PUBLIC ${COMMON_COMPILE_OPTIONS})
+target_compile_features(filelist PUBLIC ${COMMON_COMPILE_FEATURES})
 target_link_libraries(filelist PUBLIC fmt)
 
 target_link_libraries(filelist PUBLIC ${JANSSON_LIBRARIES})
@@ -86,9 +87,8 @@ endif()
 add_executable(scandir
     scandir.cc)
 
-target_compile_options(scandir PUBLIC -Werror -Wall -g)
-target_compile_features(scandir PUBLIC cxx_std_17)
-target_link_options(scandir PUBLIC -fopenmp)
+target_compile_options(scandir PUBLIC ${COMMON_COMPILE_OPTIONS})
+target_compile_features(scandir PUBLIC ${COMMON_COMPILE_FEATURES})
 target_link_libraries(scandir PUBLIC fmt)
 
 target_link_libraries(scandir PUBLIC ${JANSSON_LIBRARIES})
