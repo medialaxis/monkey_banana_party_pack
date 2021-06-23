@@ -45,38 +45,31 @@ if(OPTIMIZE)
     list(APPEND COMMON_COMPILE_OPTIONS -O3)
 endif()
 
+add_library(jansson_ INTERFACE)
+target_link_libraries(jansson_ INTERFACE ${JANSSON_LIBRARIES})
+target_include_directories(jansson_ INTERFACE ${JANSSON_INCLUDE_DIRS})
+target_compile_options(jansson_ INTERFACE ${JANSSON_CFLAGS_OTHER})
+
 add_executable(dirlist
     dirlist.cc)
 
 target_compile_options(dirlist PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(dirlist PUBLIC ${COMMON_COMPILE_FEATURES})
-target_link_libraries(dirlist PUBLIC fmt)
+target_link_libraries(dirlist PUBLIC fmt jansson_)
 target_link_options(dirlist PUBLIC ${COMMON_LINK_OPTIONS})
-
-target_link_libraries(dirlist PUBLIC ${JANSSON_LIBRARIES})
-target_include_directories(dirlist PUBLIC ${JANSSON_INCLUDE_DIRS} src/)
-target_compile_options(dirlist PUBLIC ${JANSSON_CFLAGS_OTHER})
 
 add_executable(filelist
     filelist.cc)
 
 target_compile_options(filelist PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(filelist PUBLIC ${COMMON_COMPILE_FEATURES})
-target_link_libraries(filelist PUBLIC fmt)
+target_link_libraries(filelist PUBLIC fmt jansson_)
 target_link_options(filelist PUBLIC ${COMMON_LINK_OPTIONS})
-
-target_link_libraries(filelist PUBLIC ${JANSSON_LIBRARIES})
-target_include_directories(filelist PUBLIC ${JANSSON_INCLUDE_DIRS} src/)
-target_compile_options(filelist PUBLIC ${JANSSON_CFLAGS_OTHER})
 
 add_executable(scandir
     scandir.cc)
 
 target_compile_options(scandir PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(scandir PUBLIC ${COMMON_COMPILE_FEATURES})
-target_link_libraries(scandir PUBLIC fmt)
+target_link_libraries(scandir PUBLIC fmt jansson_)
 target_link_options(scandir PUBLIC ${COMMON_LINK_OPTIONS})
-
-target_link_libraries(scandir PUBLIC ${JANSSON_LIBRARIES})
-target_include_directories(scandir PUBLIC ${JANSSON_INCLUDE_DIRS} src/)
-target_compile_options(scandir PUBLIC ${JANSSON_CFLAGS_OTHER})
