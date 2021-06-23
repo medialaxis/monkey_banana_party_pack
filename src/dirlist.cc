@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
         path curr = work.front();
         work.pop_front();
 
-        std::cout << curr.string() << "\n";
+        std::cout << curr.string() << std::endl;
 
         try {
             for (auto& dir : directory_iterator(curr)) {
