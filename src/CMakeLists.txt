@@ -55,21 +55,21 @@ add_executable(dirlist
 
 target_compile_options(dirlist PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(dirlist PUBLIC ${COMMON_COMPILE_FEATURES})
-target_link_libraries(dirlist PUBLIC fmt jansson_)
 target_link_options(dirlist PUBLIC ${COMMON_LINK_OPTIONS})
+target_link_libraries(dirlist PUBLIC fmt jansson_)
 
 add_executable(filelist
     filelist.cc)
 
 target_compile_options(filelist PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(filelist PUBLIC ${COMMON_COMPILE_FEATURES})
-target_link_libraries(filelist PUBLIC fmt jansson_)
 target_link_options(filelist PUBLIC ${COMMON_LINK_OPTIONS})
+target_link_libraries(filelist PUBLIC fmt jansson_)
 
 add_executable(scandir
     scandir.cc)
 
 target_compile_options(scandir PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_compile_features(scandir PUBLIC ${COMMON_COMPILE_FEATURES})
-target_link_libraries(scandir PUBLIC fmt jansson_)
 target_link_options(scandir PUBLIC ${COMMON_LINK_OPTIONS})
+target_link_libraries(scandir PUBLIC fmt jansson_)
