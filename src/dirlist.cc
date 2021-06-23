@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
             }
         }
         catch (const filesystem_error& e) {
+            if (e.code() != std::errc::permission_denied) throw;
         }
     }
 
