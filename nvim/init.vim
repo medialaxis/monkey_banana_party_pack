@@ -10,6 +10,8 @@ Plug 'SirVer/ultisnips'
 Plug 'tikhomirov/vim-glsl'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " Case insensistive
