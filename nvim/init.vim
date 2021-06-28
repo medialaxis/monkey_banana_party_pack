@@ -304,3 +304,24 @@ source $VIMRUNTIME/menu.vim
 
 " (vim-alternate) Setup the cycle of c++ sources and headers
 let g:AlternateExtensionMappings=[{'.cc' : '.hh', '.hh' : '.cpp', '.cpp' : '.hpp', '.hpp' : '.h', '.h' : '.cc'}, {'.c': '.h', '.h': '.c'}]
+
+" (vim-easymotion) Move cursor to start of line on line oriented motions.
+let g:EasyMotion_startofline = 0
+
+" (vim-easymotion) Enable smartcase. Kind of like case-insensitivity.
+let g:EasyMotion_smartcase = 1
+
+" (vim-easymotion) Replace 'f'
+nmap f <Plug>(easymotion-bd-f)
+xmap f <Plug>(easymotion-bd-f)
+omap f <Plug>(easymotion-bd-f)
+
+" (vim-easymotion) Works like 'f' but with two characters.
+nmap s <Plug>(easymotion-s2)
+xmap s <Plug>(easymotion-s2)
+omap z <Plug>(easymotion-s2)
+
+" (vim-easymotion) Works like 'f' but with n characters.
+nmap <leader><leader>s <Plug>(easymotion-sn)
+xmap <leader><leader>s <Plug>(easymotion-sn)
+omap <leader><leader>z <Plug>(easymotion-sn)
