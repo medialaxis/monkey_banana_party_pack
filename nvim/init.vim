@@ -164,7 +164,8 @@ nnoremap <leader>b :
 nnoremap <leader>x :e!<CR>
 
 " Switch between alternative files (e.g. .c <-> .h, .cpp <-> .hpp)
-nnoremap <leader>v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
+" nnoremap <leader>v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
+nnoremap <leader>v :Alternate<CR>
 
 " Remove all trailing whitespace
 nnoremap <leader>z :%s/\s\+$//e<CR>
@@ -300,3 +301,6 @@ set mousemodel=popup
 
 " Load all default menus
 source $VIMRUNTIME/menu.vim
+
+" (vim-alternate)
+let g:AlternateExtensionMappings=[{'.cc' : '.hh', '.hh' : '.cpp', '.cpp' : '.hpp', '.hpp' : '.h', '.h' : '.cc'}, {'.c': '.h', '.h': '.c'}]
