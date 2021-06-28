@@ -12,6 +12,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'ton/vim-alternate'
 call plug#end()
 
 " Case insensistive
