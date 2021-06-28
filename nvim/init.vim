@@ -110,7 +110,7 @@ nnoremap <F5> :w<CR>
 nnoremap <F6> :Files<CR>
 nnoremap <F7> :Tags<CR>
 nnoremap <F8> :Ag<CR>
-nnoremap <F9> :Lines<CR>
+nnoremap <F9> :BLines<CR>
 nnoremap <F11> :History:<CR>
 
 " Set the format of the status line.
