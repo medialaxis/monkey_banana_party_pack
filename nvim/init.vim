@@ -302,5 +302,5 @@ set mousemodel=popup
 " Load all default menus
 source $VIMRUNTIME/menu.vim
 
-" (vim-alternate)
+" (vim-alternate) Setup the cycle of c++ sources and headers
 let g:AlternateExtensionMappings=[{'.cc' : '.hh', '.hh' : '.cpp', '.cpp' : '.hpp', '.hpp' : '.h', '.h' : '.cc'}, {'.c': '.h', '.h': '.c'}]
