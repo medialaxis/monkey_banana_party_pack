@@ -368,11 +368,3 @@ augroup python
     " Open all folds by default
     autocmd BufRead *.py :normal zR
 augroup END
-
-function Meow()
-    echom "Meow!"
-endfunction
-
-function Test()
-    return 42
-endfunction
