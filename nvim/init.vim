@@ -326,3 +326,6 @@ omap z <Plug>(easymotion-s2)
 nmap <leader><leader>s <Plug>(easymotion-sn)
 xmap <leader><leader>s <Plug>(easymotion-sn)
 omap <leader><leader>z <Plug>(easymotion-sn)
+
+" Reload init.vim
+command! ReloadInitVim source $MYVIMRC
