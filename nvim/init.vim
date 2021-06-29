@@ -332,11 +332,25 @@ function! ToggleQuickFix()
 endfunction
 command! ToggleQuickFix call ToggleQuickFix()
 
-" Enable syntax folding for json files
-autocmd FileType json set foldmethod=syntax
+augroup json
+    autocmd!
 
-" Open all folds by default
-autocmd BufRead *.json :normal zR
+    " Enable syntax folding for json files
+    autocmd FileType json set foldmethod=syntax
+
+    " Open all folds by default
+    autocmd BufRead *.json :normal zR
+augroup END
+
+augroup c_cpp
+    autocmd!
+
+    " Enable syntax folding for json files
+    autocmd FileType c,cpp set foldmethod=syntax
+
+    " Open all folds by default
+    autocmd BufRead *.h,*.c,*.hh,*.cc,*.hpp,*.cpp :normal zR
+augroup END
 
 function Meow()
     echom "Meow!"
