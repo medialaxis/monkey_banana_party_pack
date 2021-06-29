@@ -161,9 +161,6 @@ nnoremap <leader>s <C-T>
 " Make it easier to enter command mode
 nnoremap <leader>b :
 
-" Reopen the current file
-nnoremap <leader>x :e!<CR>
-
 " (fzf.vim) Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
