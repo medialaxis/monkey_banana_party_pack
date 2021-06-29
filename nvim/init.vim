@@ -320,7 +320,7 @@ command! ToggleCursorLine set cursorline!
 command! ToggleWhitespaceCharacters set list!
 
 " Reopen the current file
-command! ReopenCurrentFile edit!
+command! ReloadCurrentFile edit!
 
 " Commands for folding
 command! FoldMin normal zM
