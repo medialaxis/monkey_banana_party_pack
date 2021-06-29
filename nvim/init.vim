@@ -322,6 +322,9 @@ command! ToggleCursorLine set cursorline!
 " Show whitespace characters
 command! ToggleWhitespaceCharacters set list!
 
+" Reopen the current file
+command! ReopenCurrentFile edit!
+
 function Meow()
     echom "Meow!"
 endfunction
