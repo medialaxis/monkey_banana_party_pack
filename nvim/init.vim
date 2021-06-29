@@ -164,23 +164,6 @@ nnoremap <leader>b :
 " Reopen the current file
 nnoremap <leader>x :e!<CR>
 
-" Switch between alternative files (e.g. .c <-> .h, .cpp <-> .hpp)
-" nnoremap <leader>v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
-" nnoremap <leader>v :Alternate<CR>
-
-" Remove all trailing whitespace
-" nnoremap <leader>z :%s/\s\+$//e<CR>
-
-" Toggle case of the current word
-" nnoremap <leader>u bg~we
-
-" Toggle cursor line/column
-" nnoremap <leader>h :set cursorcolumn!<CR>
-" nnoremap <leader>j :set cursorline!<CR>
-
-" Toggle ability to see whitespace
-" nnoremap <leader>k :set list!<CR>
-
 " (fzf.vim) Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
