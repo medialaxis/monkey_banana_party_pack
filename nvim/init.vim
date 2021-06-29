@@ -322,6 +322,13 @@ command! ToggleWhitespaceCharacters set list!
 " Reopen the current file
 command! ReopenCurrentFile edit!
 
+" Commands for folding
+command! FoldMin normal zM
+command! FoldMax normal zR
+command! FoldUpdate normal zx
+command! FoldDecrease normal zm
+command! FoldIncrease normal zr
+
 " Toggle the quickfix window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
