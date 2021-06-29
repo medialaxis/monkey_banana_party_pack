@@ -325,6 +325,16 @@ command! ToggleWhitespaceCharacters set list!
 " Reopen the current file
 command! ReopenCurrentFile edit!
 
+" Toggle the quickfix window
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+command! ToggleQuickFix call ToggleQuickFix()
+
 function Meow()
     echom "Meow!"
 endfunction
