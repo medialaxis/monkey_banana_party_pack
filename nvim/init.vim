@@ -352,6 +352,16 @@ augroup c_cpp
     autocmd BufRead *.h,*.c,*.hh,*.cc,*.hpp,*.cpp :normal zR
 augroup END
 
+augroup python
+    autocmd!
+
+    " Enable syntax folding for json files
+    autocmd FileType python set foldmethod=syntax
+
+    " Open all folds by default
+    autocmd BufRead *.py :normal zR
+augroup END
+
 function Meow()
     echom "Meow!"
 endfunction
