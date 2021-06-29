@@ -166,20 +166,20 @@ nnoremap <leader>x :e!<CR>
 
 " Switch between alternative files (e.g. .c <-> .h, .cpp <-> .hpp)
 " nnoremap <leader>v :edit %:p:s/\.hh$/.tmp/:s/\.cc$/.hh/:s/\.tmp/.cc/:s/\.h$/.tmp/:s/\.c$/.h/:s/\.tmp/.c/<CR>
-nnoremap <leader>v :Alternate<CR>
+" nnoremap <leader>v :Alternate<CR>
 
 " Remove all trailing whitespace
-nnoremap <leader>z :%s/\s\+$//e<CR>
+" nnoremap <leader>z :%s/\s\+$//e<CR>
 
 " Toggle case of the current word
-nnoremap <leader>u bg~we
+" nnoremap <leader>u bg~we
 
 " Toggle cursor line/column
-nnoremap <leader>h :set cursorcolumn!<CR>
-nnoremap <leader>j :set cursorline!<CR>
+" nnoremap <leader>h :set cursorcolumn!<CR>
+" nnoremap <leader>j :set cursorline!<CR>
 
 " Toggle ability to see whitespace
-nnoremap <leader>k :set list!<CR>
+" nnoremap <leader>k :set list!<CR>
 
 " (fzf.vim) Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -329,3 +329,20 @@ omap <leader><leader>z <Plug>(easymotion-sn)
 
 " Reload init.vim
 command! ReloadInitVim source $MYVIMRC
+
+" Highlight the cursor's column
+command! ToggleCursorColumn set cursorcolumn!
+
+" Highlight the cursor's line
+command! ToggleCursorLine set cursorline!
+
+" Show whitespace characters
+command! ToggleWhitespaceCharacters set list!
+
+function Meow()
+    echom "Meow!"
+endfunction
+
+function Test()
+    return 42
+endfunction
