@@ -343,7 +343,7 @@ augroup json
     autocmd!
 
     " Enable syntax folding for json files
-    autocmd FileType json set foldmethod=syntax
+    autocmd FileType json setlocal foldmethod=syntax
 
     " Open all folds by default
     autocmd BufRead *.json :normal zR
@@ -353,7 +353,7 @@ augroup c_cpp
     autocmd!
 
     " Enable syntax folding for json files
-    autocmd FileType c,cpp set foldmethod=syntax
+    autocmd FileType c,cpp setlocal foldmethod=syntax
 
     " Open all folds by default
     autocmd BufRead *.h,*.c,*.hh,*.cc,*.hpp,*.cpp :normal zR
@@ -363,7 +363,7 @@ augroup python
     autocmd!
 
     " Enable syntax folding for json files
-    autocmd FileType python set foldmethod=syntax
+    autocmd FileType python setlocal foldmethod=syntax
 
     " Open all folds by default
     autocmd BufRead *.py :normal zR
