@@ -342,7 +342,7 @@ command! ToggleQuickFix call ToggleQuickFix()
 augroup json
     autocmd!
 
-    " Enable syntax folding for json files
+    " Enable syntax folding
     autocmd FileType json setlocal foldmethod=syntax
 
     " Open all folds by default
@@ -352,7 +352,7 @@ augroup END
 augroup c_cpp
     autocmd!
 
-    " Enable syntax folding for json files
+    " Enable syntax folding
     autocmd FileType c,cpp setlocal foldmethod=syntax
 
     " Open all folds by default
@@ -362,7 +362,7 @@ augroup END
 augroup python
     autocmd!
 
-    " Enable syntax folding for json files
+    " Enable syntax folding
     autocmd FileType python setlocal foldmethod=syntax
 
     " Open all folds by default
