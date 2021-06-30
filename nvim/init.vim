@@ -152,7 +152,7 @@ augroup terminal
     autocmd TermOpen * tnoremap <buffer> <esc><esc> <c-\><c-n>
 
     " Prevent the above from clobbering fzf
-    autocmd FileType fzf tunmap <buffer> <esc>
+    autocmd FileType fzf tunmap <buffer> <esc><esc>
 augroup END
 
 " Navigating the clist
