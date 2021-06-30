@@ -145,8 +145,15 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
-" Exit terminal mode
-tnoremap <esc><esc> <c-\><c-n>
+augroup terminal
+    autocmd!
+
+    " Exit terminal mode
+    autocmd TermOpen * tnoremap <buffer> <esc><esc> <c-\><c-n>
+
+    " Prevent the above from clobbering fzf
+    autocmd FileType fzf tunmap <buffer> <esc>
+augroup END
 
 " Navigating the clist
 nnoremap <leader>q :cf<CR>
