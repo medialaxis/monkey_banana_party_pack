@@ -291,7 +291,7 @@ set mousemodel=popup
 source $VIMRUNTIME/menu.vim
 
 " (vim-alternate) Setup the cycle of c++ sources and headers
-let g:AlternateExtensionMappings=[{'.cc' : '.hh', '.hh' : '.cpp', '.cpp' : '.hpp', '.hpp' : '.h', '.h' : '.cc'}, {'.c': '.h', '.h': '.c'}]
+let g:AlternateExtensionMappings=[{'.c' : '.h', '.h' : '.cc', '.cc' : '.hh', '.hh' : '.cpp', '.cpp' : '.hpp', '.hpp' : '.c'}]
 
 " (vim-easymotion) Move cursor to start of line on line oriented motions.
 let g:EasyMotion_startofline = 0
