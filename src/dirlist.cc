@@ -37,7 +37,15 @@ int main(int argc, char *argv[])
             }
         }
         catch (const filesystem_error& e) {
-            if (e.code() != std::errc::permission_denied) throw;
+            if (e.code() == std::errc::permission_denied) {
+                // Do nothing
+            }
+            else if (e.code() == std::errc::no_such_file_or_directory) {
+                // Do nothing
+            }
+            else {
+                throw;
+            }
         }
     }
 
