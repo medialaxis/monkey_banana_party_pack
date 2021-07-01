@@ -3,5 +3,6 @@
 # Start DWM
 redshift-gtk -l 58:16 &
 udiskie -t -N &
+nm-applet &
 # dwmstatus &
 while true; do dwm && continue || break; done
