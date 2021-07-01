@@ -5,5 +5,5 @@ redshift-gtk -l 58:16 &
 udiskie -t -N &
 nm-applet &
 dwmstatus &
-xscreensaver &
+xscreensaver --no-splash &
 while true; do dwm && continue || break; done
