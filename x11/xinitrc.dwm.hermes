@@ -1,0 +1,7 @@
+# https://wiki.archlinux.org/index.php/Xinit
+
+# Start DWM
+redshift-gtk -l 58:16 &
+udiskie -t -N &
+# dwmstatus &
+while true; do dwm && continue || break; done
