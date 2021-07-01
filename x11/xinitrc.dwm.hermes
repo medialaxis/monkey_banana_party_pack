@@ -4,5 +4,6 @@
 redshift-gtk -l 58:16 &
 udiskie -t -N &
 nm-applet &
-# dwmstatus &
+dwmstatus &
+xscreensaver &
 while true; do dwm && continue || break; done
