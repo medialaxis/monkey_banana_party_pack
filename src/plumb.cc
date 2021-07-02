@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     while (std::regex_search(s, match, regex)) {
         fmt::print("'{}'\n", match.str());
-        system(fmt::format("firefox '{}'", match.str()).c_str());
+        system(fmt::format("openbg '{}'", match.str()).c_str());
         s = match.suffix().str();
     }
 
