@@ -8,15 +8,23 @@ int main(int argc, char *argv[])
 {
     if (argc != 2) return 1;
 
-    std::string s(argv[1]);
-    std::regex regex("(http://|https://)[a-zA-Z0-9-~=?&/\\.]*");
+    std::string selection(argv[1]);
     std::smatch match;
 
-    while (std::regex_search(s, match, regex)) {
+    std::regex url_re("(http://|https://)[a-zA-Z0-9-_~=?&/\\.]*");
+    std::regex file_re("[a-zA-Z0-9-_~=?&/\\.]*");
+
+    if (std::regex_search(selection, match, url_re)) {
         fmt::print("'{}'\n", match.str());
         system(fmt::format("openbg '{}'", match.str()).c_str());
-        s = match.suffix().str();
+        return 0;
     }
 
-    return 0;
+    if (std::regex_search(selection, match, file_re)) {
+        fmt::print("'{}'\n", match.str());
+        system(fmt::format("openbg '{}'", match.str()).c_str());
+        return 0;
+    }
+
+    return 1;
 }
