@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'ton/vim-alternate'
 Plug 'mbbill/undotree'
+Plug 'phaazon/hop.nvim'
 call plug#end()
 
 " Case insensistive
