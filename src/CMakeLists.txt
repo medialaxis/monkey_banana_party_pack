@@ -72,3 +72,10 @@ add_executable(scandir
 target_compile_options(scandir PUBLIC ${COMMON_COMPILE_OPTIONS})
 target_link_options(scandir PUBLIC ${COMMON_LINK_OPTIONS})
 target_link_libraries(scandir PUBLIC fmt jansson_)
+
+add_executable(plumb
+    plumb.cc)
+
+target_compile_options(plumb PUBLIC ${COMMON_COMPILE_OPTIONS})
+target_link_options(plumb PUBLIC ${COMMON_LINK_OPTIONS})
+target_link_libraries(plumb PUBLIC fmt jansson_)
