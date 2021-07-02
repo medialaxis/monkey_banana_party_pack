@@ -377,3 +377,7 @@ augroup python
     " Open all folds by default
     autocmd BufRead *.py :normal zR
 augroup END
+
+" When using 'gx', open the file using openbg instead of xdg-open. This runs
+" the command in the background.
+let g:netrw_browsex_viewer= "openbg"
