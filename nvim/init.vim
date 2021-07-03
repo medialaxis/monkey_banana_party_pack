@@ -109,7 +109,7 @@ let mapleader = " "
 " Set up some useful keyboard mappings
 nnoremap <F2> :e scratch<CR>
 nnoremap <F4> :!snap<CR><CR>
-nnoremap <F5> :w<CR>
+nnoremap <F5> :wa<CR>
 nnoremap <F6> :Files<CR>
 nnoremap <F7> :Tags<CR>
 nnoremap <F8> :Ag<CR>
@@ -388,3 +388,6 @@ let g:netrw_browsex_viewer= "openbg"
 
 " Persistent undo. Save the undo tree on save and load the undo tree on edit.
 set undofile
+
+" Allow modified buffers in the background
+set hidden
