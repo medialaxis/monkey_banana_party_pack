@@ -384,7 +384,11 @@ augroup END
 
 " When using 'gx', open the file using openbg instead of xdg-open. This runs
 " the command in the background.
-let g:netrw_browsex_viewer= "openbg"
+"let g:netrw_browsex_viewer= "openbg"
+
+" WORKAROUND: The netrw call above does not work with neovim 0.5 because of a
+" bug. This is a temporary workaround for this
+nmap gx :silent execute "!openbg " . shellescape("<cWORD>")<CR>
 
 " Persistent undo. Save the undo tree on save and load the undo tree on edit.
 set undofile
