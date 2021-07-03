@@ -385,3 +385,6 @@ augroup END
 " When using 'gx', open the file using openbg instead of xdg-open. This runs
 " the command in the background.
 let g:netrw_browsex_viewer= "openbg"
+
+" Persistent undo. Save the undo tree on save and load the undo tree on edit.
+set undofile
