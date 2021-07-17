@@ -342,6 +342,9 @@ command! FoldUpdate normal zx
 command! FoldDecrease normal zm
 command! FoldIncrease normal zr
 
+" Create file under cursor
+command! CreateFile silent !touch <cfile>
+
 " Toggle the quickfix window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
