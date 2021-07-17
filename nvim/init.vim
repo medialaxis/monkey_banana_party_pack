@@ -390,6 +390,9 @@ augroup END
 " bug. This is a temporary workaround for this
 nmap gx :silent execute "!plumb " . shellescape("<cWORD>")<CR>
 
+" Make gf open a file buffer even if the file does not exist
+" nnoremap gf :e <cfile><CR>
+
 " Persistent undo. Save the undo tree on save and load the undo tree on edit.
 set undofile
 
