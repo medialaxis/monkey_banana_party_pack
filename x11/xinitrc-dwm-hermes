@@ -6,4 +6,5 @@ udiskie -t -N &
 nm-applet &
 dwmstatus &
 xscreensaver --no-splash &
+cbatticon &
 while true; do dwm && continue || break; done
