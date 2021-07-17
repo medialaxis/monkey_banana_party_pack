@@ -16,6 +16,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ton/vim-alternate'
 Plug 'mbbill/undotree'
 Plug 'phaazon/hop.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " Case insensistive
