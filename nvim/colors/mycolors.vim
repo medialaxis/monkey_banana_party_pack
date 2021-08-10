@@ -102,6 +102,12 @@ hi Ignore	cterm=bold ctermfg=7
 hi Ignore	ctermfg=darkgrey
 hi Error	cterm=bold ctermfg=7 ctermbg=1
 hi String	ctermfg=lightyellow
+hi Function     ctermfg=none
+hi Delimiter    ctermfg=none
+hi Operator     ctermfg=none
+hi Identifier   cterm=none ctermfg=none
+hi TSNamespace  ctermfg=lightblue
+hi Special      ctermfg=none
 
 
 "vim: sw=4
