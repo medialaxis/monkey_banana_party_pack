@@ -17,6 +17,7 @@ Plug 'ton/vim-alternate'
 Plug 'mbbill/undotree'
 Plug 'phaazon/hop.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
 call plug#end()
 
 " Case insensistive
@@ -419,5 +420,8 @@ require'nvim-treesitter.configs'.setup {
         node_decremental = "grm",
         },
     },
+  rainbow = {
+    enable = true,
+  },
 }
 EOF
