@@ -402,3 +402,13 @@ set undofile
 
 " Allow modified buffers in the background
 set hidden
+
+" Configure nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- Install all maintained parsers
+  highlight = {
+    enable = true,
+  },
+}
+EOF
