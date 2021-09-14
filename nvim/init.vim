@@ -101,6 +101,8 @@ iabbrev _Ob ∘
 iabbrev _ae æ
 iabbrev _lub ⊔
 iabbrev _:: ∷
+iabbrev _dT ⊤
+iabbrev _uT ⊥
 
 " Abbreviations
 iabbrev _ae Andreas Edlund
