@@ -238,6 +238,15 @@ if executable('pyls')
         \ })
 endif
 
+" (vim-lsp) Register rust LSP service
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rls']},
+        \ 'allowlist': ['rust']
+        \ })
+endif
+
 " (vim-lsp) Disable auto insertion of #include
 let g:lsp_insert_text_enabled = 0
 let g:lsp_text_edit_enabled = 0
