@@ -239,10 +239,10 @@ if executable('pyls')
 endif
 
 " (vim-lsp) Register rust LSP service
-if executable('rls')
+if executable('rust-analyzer')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rls']},
+        \ 'name': 'rust-analyzer',
+        \ 'cmd': {server_info->['rust-analyzer']},
         \ 'allowlist': ['rust']
         \ })
 endif
