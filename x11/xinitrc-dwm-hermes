@@ -8,4 +8,5 @@ nm-applet &
 dwmstatus &
 xscreensaver --no-splash &
 cbatticon &
+eval $(ssh-agent)
 while true; do dwm && continue || break; done
