@@ -1,6 +1,7 @@
 # https://wiki.archlinux.org/index.php/Xinit
 
 # Start DWM
+xrdb -merge ~/.Xresources
 redshift-gtk -l 58:16 &
 udiskie -t -N &
 nm-applet &
