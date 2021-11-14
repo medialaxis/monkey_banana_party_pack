@@ -3,5 +3,7 @@
 # Load .Xresources into X. Without this, .Xresources does not work.
 xrdb -merge "$HOME/.Xresources"
 
+eval $(ssh-agent)
+
 # Start i3
 exec i3
