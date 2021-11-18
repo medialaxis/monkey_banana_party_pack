@@ -1,0 +1,15 @@
+[user]
+	email = andreas@myrstacken.net
+	name = Andreas Edlund
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=3600
+[pull]
+	rebase = false
+	ff = only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
