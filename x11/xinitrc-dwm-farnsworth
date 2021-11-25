@@ -13,4 +13,5 @@ pasystray &
 # update-audio
 # mykeyboard
 dwmstatus &
+feh --bg-fill wallpapers/simon_stålenhag_försvarsmakten.jpg
 while true; do dwm && continue || break; done
