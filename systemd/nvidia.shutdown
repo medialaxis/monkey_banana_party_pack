@@ -1,3 +1,8 @@
 #!/bin/bash
+# Put this in /usr/lib/systemd/system-shutdown/nvidia.shutdown
+# This solves a problem during system shutdown where the nvidia drivers keeps
+# some files open in /oldroot, preventing them from being unmounted.
+# Causes errors like: "sd-umount: Failed to unmount /oldroot: Device or resource busy"
+
 /usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm
 /usr/bin/modprobe -r nvidia
