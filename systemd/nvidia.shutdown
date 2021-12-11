@@ -1,0 +1,3 @@
+#!/bin/bash
+/usr/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm
+/usr/bin/modprobe -r nvidia
