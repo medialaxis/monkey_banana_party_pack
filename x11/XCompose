@@ -120,6 +120,29 @@ include "%L"
 <Multi_key> <rightparen> <S> : "⁾"
 <Multi_key> <n> <S> : "ⁿ"
 
+# Integrals
+<Multi_key> <I> <n> : "∫"
+<Multi_key> <D> <I> : "∬"
+<Multi_key> <I> <o> : "∮"
+
+# Circled
+<Multi_key> <0> <period> : "⊙"
+<Multi_key> <0> <2> : "⊚"
+<Multi_key> <0> <2> : "⊚"
+<Multi_key> <0> <plus> : "⊕"
+<Multi_key> <0> <asterisk> : "⊗"
+<Multi_key> <0> <minus> : "⊖"
+
+# Brackets
+<Multi_key> <less> <slash> : "⟨"
+<Multi_key> <slash> <greater> : "⟩"
+<Multi_key> <less> <plus> : "⟪"
+<Multi_key> <plus> <greater> : "⟫"
+<Multi_key> <braceleft> <plus> : "⦃"
+<Multi_key> <plus> <braceright> : "⦄"
+<Multi_key> <bracketleft> <plus> : "⟦"
+<Multi_key> <plus> <bracketright> : "⟧"
+
 # Misc
 <Multi_key> <0> <0> : "∞"
 <Multi_key> <R> <T> : "√"
@@ -130,6 +153,7 @@ include "%L"
 <Multi_key> <0> <u> : "☺"
 <Multi_key> <0> <U> : "☻"
 <Multi_key> <O> <b> : "∘"
+<Multi_key> <D> <G> : "°"
 <Multi_key> <a> <e> : "æ"
 <Multi_key> <colon> <colon> : "∷"
 <Multi_key> <d> <T> : "⊤"
