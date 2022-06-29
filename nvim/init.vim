@@ -40,9 +40,36 @@ set shiftwidth=4
 set expandtab
 
 " Custom digraphs.
-digraph bn 8469  " ℕ
-digraph l- 8866  " ⊢
-digraph l= 8872  " ⊨
+digraph ba 120120  " 𝔸
+digraph bb 120121  " 𝔹
+digraph bc 8450    " ℂ
+digraph bd 120123  " 𝔻
+digraph be 120124  " 𝔼
+digraph bf 120125  " 𝔽
+digraph bg 120126  " 𝔾
+digraph bh 8461    " ℍ
+digraph bi 120128  " 𝕀
+digraph bj 120129  " 𝕁
+digraph bk 120130  " 𝕂
+digraph bl 120131  " 𝕃
+digraph bm 120132  " 𝕄
+digraph bn 8469    " ℕ
+digraph bo 120134  " 𝕆
+digraph bp 8473    " ℙ
+digraph bq 8474    " ℚ
+digraph br 8477    " ℝ
+digraph bs 120138  " 𝕊
+digraph bt 120139  " 𝕋
+digraph bu 120140  " 𝕌
+digraph bv 120141  " 𝕍
+digraph bw 120142  " 𝕎
+digraph bx 120143  " 𝕏
+digraph by 120144  " 𝕐
+digraph bz 8484    " ℤ
+digraph bG 8510    " ℾ
+digraph bP 8511    " ℿ
+digraph l- 8866    " ⊢
+digraph l= 8872    " ⊨
 
 " Unicode abbreviations.
 iabbrev _FA ∀
