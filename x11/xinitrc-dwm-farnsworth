@@ -3,6 +3,9 @@
 # Load .Xresources into X. Without this, .Xresources does not work.
 xrdb -merge "$HOME/.Xresources"
 
+# Set the compose key to be menu
+setxkbmap -option compose:menu
+
 # Start DWM
 redshift-gtk -l 58:16 &
 udiskie -t -N &
