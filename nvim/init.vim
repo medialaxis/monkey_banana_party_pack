@@ -449,21 +449,21 @@ set hidden
 " Configure nvim-treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- Install all maintained parsers
-  highlight = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm",
+    ensure_installed = { "c", "cpp", "rust", "haskell", "python", "rust" },
+    highlight = {
+        enable = true,
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "gnn",
+            node_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
         },
     },
-  rainbow = {
-    enable = true,
-  },
+    rainbow = {
+        enable = true,
+    },
 }
 EOF
