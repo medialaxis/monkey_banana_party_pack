@@ -467,13 +467,3 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
-
-" Configure lean.nvim
-" lua <<EOF
-" require('lean').setup{
-"   abbreviations = { builtin = true },
-"   lsp = { on_attach = on_attach },
-"   lsp3 = { on_attach = on_attach },
-"   mappings = true,
-" }
-" EOF
