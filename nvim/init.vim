@@ -399,6 +399,9 @@ function! ToggleQuickFix()
 endfunction
 command! ToggleQuickFix call ToggleQuickFix()
 
+" Autoformat c/c++ code
+command! Format pyf /usr/share/clang/clang-format.py
+
 augroup json
     autocmd!
 
