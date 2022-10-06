@@ -400,7 +400,11 @@ endfunction
 command! ToggleQuickFix call ToggleQuickFix()
 
 " Autoformat c/c++ code
-command! Format pyf /usr/share/clang/clang-format.py
+function! FormatFile()
+    let l:lines="all"
+    pyf /usr/share/clang/clang-format.py
+endfunction
+command! FormatFile call FormatFile()
 
 augroup json
     autocmd!
