@@ -16,5 +16,5 @@ steam -silent &
 # mykeyboard
 dwmstatus &
 dunst &
-feh --bg-fill wallpapers/simon_stålenhag_försvarsmakten.jpg
+feh --bg-fill wallpapers/simon_stålenhag_esso.jpg
 while true; do dwm && continue || break; done
