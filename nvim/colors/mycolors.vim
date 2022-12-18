@@ -109,5 +109,7 @@ hi Identifier   cterm=none ctermfg=none
 hi TSNamespace  ctermfg=lightblue
 hi Special      ctermfg=none
 
+hi Whitespace   ctermfg=darkcyan
+hi Label        ctermfg=lightgreen
 
 "vim: sw=4

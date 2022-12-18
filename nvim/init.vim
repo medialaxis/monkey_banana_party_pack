@@ -15,6 +15,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
 Plug 'https://github.com/medialaxis/nvim-ts-rainbow'
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.0.3'}
+Plug 'https://github.com/lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.2'}
 call plug#end()
 
 " Case insensistive
@@ -417,7 +418,7 @@ set undofile
 " Allow modified buffers in the background
 set hidden
 
-" Configure nvim-treesitter
+" (nvim-treesitter) Configure nvim-treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "cpp", "rust", "haskell", "python", "rust" },
@@ -436,6 +437,15 @@ require'nvim-treesitter.configs'.setup {
     rainbow = {
         enable = true,
     },
+}
+EOF
+
+" (indent-blankline.nvim) Setup
+lua <<EOF
+require("indent_blankline").setup {
+    use_treesitter = true,
+    show_current_context = true,
+    show_current_context_start = false,
 }
 EOF
 
