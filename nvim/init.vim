@@ -9,18 +9,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tikhomirov/vim-glsl'
 Plug 'easymotion/vim-easymotion'
-Plug 'justinmk/vim-sneak'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'ton/vim-alternate'
-Plug 'mbbill/undotree'
-Plug 'phaazon/hop.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
-Plug 'Julian/lean.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/plenary.nvim'
 call plug#end()
 
 " Case insensistive
