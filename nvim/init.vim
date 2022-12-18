@@ -8,7 +8,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tikhomirov/vim-glsl'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'ton/vim-alternate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -212,16 +212,16 @@ nnoremap <leader>f :LspDeclaration<CR>
 nnoremap <leader>g :LspDefinition<CR>
 
 " (vim-easymotion) Use birectional word search.
-nmap <leader><leader>w <plug>(easymotion-bd-w)
+" nmap <leader><leader>w <plug>(easymotion-bd-w)
 
 " (vim-easymotion) Use birectional line search.
-nmap <leader><leader>j <plug>(easymotion-bd-jk)
+" nmap <leader><leader>j <plug>(easymotion-bd-jk)
 
 " (vim-easymotion) Use birectional highlight search.
-nmap <leader><leader>n <plug>(easymotion-bd-n)
+" nmap <leader><leader>n <plug>(easymotion-bd-n)
 
 " (vim-easymotion) Jump to anywhere
-nmap <leader><leader><leader> <plug>(easymotion-jumptoanywhere)
+" nmap <leader><leader><leader> <plug>(easymotion-jumptoanywhere)
 
 " Enable showing whitespace
 set list
@@ -299,7 +299,7 @@ let g:lsp_document_code_action_signs_enabled = 0
 " let g:asyncomplete_auto_popup = 1
 
 " (vim-easymotion) List the allowed keys
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+" let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
 " Customizes the c indentation see tha vim manual for more.
 set cinoptions+=g0
@@ -339,25 +339,37 @@ source $VIMRUNTIME/menu.vim
 let g:AlternateExtensionMappings=[{'.c' : '.h', '.h' : '.cc', '.cc' : '.hh', '.hh' : '.cpp', '.cpp' : '.hpp', '.hpp' : '.c'}]
 
 " (vim-easymotion) Move cursor to start of line on line oriented motions.
-let g:EasyMotion_startofline = 0
+" let g:EasyMotion_startofline = 0
 
 " (vim-easymotion) Enable smartcase. Kind of like case-insensitivity.
-let g:EasyMotion_smartcase = 1
+" let g:EasyMotion_smartcase = 1
 
 " (vim-easymotion) Replace 'f'
-nmap f <Plug>(easymotion-bd-f)
-xmap f <Plug>(easymotion-bd-f)
-omap f <Plug>(easymotion-bd-f)
+" nmap f <Plug>(easymotion-bd-f)
+" xmap f <Plug>(easymotion-bd-f)
+" omap f <Plug>(easymotion-bd-f)
 
 " (vim-easymotion) Works like 'f' but with two characters.
-nmap s <Plug>(easymotion-s2)
-xmap s <Plug>(easymotion-s2)
-omap z <Plug>(easymotion-s2)
+" nmap s <Plug>(easymotion-s2)
+" xmap s <Plug>(easymotion-s2)
+" omap z <Plug>(easymotion-s2)
 
 " (vim-easymotion) Works like 'f' but with n characters.
-nmap <leader><leader>s <Plug>(easymotion-sn)
-xmap <leader><leader>s <Plug>(easymotion-sn)
-omap <leader><leader>z <Plug>(easymotion-sn)
+" nmap <leader><leader>s <Plug>(easymotion-sn)
+" xmap <leader><leader>s <Plug>(easymotion-sn)
+" omap <leader><leader>z <Plug>(easymotion-sn)
+
+" (hop.nvim) Setup hop
+lua <<EOF
+require'hop'.setup()
+EOF
+
+" (hop.nvim) Hop key bindings
+nmap f :HopChar1<CR>
+nmap s :HopChar2<CR>
+nmap <leader><leader>j :HopVertical<CR>
+nmap <leader><leader>w :HopWord<CR>
+nmap <leader><leader>p :HopPattern<CR>
 
 " Reload init.vim
 command! ReloadInitVim source $MYVIMRC
