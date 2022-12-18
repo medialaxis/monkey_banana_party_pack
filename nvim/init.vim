@@ -14,6 +14,7 @@ Plug 'ton/vim-alternate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'neovim/nvim-lspconfig'
+Plug 'phaazon/hop.nvim'
 call plug#end()
 
 " Case insensistive
