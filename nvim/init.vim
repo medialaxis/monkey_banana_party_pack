@@ -8,7 +8,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips', {'tag': '3.2'}
 Plug 'tikhomirov/vim-glsl'
-" Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
 Plug 'ton/vim-alternate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
@@ -211,18 +210,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <leader>f :LspDeclaration<CR>
 nnoremap <leader>g :LspDefinition<CR>
 
-" (vim-easymotion) Use birectional word search.
-" nmap <leader><leader>w <plug>(easymotion-bd-w)
-
-" (vim-easymotion) Use birectional line search.
-" nmap <leader><leader>j <plug>(easymotion-bd-jk)
-
-" (vim-easymotion) Use birectional highlight search.
-" nmap <leader><leader>n <plug>(easymotion-bd-n)
-
-" (vim-easymotion) Jump to anywhere
-" nmap <leader><leader><leader> <plug>(easymotion-jumptoanywhere)
-
 " Enable showing whitespace
 set list
 
@@ -298,9 +285,6 @@ let g:lsp_document_code_action_signs_enabled = 0
 " (asyncomplete) Enable/disable completion popup
 " let g:asyncomplete_auto_popup = 1
 
-" (vim-easymotion) List the allowed keys
-" let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
-
 " Customizes the c indentation see tha vim manual for more.
 set cinoptions+=g0
 
@@ -310,13 +294,6 @@ set cinoptions+=j1
 " Do not indent continuation lines (handles 'template' on its own line, but
 " breaks continuations of expressions)
 set cinoptions+=+0
-
-" (vim-sneak) Show target labels (like for easymotion)
-let g:sneak#label = 0
-
-" (vim-sneak) Enable clever-s. Allows repeated use of 's' to cycle between
-" matches.
-let g:sneak#s_next = 1
 
 " Enable mouse in all modes (=a) (hold shift to temporarily disable mouse
 " support, useful when copy-pasting)
@@ -337,27 +314,6 @@ source $VIMRUNTIME/menu.vim
 
 " (vim-alternate) Setup the cycle of c++ sources and headers
 let g:AlternateExtensionMappings=[{'.c' : '.h', '.h' : '.cc', '.cc' : '.hh', '.hh' : '.cpp', '.cpp' : '.hpp', '.hpp' : '.c'}]
-
-" (vim-easymotion) Move cursor to start of line on line oriented motions.
-" let g:EasyMotion_startofline = 0
-
-" (vim-easymotion) Enable smartcase. Kind of like case-insensitivity.
-" let g:EasyMotion_smartcase = 1
-
-" (vim-easymotion) Replace 'f'
-" nmap f <Plug>(easymotion-bd-f)
-" xmap f <Plug>(easymotion-bd-f)
-" omap f <Plug>(easymotion-bd-f)
-
-" (vim-easymotion) Works like 'f' but with two characters.
-" nmap s <Plug>(easymotion-s2)
-" xmap s <Plug>(easymotion-s2)
-" omap z <Plug>(easymotion-s2)
-
-" (vim-easymotion) Works like 'f' but with n characters.
-" nmap <leader><leader>s <Plug>(easymotion-sn)
-" xmap <leader><leader>s <Plug>(easymotion-sn)
-" omap <leader><leader>z <Plug>(easymotion-sn)
 
 " (hop.nvim) Setup hop
 lua <<EOF
