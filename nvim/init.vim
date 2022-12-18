@@ -11,7 +11,8 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
 Plug 'ton/vim-alternate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
-Plug 'p00f/nvim-ts-rainbow'
+" Plug 'p00f/nvim-ts-rainbow'
+Plug 'https://github.com/medialaxis/nvim-ts-rainbow'
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.0.3'}
 call plug#end()
@@ -441,4 +442,4 @@ EOF
 " (nvim-ts-rainbow) Workaround: When the file is changed behind rainbow's
 " back, it gets confused. This automaticall reloads rainbow.
 command! ResetRainbow :TSEnable rainbow | TSDisable rainbow | TSEnable rainbow
-autocmd CursorHold * ResetRainbow
+" autocmd CursorHold * ResetRainbow
