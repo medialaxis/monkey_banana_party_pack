@@ -437,3 +437,8 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 EOF
+
+" (nvim-ts-rainbow) Workaround: When the file is changed behind rainbow's
+" back, it gets confused. This automaticall reloads rainbow.
+command! ResetRainbow :TSEnable rainbow | TSDisable rainbow | TSEnable rainbow
+autocmd CursorHold * ResetRainbow
