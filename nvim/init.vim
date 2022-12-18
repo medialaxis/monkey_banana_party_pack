@@ -6,15 +6,15 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips', {'tag': '3.2'}
 Plug 'tikhomirov/vim-glsl'
 " Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
 Plug 'ton/vim-alternate'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
 Plug 'p00f/nvim-ts-rainbow'
-Plug 'neovim/nvim-lspconfig'
-Plug 'phaazon/hop.nvim'
+Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
+Plug 'phaazon/hop.nvim', {'tag': 'v2.0.3'}
 call plug#end()
 
 " Case insensistive
