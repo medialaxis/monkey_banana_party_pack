@@ -206,10 +206,6 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" Jump to declaration/definition using language server protocol
-nnoremap <leader>f :LspDeclaration<CR>
-nnoremap <leader>g :LspDefinition<CR>
-
 " Enable showing whitespace
 set list
 
