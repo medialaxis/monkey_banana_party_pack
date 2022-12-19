@@ -232,41 +232,6 @@ set clipboard=unnamed
 " Set the default colorscheme
 colorscheme mycolors
 
-" (vim-lsp) Register rust LSP service
-if executable('rust-analyzer')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rust-analyzer',
-        \ 'cmd': {server_info->['rust-analyzer']},
-        \ 'allowlist': ['rust']
-        \ })
-endif
-
-" (vim-lsp) Disable auto insertion of #include
-let g:lsp_insert_text_enabled = 0
-let g:lsp_text_edit_enabled = 0
-
-" (vim-lsp) Enable/disable error indication column
-let g:lsp_diagnostics_signs_enabled = 0
-
-" (vim-lsp) Enable/disable highlighting errors
-let g:lsp_textprop_enabled = 1
-
-" (vim-lsp) Show error message on status line when cursor is on error.
-let g:lsp_diagnostics_echo_cursor = 1
-
-" (vim-lsp) Show error messages inline in the text
-let g:lsp_diagnostics_virtual_text_enabled = 0
-
-" (vim-lsp) Log to file
-let g:lsp_log_file = expand('~/.local/share/nvim/site/logs/vim-lsp.log')
-
-" (vim-lsp) Enable 'A>' signs in the left-most column to indicate an avaiable
-" edit action.
-let g:lsp_document_code_action_signs_enabled = 0
-
-" (asyncomplete) Enable/disable completion popup
-" let g:asyncomplete_auto_popup = 1
-
 " Customizes the c indentation see tha vim manual for more.
 set cinoptions+=g0
 
@@ -476,6 +441,10 @@ require('lspconfig').clangd.setup {
 }
 
 require('lspconfig').pylsp.setup {
+    on_attach = on_attach
+}
+
+require('lspconfig').rust_analyzer.setup {
     on_attach = on_attach
 }
 EOF
