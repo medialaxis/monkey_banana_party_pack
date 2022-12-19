@@ -383,24 +383,20 @@ augroup json
     autocmd BufRead *.json :normal zR
 augroup END
 
-
-" TODO debug
-lua vim.lsp.set_log_level('debug')
-
 augroup c_cpp
     autocmd!
 
     " Enable syntax folding
     autocmd FileType c,cpp setlocal foldmethod=syntax
 
-    " Enable LSP omnifunc
-    " autocmd FileType c,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
     " Open all folds by default
     autocmd BufRead *.h,*.c,*.hh,*.cc,*.hpp,*.cpp :normal zR
 
-    " Start lsp server
+    " Start lsp server manually
     " autocmd FileType c,cpp lua vim.lsp.start({name = 'clangd', cmd = {'clangd', '-background-index'} })
+
+    " Enable LSP omnifunc
+    " autocmd FileType c,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
 augroup END
 
 augroup python
@@ -466,6 +462,39 @@ EOF
 command! ResetRainbow :TSEnable rainbow | TSDisable rainbow | TSEnable rainbow
 " autocmd CursorHold * ResetRainbow
 
+" (nvim-lspconfig) Setup LSP servers
 lua <<EOF
-require('lspconfig').clangd.setup{}
+
+-- Debug LSP server.
+-- Use 'vim.lsp.get_log_path()' to find location of log file.
+-- Default log path: .local/state/nvim/lsp.log)
+-- vim.lsp.set_log_level('debug')
+
+local on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+--    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+--    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+--    vim.keymap.set('n', '<space>wl', function()
+--      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+end
+
+require('lspconfig').clangd.setup {
+    on_attach = on_attach
+}
 EOF
