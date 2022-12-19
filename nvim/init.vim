@@ -1,9 +1,5 @@
 " Setup all my plugins
 call plug#begin(stdpath('data') . '/plugged')
-" jPlug 'prabirshrestha/async.vim'
-" jPlug 'prabirshrestha/asyncomplete.vim'
-" jPlug 'prabirshrestha/asyncomplete-lsp.vim'
-" jPlug 'prabirshrestha/vim-lsp'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips', {'tag': '3.2'}
@@ -235,24 +231,6 @@ set clipboard=unnamed
 
 " Set the default colorscheme
 colorscheme mycolors
-
-" (vim-lsp) Register clangd LSP service
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd', '-background-index']},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-        \ })
-endif
-
-" (vim-lsp) Register pyls LSP service
-if executable('pylsp')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'allowlist': ['python']
-        \ })
-endif
 
 " (vim-lsp) Register rust LSP service
 if executable('rust-analyzer')
@@ -494,6 +472,10 @@ local on_attach = function(client, bufnr)
 end
 
 require('lspconfig').clangd.setup {
+    on_attach = on_attach
+}
+
+require('lspconfig').pylsp.setup {
     on_attach = on_attach
 }
 EOF
