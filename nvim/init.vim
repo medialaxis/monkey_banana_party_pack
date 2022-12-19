@@ -14,6 +14,7 @@ Plug 'phaazon/hop.nvim', {'tag': 'v2.0.3'}
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.2'}
 Plug 'neovim/nvim-lspconfig', {'tag': '0.1.4'}
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
 call plug#end()
 
 " Case insensistive
@@ -408,6 +409,12 @@ lua <<EOF
 -- Default log path: .local/state/nvim/lsp.log)
 -- vim.lsp.set_log_level('debug')
 
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -417,7 +424,7 @@ local on_attach = function(client, bufnr)
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 --    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
@@ -442,5 +449,15 @@ require('lspconfig').pylsp.setup {
 
 require('lspconfig').rust_analyzer.setup {
     on_attach = on_attach
+}
+EOF
+
+" (nvim-cmp) Setup autocompletion
+lua <<EOF
+local cmp = require('cmp')
+cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' },
+  },
 }
 EOF
