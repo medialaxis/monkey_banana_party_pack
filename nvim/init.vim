@@ -464,7 +464,6 @@ command! ResetRainbow :TSEnable rainbow | TSDisable rainbow | TSEnable rainbow
 
 " (nvim-lspconfig) Setup LSP servers
 lua <<EOF
-
 -- Debug LSP server.
 -- Use 'vim.lsp.get_log_path()' to find location of log file.
 -- Default log path: .local/state/nvim/lsp.log)
@@ -486,7 +485,7 @@ local on_attach = function(client, bufnr)
 --    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
 --    vim.keymap.set('n', '<space>wl', function()
 --      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
+--    end, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
