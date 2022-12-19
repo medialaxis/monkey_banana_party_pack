@@ -1,9 +1,9 @@
 " Setup all my plugins
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/vim-lsp'
+" jPlug 'prabirshrestha/async.vim'
+" jPlug 'prabirshrestha/asyncomplete.vim'
+" jPlug 'prabirshrestha/asyncomplete-lsp.vim'
+" jPlug 'prabirshrestha/vim-lsp'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips', {'tag': '3.2'}
@@ -12,10 +12,12 @@ Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
 Plug 'ton/vim-alternate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
 " Plug 'p00f/nvim-ts-rainbow'
-Plug 'https://github.com/medialaxis/nvim-ts-rainbow'
+Plug 'medialaxis/nvim-ts-rainbow'
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.0.3'}
-Plug 'https://github.com/lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.2'}
+Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.2'}
+Plug 'neovim/nvim-lspconfig', {'tag': '0.1.4'}
+Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
 " Case insensistive
@@ -381,14 +383,24 @@ augroup json
     autocmd BufRead *.json :normal zR
 augroup END
 
+
+" TODO debug
+lua vim.lsp.set_log_level('debug')
+
 augroup c_cpp
     autocmd!
 
     " Enable syntax folding
     autocmd FileType c,cpp setlocal foldmethod=syntax
 
+    " Enable LSP omnifunc
+    " autocmd FileType c,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
     " Open all folds by default
     autocmd BufRead *.h,*.c,*.hh,*.cc,*.hpp,*.cpp :normal zR
+
+    " Start lsp server
+    " autocmd FileType c,cpp lua vim.lsp.start({name = 'clangd', cmd = {'clangd', '-background-index'} })
 augroup END
 
 augroup python
@@ -453,3 +465,7 @@ EOF
 " back, it gets confused. This automaticall reloads rainbow.
 command! ResetRainbow :TSEnable rainbow | TSDisable rainbow | TSEnable rainbow
 " autocmd CursorHold * ResetRainbow
+
+lua <<EOF
+require('lspconfig').clangd.setup{}
+EOF
