@@ -458,7 +458,7 @@ require("indent_blankline").setup {
 EOF
 
 " (nvim-ts-rainbow) Workaround: When the file is changed behind rainbow's
-" back, it gets confused. This automaticall reloads rainbow.
+" back, it gets confused. This automatically reloads rainbow.
 command! ResetRainbow :TSEnable rainbow | TSDisable rainbow | TSEnable rainbow
 " autocmd CursorHold * ResetRainbow
 
