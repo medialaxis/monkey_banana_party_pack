@@ -65,5 +65,9 @@
             "\treturn 0;",
             "}"
         ]
+    },
+    "log_info": {
+        "prefix": "lgi",
+        "body": ["log_info(\"$1\");"]
     }
 }
