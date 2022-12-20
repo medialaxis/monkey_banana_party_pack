@@ -495,17 +495,11 @@ cmp.setup {
 }
 EOF
 
-" TODO: what does <silent> mean?
-" TODO: what does <expr> mean?
-" TODO: what does snoremap mean?
-
 " (LuaSnip) Load all snippets
 lua <<EOF
 require("luasnip.loaders.from_vscode").lazy_load({paths = vim.fn.stdpath("config") .. "/snippets_vscode"})
 EOF
 
 " (LuaSnip) Configure key bindings
-imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
-snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
-snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+inoremap <expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+inoremap <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
