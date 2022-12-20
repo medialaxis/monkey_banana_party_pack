@@ -8,11 +8,11 @@ Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
 Plug 'ton/vim-alternate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
 " Plug 'p00f/nvim-ts-rainbow'
-Plug 'medialaxis/nvim-ts-rainbow'
+Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'update-entire-buffer'}
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.0.3'}
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.2'}
-Plug 'neovim/nvim-lspconfig', {'tag': '0.1.4'}
+Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.4'}
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
@@ -416,6 +416,10 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+vim.diagnostic.config( {
+    signs = false,
+    })
 
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
