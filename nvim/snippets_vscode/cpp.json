@@ -6,5 +6,45 @@
             "\t$0",
             "}"
         ]
+    },
+    "std::str": {
+        "prefix": "str",
+        "body": ["std::string "]
+    },
+    "std::vector<>": {
+        "prefix": "vec",
+        "body": ["std::vector<$1> $0"]
+    },
+    "std::list<>": {
+        "prefix": "list",
+        "body": ["std::list<$1> $0"]
+    },
+    "std::set<>": {
+        "prefix": "set",
+        "body": ["std::set<$1> $0"]
+    },
+    "std::unordered_set<>": {
+        "prefix": "uset",
+        "body": ["std::unordered_set<$1> $0"]
+    },
+    "std::optional<>": {
+        "prefix": "opt",
+        "body": ["std::optional<$1> $0"]
+    },
+    "std::unique_ptr<>": {
+        "prefix": "uptr",
+        "body": ["std::unique_ptr<$1> $0"]
+    },
+    "std::shared_ptr<>": {
+        "prefix": "sptr",
+        "body": ["std::shared_ptr<$1> $0"]
+    },
+    "std::map<>": {
+        "prefix": "map",
+        "body": ["std::map<$1, $2> $0"]
+    },
+    "std::unordered_map<>": {
+        "prefix": "umap",
+        "body": ["std::unordered_map<$1, $2> $0"]
     }
 }

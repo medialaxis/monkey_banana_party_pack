@@ -10,7 +10,8 @@
             },
             {
                 "language": [
-                    "c"
+                    "c",
+                    "cpp"
                 ],
                 "path": "./c.json"
             },
