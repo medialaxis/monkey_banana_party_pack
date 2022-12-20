@@ -16,6 +16,7 @@ Plug 'hrsh7th/cmp-path', {'commit': '91ff86cd9c29299a64f968ebb45846c485725f23'}
 Plug 'L3MON4D3/LuaSnip' , {'tag': 'v1.*'}
 Plug 'saadparwaiz1/cmp_luasnip', {'commit': '18095520391186d634a0045dacaa346291096566'}
 Plug 'nvim-treesitter/playground' , {'commit': '3421bbbfec25a7c54ee041ffb9cb226b69b2b995'}
+Plug 'numToStr/Comment.nvim', {'tag': 'v0.7.0'}
 call plug#end()
 
 " Case insensistive
@@ -483,3 +484,6 @@ inoremap <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
 
 " (nvim-ts-rainbow) Refresh rainbow parens
 au CursorHold * lua require("rainbow.internal").refresh()
+
+" (Comment.nvim) Setup
+lua require('Comment').setup()
