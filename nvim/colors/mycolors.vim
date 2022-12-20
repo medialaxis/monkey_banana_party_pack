@@ -116,4 +116,7 @@ hi Label        ctermfg=lightgreen
 hi Pmenu        ctermbg=Black ctermfg=Grey
 hi PmenuSel     ctermbg=Cyan ctermfg=Black
 
+hi @attribute   cterm=bold ctermfg=lightblue
+hi @include.python   ctermfg=lightblue
+
 "vim: sw=4
