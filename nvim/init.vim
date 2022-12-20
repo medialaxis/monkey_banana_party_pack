@@ -470,6 +470,12 @@ cmp.setup {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
 
+    snippet = {
+        expand = function(args)
+            vim.fn["UltiSnips#Anon"](args.body)
+        end,
+    },
+
     sources = {
         { name = 'nvim_lsp' },
         { name = 'ultisnips' },
