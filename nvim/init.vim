@@ -8,7 +8,7 @@ Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
 Plug 'ton/vim-alternate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
 " Plug 'p00f/nvim-ts-rainbow'
-Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'update-entire-buffer'}
+" Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'update-entire-buffer'}
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.0.3'}
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.2'}
