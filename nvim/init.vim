@@ -300,6 +300,7 @@ command! FoldMax normal zR
 command! FoldUpdate normal zx
 command! FoldDecrease normal zm
 command! FoldIncrease normal zr
+command! FoldToggle normal za
 
 " Create file under cursor
 command! CreateFile silent !touch <cfile>
