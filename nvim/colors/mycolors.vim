@@ -112,4 +112,8 @@ hi Special      ctermfg=none
 hi Whitespace   ctermfg=darkcyan
 hi Label        ctermfg=lightgreen
 
+" Colors of popup menus
+hi Pmenu        ctermbg=Black ctermfg=Grey
+hi PmenuSel     ctermbg=Cyan ctermfg=Black
+
 "vim: sw=4
