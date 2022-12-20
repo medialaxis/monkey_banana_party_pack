@@ -15,6 +15,7 @@ Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.2'}
 Plug 'neovim/nvim-lspconfig', {'tag': '0.1.4'}
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 call plug#end()
 
@@ -467,6 +468,7 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'ultisnips' },
+        { name = 'path' },
         },
 }
 EOF
