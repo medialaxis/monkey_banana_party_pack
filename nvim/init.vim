@@ -7,7 +7,6 @@ Plug 'tpope/vim-fugitive', {'tag': 'v3.*'}
 Plug 'ton/vim-alternate', {'commit': '57a6d2797b3bec39f5c075104082b0c0835535ed'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
 Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'refresh-buffers'}
-Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.*'}
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.*'}
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.4'}
