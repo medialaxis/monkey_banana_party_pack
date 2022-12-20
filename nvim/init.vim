@@ -190,11 +190,15 @@ augroup terminal
     autocmd FileType fzf tunmap <buffer> <esc><esc>
 augroup END
 
-" Navigating the clist
-nnoremap <leader>q :cf<CR>
-nnoremap <leader>w :cc<CR>
-nnoremap <leader>e :cprev<CR>
-nnoremap <leader>r :cnext<CR>
+" Navigating the quicklist
+nnoremap <leader>cf :cf<CR>
+nnoremap <leader>cc :cc<CR>
+nnoremap <leader>cp :cprev<CR>
+nnoremap <leader>cn :cnext<CR>
+
+" Navigating the location list
+nnoremap <leader>lp :lprev<CR>
+nnoremap <leader>ln :lnext<CR>
 
 " Tags
 nnoremap <leader>a :call fzf#vim#tags(expand("<cword>"))<CR>
