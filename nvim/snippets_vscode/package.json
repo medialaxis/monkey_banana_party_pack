@@ -26,6 +26,12 @@
                     "python"
                 ],
                 "path": "./python.json"
+            },
+            {
+                "language": [
+                    "sh"
+                ],
+                "path": "./sh.json"
             }
         ]
     }
