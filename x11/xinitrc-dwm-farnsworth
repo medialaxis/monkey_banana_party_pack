@@ -13,7 +13,7 @@ xset s 600 600
 # Start DWM
 redshift-gtk -l 58:16 &
 udiskie -t -N &
-steam -silent &
+# steam -silent &
 # Start pulseaudio
 # pactl stat > /dev/null
 # update-audio
