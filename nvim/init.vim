@@ -321,42 +321,6 @@ function! FormatFile()
 endfunction
 command! FormatFile call FormatFile()
 
-augroup json
-    autocmd!
-
-    " Enable syntax folding
-    autocmd FileType json setlocal foldmethod=syntax
-
-    " Open all folds by default
-    autocmd BufRead *.json :normal zR
-augroup END
-
-augroup c_cpp
-    autocmd!
-
-    " Enable syntax folding
-    autocmd FileType c,cpp setlocal foldmethod=syntax
-
-    " Open all folds by default
-    autocmd BufRead *.h,*.c,*.hh,*.cc,*.hpp,*.cpp :normal zR
-
-    " Start lsp server manually
-    " autocmd FileType c,cpp lua vim.lsp.start({name = 'clangd', cmd = {'clangd', '-background-index'} })
-
-    " Enable LSP omnifunc
-    " autocmd FileType c,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
-augroup END
-
-augroup python
-    autocmd!
-
-    " Enable syntax folding
-    autocmd FileType python setlocal foldmethod=syntax
-
-    " Open all folds by default
-    autocmd BufRead *.py :normal zR
-augroup END
-
 " When using 'gx', open the file using openbg instead of xdg-open. This runs
 " the command in the background.
 "let g:netrw_browsex_viewer= "openbg"
@@ -398,6 +362,11 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 EOF
+
+" (nvim-treesitter) Enable treesitter folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable                     " Disable folding at startup.
 
 " (indent-blankline.nvim) Setup
 lua <<EOF
