@@ -271,11 +271,16 @@ require'hop'.setup()
 EOF
 
 " (hop.nvim) Hop key bindings
-nmap f :HopChar1<CR>
-nmap s :HopChar2<CR>
-nmap <leader><leader>j :HopVertical<CR>
-nmap <leader><leader>w :HopWord<CR>
-nmap <leader><leader>p :HopPattern<CR>
+nmap f <cmd>HopChar1<CR>
+nmap s <cmd>HopChar2<CR>
+nmap <leader><leader>j <cmd>HopVertical<CR>
+nmap <leader><leader>w <cmd>HopWord<CR>
+nmap <leader><leader>p <cmd>HopPattern<CR>
+vmap f <cmd>HopChar1<CR>
+vmap s <cmd>HopChar2<CR>
+vmap <leader><leader>j <cmd>HopVertical<CR>
+vmap <leader><leader>w <cmd>HopWord<CR>
+vmap <leader><leader>p <cmd>HopPattern<CR>
 
 " Reload init.vim
 command! ReloadInitVim source $MYVIMRC
