@@ -61,5 +61,11 @@
         "body": [
             "#pragma once"
         ]
+    },
+    "attribute unused": {
+        "prefix": "unused",
+        "body": [
+            "__attribute__((unused)) "
+        ]
     }
 }
