@@ -1,0 +1,42 @@
+{
+    "include local header": {
+        "prefix": "inc",
+        "body": ["#include \"${1:header}\""]
+    },
+    "include system header": {
+        "prefix": "incs",
+        "body": ["#include <${1:header}>"]
+    },
+    "if": {
+        "prefix": "if",
+        "body": [
+            "if (${1:true}) {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "else if": {
+        "prefix": "elif",
+        "body": [
+            "else if (${1:true}) {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "else": {
+        "prefix": "el",
+        "body": [
+            "else {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "for with int index": {
+        "prefix": "fori",
+        "body": [
+            "for (int ${2:i} = 0; $2 != ${1:count}; ++$2) {",
+            "\t$0",
+            "}"
+        ]
+    }
+}
