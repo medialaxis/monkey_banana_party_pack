@@ -106,7 +106,6 @@ hi Function     ctermfg=none
 hi Delimiter    ctermfg=none
 hi Operator     ctermfg=none
 hi Identifier   cterm=none ctermfg=none
-hi TSNamespace  ctermfg=lightblue
 hi Special      ctermfg=none
 
 hi Whitespace   ctermfg=darkcyan
@@ -116,6 +115,7 @@ hi Label        ctermfg=lightgreen
 hi Pmenu        ctermbg=Black ctermfg=Grey
 hi PmenuSel     ctermbg=Cyan ctermfg=Black
 
+hi @namespace   ctermfg=lightblue
 hi @attribute   cterm=bold ctermfg=lightblue
 hi @include.python   ctermfg=lightblue
 
