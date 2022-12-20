@@ -6,8 +6,7 @@ Plug 'tikhomirov/vim-glsl', {'commit': 'bfd330a271933c3372fcfa8ce052970746c8e9dd
 Plug 'tpope/vim-fugitive', {'tag': 'v3.*'}
 Plug 'ton/vim-alternate', {'commit': '57a6d2797b3bec39f5c075104082b0c0835535ed'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
-" Plug 'p00f/nvim-ts-rainbow', {'commit': '064fd6c0a15fae7f876c2c6dd4524ca3fad96750'}
-" Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'update-entire-buffer'}
+Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'refresh-buffers'}
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.*'}
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.*'}
@@ -476,3 +475,6 @@ EOF
 " (LuaSnip) Configure key bindings
 inoremap <expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 inoremap <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+" (nvim-ts-rainbow) Refresh rainbow parens
+au CursorHold * lua require("rainbow.internal").refresh()
