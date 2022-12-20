@@ -2,7 +2,6 @@
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'SirVer/ultisnips', {'tag': '3.2'}
 Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
 Plug 'ton/vim-alternate'
@@ -16,7 +15,8 @@ Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.4'}
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'L3MON4D3/LuaSnip' , {'tag': 'v1.*'}
+Plug 'saadparwaiz1/cmp_luasnip'
 call plug#end()
 
 " Case insensistive
@@ -215,9 +215,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Enable showing whitespace
 set list
-
-" Disable ctrl-j because of conflict with ultisnips
-imap <c-j> <Nop>
 
 " Toggle paste mode in insert mode (disables autoindentation)
 set pastetoggle=<F3>
@@ -486,14 +483,31 @@ cmp.setup {
 
     snippet = {
         expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body)
+            require('luasnip').lsp_expand(args.body)
         end,
     },
 
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'ultisnips' },
+        { name = 'luasnip' },
         { name = 'path' },
         },
 }
 EOF
+
+" TODO: what does <silent> mean?
+" TODO: what does <expr> mean?
+" TODO: what does snoremap mean?
+
+" (LuaSnip) Load all snippets
+lua <<EOF
+require("luasnip.loaders.from_vscode").lazy_load({paths = vim.fn.stdpath("config") .. "/snippets_vscode"})
+EOF
+
+" (LuaSnip) Configure key bindings
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+" -1 for jumping backwards.
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
