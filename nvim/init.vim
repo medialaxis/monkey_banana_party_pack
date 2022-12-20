@@ -295,10 +295,10 @@ command! ToggleWhitespaceCharacters set list!
 command! ReloadCurrentFile edit!
 
 " Commands for folding
-command! FoldMin normal zM
-command! FoldMax normal zR
-command! FoldDecrease normal zm
-command! FoldIncrease normal zr
+command! FoldLeast normal zR
+command! FoldMost normal zM
+command! FoldLess normal zr
+command! FoldMore normal zm
 command! FoldToggle normal za
 command! FoldToggleAll normal zi
 
