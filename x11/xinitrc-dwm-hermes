@@ -2,6 +2,8 @@
 
 # Start DWM
 xrdb -merge ~/.Xresources
+xset s on
+xset s 600 600
 redshift-gtk -l 58:16 &
 udiskie -t -N &
 nm-applet &
