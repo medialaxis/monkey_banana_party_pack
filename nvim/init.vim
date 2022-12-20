@@ -357,6 +357,15 @@ require'nvim-treesitter.configs'.setup {
     },
     rainbow = {
         enable = true,
+        termcolors = {
+            "Magenta",
+            "Cyan",
+            "Blue",
+            "Green",
+            "Yellow",
+            "Red",
+            "White",
+        },
     },
     indent = {
         enable = true,
