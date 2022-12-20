@@ -1,22 +1,22 @@
 " Setup all my plugins
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'tikhomirov/vim-glsl'
+Plug 'junegunn/fzf', {'tag': '0.35.1'}
+Plug 'junegunn/fzf.vim', {'commit': '9ceac718026fd39498d95ff04fa04d3e40c465d7'}
+Plug 'tikhomirov/vim-glsl', {'commit': 'bfd330a271933c3372fcfa8ce052970746c8e9dd'}
 Plug 'tpope/vim-fugitive', {'tag': 'v3.*'}
-Plug 'ton/vim-alternate'
+Plug 'ton/vim-alternate', {'commit': '57a6d2797b3bec39f5c075104082b0c0835535ed'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
-" Plug 'p00f/nvim-ts-rainbow'
+" Plug 'p00f/nvim-ts-rainbow', {'commit': '064fd6c0a15fae7f876c2c6dd4524ca3fad96750'}
 " Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'update-entire-buffer'}
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.*'}
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.*'}
 Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.4'}
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/nvim-cmp', {'commit': '8bbaeda725d5db6e4e1be2867a64b43bf547cf06'}
+Plug 'hrsh7th/cmp-nvim-lsp', {'commit': '59224771f91b86d1de12570b4070fe4ad7cd1eeb'}
+Plug 'hrsh7th/cmp-path', {'commit': '91ff86cd9c29299a64f968ebb45846c485725f23'}
 Plug 'L3MON4D3/LuaSnip' , {'tag': 'v1.*'}
-Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'saadparwaiz1/cmp_luasnip', {'commit': '18095520391186d634a0045dacaa346291096566'}
 call plug#end()
 
 " Case insensistive
