@@ -3,15 +3,15 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tikhomirov/vim-glsl'
-Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
+Plug 'tpope/vim-fugitive', {'tag': 'v3.*'}
 Plug 'ton/vim-alternate'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.*'}
 " Plug 'p00f/nvim-ts-rainbow'
 " Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'update-entire-buffer'}
-Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.3'}
-Plug 'phaazon/hop.nvim', {'tag': 'v2.0.3'}
-Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.2'}
-Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.4'}
+Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.*'}
+Plug 'phaazon/hop.nvim', {'tag': 'v2.*'}
+Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.*'}
+Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.*'}
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
