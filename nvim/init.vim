@@ -445,16 +445,21 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 require('lspconfig').clangd.setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
 require('lspconfig').pylsp.setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
 require('lspconfig').rust_analyzer.setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 EOF
 
