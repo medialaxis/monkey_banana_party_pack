@@ -13,6 +13,12 @@
                     "c"
                 ],
                 "path": "./c.json"
+            },
+            {
+                "language": [
+                    "cpp"
+                ],
+                "path": "./cpp.json"
             }
         ]
     }

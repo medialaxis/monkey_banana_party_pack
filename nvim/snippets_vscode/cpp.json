@@ -1,0 +1,10 @@
+{
+    "range based for loop": {
+        "prefix": "forr",
+        "body": [
+            "for (auto& ${1:x} : ${2:coll}) {",
+            "\t$0",
+            "}"
+        ]
+    }
+}

@@ -1,2 +1,6 @@
 {
+    "TODO": {
+        "prefix": "todo",
+        "body": ["TODO(aedlund) "]
+    }
 }
