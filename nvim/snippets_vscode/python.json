@@ -1,0 +1,21 @@
+{
+    "env python3": {
+        "prefix": "py3",
+        "body": ["#!/usr/bin/env python3"]
+    },
+    "main": {
+        "prefix": "main",
+        "body": [
+            "if __name__ == '__main__':",
+            "\tmain()"
+        ]
+    },
+    "argparse": {
+        "prefix": "argparse",
+        "body": [
+            "parser = argparse.ArgumentParser(description=\"Desc\")",
+            "parser.add_argument(\"-arg\", \"--argument\", help=\"The argument\")",
+            "args = parser.parse_args(sys.argv[1:])"
+        ]
+    }
+}
