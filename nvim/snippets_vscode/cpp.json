@@ -46,5 +46,24 @@
     "std::unordered_map<>": {
         "prefix": "umap",
         "body": ["std::unordered_map<$1, $2> $0"]
+    },
+    "function": {
+        "prefix": "fun",
+        "body": [
+            "void $1()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "function": {
+        "prefix": "funcmd",
+        "body": [
+            "int $1(int argc, char* argv[])",
+            "{",
+            "\t$0",
+            "\treturn 0;",
+            "}"
+        ]
     }
 }
