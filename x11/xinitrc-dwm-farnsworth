@@ -6,6 +6,10 @@ xrdb -merge "$HOME/.Xresources"
 # Set the compose key to be menu
 setxkbmap -option compose:menu
 
+# Enable screen saver
+xset s on
+xset s 600 600
+
 # Start DWM
 redshift-gtk -l 58:16 &
 udiskie -t -N &
@@ -16,6 +20,5 @@ steam -silent &
 # mykeyboard
 dwmstatus &
 dunst &
-xscreensaver --no-splash &
 feh --bg-fill wallpapers/simon_stålenhag_esso.jpg
 while true; do dwm && continue || break; done
