@@ -1,2 +1,7 @@
 #!/bin/bash
-git snap
+
+set -euxo pipefail
+
+git add .
+git commit -amsnap
+git push
