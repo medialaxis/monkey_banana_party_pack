@@ -118,6 +118,7 @@ hi PmenuSel     ctermbg=Cyan ctermfg=Black
 hi @namespace   ctermfg=lightblue
 hi @attribute   cterm=bold ctermfg=lightblue
 hi @include.python   ctermfg=lightblue
+hi @preproc.python   ctermfg=darkcyan
 hi @function.builtin.bash ctermfg=yellow
 hi @preproc.bash ctermfg=darkcyan
 
