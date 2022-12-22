@@ -7,6 +7,7 @@ udiskie -t -N &
 nm-applet &
 dwmstatus &
 xscreensaver --no-splash &
-cbatticon &
+cbatticon BAT0 &
+cbatticon BAT1 &
 eval $(ssh-agent)
 while true; do dwm && continue || break; done
