@@ -342,7 +342,7 @@ set hidden
 " (nvim-treesitter) Configure nvim-treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "cpp", "rust", "haskell", "python", "rust" },
+    ensure_installed = { "c", "cpp", "rust", "haskell", "python", "rust", "bash" },
     highlight = {
         enable = true,
     },
