@@ -17,6 +17,7 @@ Plug 'L3MON4D3/LuaSnip' , {'tag': 'v1.*'}
 Plug 'saadparwaiz1/cmp_luasnip', {'commit': '18095520391186d634a0045dacaa346291096566'}
 Plug 'nvim-treesitter/playground' , {'commit': '3421bbbfec25a7c54ee041ffb9cb226b69b2b995'}
 Plug 'numToStr/Comment.nvim', {'tag': 'v0.7.0'}
+Plug 'RRethy/nvim-treesitter-textsubjects', {'commit': '9e6c7a420bed75aca83ad8cbd5ea173a329489fa'}
 call plug#end()
 
 " Case insensistive
@@ -487,3 +488,18 @@ au CursorHold * lua require("rainbow.internal").refresh()
 
 " (Comment.nvim) Setup
 lua require('Comment').setup()
+
+" (nvim-treesitter-subjects) Config
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+    textsubjects = {
+        enable = true,
+        prev_selection = ',', -- (Optional) keymap to select the previous selection
+        keymaps = {
+            ['.'] = 'textsubjects-smart',
+            [';'] = 'textsubjects-container-outer',
+            ['i;'] = 'textsubjects-container-inner',
+        },
+    },
+}
+EOF
