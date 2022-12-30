@@ -369,6 +369,9 @@ require'nvim-treesitter.configs'.setup {
             "White",
         },
     },
+
+    -- NOTE: Treesitter indentation works better for json files. In particular
+    -- when '{' (et. al.) are using inside strings.
     indent = {
         enable = true,
         disable = {"python", "c", "cpp"}, -- Seems broken.
