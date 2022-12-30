@@ -504,3 +504,13 @@ require('nvim-treesitter.configs').setup {
     },
 }
 EOF
+
+" (copilot.vim) Disable tab
+let g:copilot_no_tab_map = v:true
+
+" (copilot.vim) Key bindings
+imap <silent><script><expr> <m-a> copilot#Accept("")
+inoremap <m-d> <plug>(copilot-dismiss)
+inoremap <m-j> <plug>(copilot-next)
+inoremap <m-k> <plug>(copilot-previous)
+inoremap <m-s> <plug>(copilot-suggest)
