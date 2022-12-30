@@ -19,6 +19,7 @@ Plug 'nvim-treesitter/playground' , {'commit': '3421bbbfec25a7c54ee041ffb9cb226b
 Plug 'numToStr/Comment.nvim', {'tag': 'v0.7.0'}
 Plug 'RRethy/nvim-treesitter-textsubjects', {'commit': '9e6c7a420bed75aca83ad8cbd5ea173a329489fa'}
 Plug 'zbirenbaum/copilot.lua', {'commit': '81eb5d1bc2eddad5ff0b4e3c1c4be5c09bdfaa63'}
+Plug 'zbirenbaum/copilot-cmp', {'commit': '84d5a0e8e4d1638e7554899cb7b642fa24cf463f'}
 call plug#end()
 
 " Case insensistive
@@ -452,7 +453,11 @@ cmp.setup {
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({
+            -- NOTE: This is required to make <CR> work with nvim-cmp.
+            behavior = cmp.ConfirmBehavior.Replace,
+
+            select = true }),
         }),
 
     snippet = {
@@ -462,6 +467,7 @@ cmp.setup {
     },
 
     sources = {
+        { name = 'copilot' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
@@ -515,7 +521,7 @@ require('copilot').setup({
   },
   suggestion = {
     enabled = true,
-    auto_trigger = true,
+    auto_trigger = false,
     debounce = 75,
     keymap = {
       accept = "<m-a>",
@@ -540,4 +546,9 @@ require('copilot').setup({
   copilot_node_command = 'node', -- Node.js version must be > 16.x
   server_opts_overrides = {},
 })
+EOF
+
+" (copilot-cmp) Setup
+lua <<EOF
+require("copilot_cmp").setup()
 EOF
