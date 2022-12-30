@@ -481,8 +481,8 @@ require("luasnip.loaders.from_vscode").lazy_load({paths = vim.fn.stdpath("config
 EOF
 
 " (LuaSnip) Configure key bindings
-inoremap <expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-inoremap <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+inoremap <c-j> <cmd>lua require("luasnip").expand_or_jump()<cr>
+inoremap <c-k> <cmd>lua require("luasnip").jump(-1)<cr>
 
 " (nvim-ts-rainbow) Refresh rainbow parens
 au CursorHold * lua require("rainbow.internal").refresh()
