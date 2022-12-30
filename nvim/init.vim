@@ -344,7 +344,7 @@ set hidden
 " (nvim-treesitter) Configure nvim-treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "cpp", "rust", "haskell", "python", "rust", "bash" },
+    ensure_installed = { "c", "cpp", "rust", "haskell", "python", "rust", "bash", "json" },
     highlight = {
         enable = true,
     },
@@ -371,7 +371,7 @@ require'nvim-treesitter.configs'.setup {
     },
     indent = {
         enable = true,
-        disable = {"python"}, -- Seems broken.
+        disable = {"python", "c", "cpp"}, -- Seems broken.
     },
 }
 EOF
