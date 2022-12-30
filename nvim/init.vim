@@ -457,7 +457,7 @@ cmp.setup {
             -- NOTE: This is required to make <CR> work with nvim-cmp.
             behavior = cmp.ConfirmBehavior.Replace,
 
-            select = true }),
+            select = false }),
         }),
 
     snippet = {
