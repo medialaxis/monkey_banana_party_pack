@@ -59,7 +59,7 @@
     "function": {
         "prefix": "funcmd",
         "body": [
-            "int $1(int argc, char* argv[])",
+            "static int ${1:function}(int argc, char* argv[])",
             "{",
             "\t$0",
             "\treturn 0;",
