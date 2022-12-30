@@ -18,6 +18,7 @@ Plug 'saadparwaiz1/cmp_luasnip', {'commit': '18095520391186d634a0045dacaa3462910
 Plug 'nvim-treesitter/playground' , {'commit': '3421bbbfec25a7c54ee041ffb9cb226b69b2b995'}
 Plug 'numToStr/Comment.nvim', {'tag': 'v0.7.0'}
 Plug 'RRethy/nvim-treesitter-textsubjects', {'commit': '9e6c7a420bed75aca83ad8cbd5ea173a329489fa'}
+Plug 'github/copilot.vim', {'commit': '324ec9eb69e20971b58340d0096c3caac7bc2089'}
 call plug#end()
 
 " Case insensistive
