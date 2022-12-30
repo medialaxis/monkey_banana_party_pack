@@ -18,7 +18,7 @@ Plug 'saadparwaiz1/cmp_luasnip', {'commit': '18095520391186d634a0045dacaa3462910
 Plug 'nvim-treesitter/playground' , {'commit': '3421bbbfec25a7c54ee041ffb9cb226b69b2b995'}
 Plug 'numToStr/Comment.nvim', {'tag': 'v0.7.0'}
 Plug 'RRethy/nvim-treesitter-textsubjects', {'commit': '9e6c7a420bed75aca83ad8cbd5ea173a329489fa'}
-Plug 'github/copilot.vim', {'commit': '324ec9eb69e20971b58340d0096c3caac7bc2089'}
+Plug 'zbirenbaum/copilot.lua', {'commit': '81eb5d1bc2eddad5ff0b4e3c1c4be5c09bdfaa63'}
 call plug#end()
 
 " Case insensistive
@@ -499,12 +499,45 @@ require('nvim-treesitter.configs').setup {
 }
 EOF
 
-" (copilot.vim) Disable tab
-let g:copilot_no_tab_map = v:true
-
-" (copilot.vim) Key bindings
-imap <silent><script><expr> <m-a> copilot#Accept("")
-inoremap <m-d> <plug>(copilot-dismiss)
-inoremap <m-j> <plug>(copilot-next)
-inoremap <m-k> <plug>(copilot-previous)
-inoremap <m-s> <plug>(copilot-suggest)
+" (copilot.lua) Setup
+lua <<EOF
+require('copilot').setup({
+  panel = {
+    enabled = true,
+    auto_refresh = false,
+    keymap = {
+      jump_prev = "[[",
+      jump_next = "]]",
+      accept = "<CR>",
+      refresh = "gr",
+      open = "<M-CR>"
+    },
+  },
+  suggestion = {
+    enabled = true,
+    auto_trigger = false,
+    debounce = 75,
+    keymap = {
+      accept = "<m-a>",
+      accept_word = false,
+      accept_line = false,
+      next = "<m-j>",
+      prev = "<m-k>",
+      dismiss = "<m-d>",
+    },
+  },
+  filetypes = {
+    yaml = false,
+    markdown = false,
+    help = false,
+    gitcommit = false,
+    gitrebase = false,
+    hgcommit = false,
+    svn = false,
+    cvs = false,
+    ["."] = false,
+  },
+  copilot_node_command = 'node', -- Node.js version must be > 16.x
+  server_opts_overrides = {},
+})
+EOF
