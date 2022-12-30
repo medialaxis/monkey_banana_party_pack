@@ -234,16 +234,6 @@ set clipboard=unnamed
 " Set the default colorscheme
 colorscheme mycolors
 
-" Customizes the c indentation see tha vim manual for more.
-set cinoptions+=g0
-
-" Indent lambda expressions properly.
-set cinoptions+=j1
-
-" Do not indent continuation lines (handles 'template' on its own line, but
-" breaks continuations of expressions)
-set cinoptions+=+0
-
 " Enable mouse in all modes (=a) (hold shift to temporarily disable mouse
 " support, useful when copy-pasting)
 set mouse=a
