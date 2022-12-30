@@ -384,6 +384,7 @@ set nofoldenable                     " Disable folding at startup.
 " (indent-blankline.nvim) Setup
 lua <<EOF
 require("indent_blankline").setup {
+    enabled = false,
     use_treesitter = true,
     show_current_context = true,
     show_current_context_start = false,
