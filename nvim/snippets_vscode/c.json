@@ -67,5 +67,18 @@
         "body": [
             "__attribute__((unused)) "
         ]
+    },
+    "switch": {
+        "prefix": "switch",
+        "body": [
+            "switch (${1:var}) {",
+            "\tcase ${2:0}:",
+            "\t\t$0",
+            "\t\tbreak;",
+            "",
+            "\tdefault:",
+            "\t\tbreak;",
+            "}"
+        ]
     }
 }
