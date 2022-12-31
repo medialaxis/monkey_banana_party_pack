@@ -431,6 +431,9 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Disable LSP snippet support.
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 
+--Suppress "multiple different client offset ..." warning.
+capabilities.offsetEncoding = "utf-8"
+
 require('lspconfig').clangd.setup {
     on_attach = on_attach,
     capabilities = capabilities
