@@ -424,6 +424,18 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+    vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+    vim.api.nvim_create_autocmd("CursorHold", {
+        callback = vim.lsp.buf.document_highlight,
+        buffer = bufnr,
+        group = "lsp_document_highlight"
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+        callback = vim.lsp.buf.clear_references,
+        buffer = bufnr,
+        group = "lsp_document_highlight"
+    })
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()

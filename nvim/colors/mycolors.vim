@@ -122,4 +122,7 @@ hi @preproc.python   ctermfg=darkcyan
 hi @function.builtin.bash ctermfg=yellow
 hi @preproc.bash ctermfg=darkcyan
 
+" Highlight identifier under cursor
+hi LspReferenceText cterm=bold ctermbg=darkgrey
+
 "vim: sw=4
