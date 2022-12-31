@@ -436,7 +436,15 @@ capabilities.offsetEncoding = "utf-8"
 
 require('lspconfig').clangd.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--pch-storage=memory",
+        "--cross-file-rename",
+        "--completion-style=detailed",
+        "--all-scopes-completion=true",
+    }
 }
 
 require('lspconfig').pylsp.setup {
