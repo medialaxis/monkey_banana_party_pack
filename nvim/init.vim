@@ -500,7 +500,7 @@ require("luasnip.loaders.from_vscode").lazy_load({paths = vim.fn.stdpath("config
 EOF
 
 " (LuaSnip) Configure key bindings
-inoremap <c-j> <cmd>lua require("luasnip").jump(1)<cr>
+inoremap <c-j> <cmd>lua require("copilot.suggestion").dismiss(); require("luasnip").jump(1)<cr>
 inoremap <c-k> <cmd>lua require("luasnip").jump(-1)<cr>
 snoremap <c-j> <cmd>lua require("luasnip").jump(1)<cr>
 snoremap <c-k> <cmd>lua require("luasnip").jump(-1)<cr>
