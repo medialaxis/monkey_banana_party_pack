@@ -477,9 +477,6 @@ cmp.setup {
         ['<C-e>'] = cmp.mapping.close(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
-        ['<C-Space>'] = cmp.mapping.complete(),
         ['<tab>'] = cmp.mapping.confirm({ select = true }),
         }),
 
@@ -490,8 +487,8 @@ cmp.setup {
     },
 
     sources = {
-        { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'nvim_lsp' },
         { name = 'path' },
         },
 }
@@ -503,7 +500,6 @@ require("luasnip.loaders.from_vscode").lazy_load({paths = vim.fn.stdpath("config
 EOF
 
 " (LuaSnip) Configure key bindings
-imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand' : '<Tab>'
 inoremap <c-j> <cmd>lua require("luasnip").jump(1)<cr>
 inoremap <c-k> <cmd>lua require("luasnip").jump(-1)<cr>
 snoremap <c-j> <cmd>lua require("luasnip").jump(1)<cr>
