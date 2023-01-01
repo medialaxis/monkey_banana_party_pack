@@ -500,9 +500,16 @@ require("luasnip.loaders.from_vscode").lazy_load({paths = vim.fn.stdpath("config
 EOF
 
 " (LuaSnip) Configure key bindings
-" WORKAROUND: Dismiss copilot before jumpint to next target. Otherwise,
-" luasnip will jump to the wrong location.
-inoremap <c-j> <cmd>lua require("copilot.suggestion").dismiss(); require("luasnip").jump(1)<cr>
+lua <<EOF
+-- WORKAROUND: Dismiss copilot before jumpint to next target. Otherwise,
+-- luasnip will jump to the wrong location.
+function dismiss_and_jump()
+    require("copilot.suggestion").dismiss()
+    require("luasnip").jump(1)
+end
+EOF
+
+inoremap <c-j> <cmd>lua dismiss_and_jump()<cr>
 inoremap <c-k> <cmd>lua require("luasnip").jump(-1)<cr>
 snoremap <c-j> <cmd>lua require("luasnip").jump(1)<cr>
 snoremap <c-k> <cmd>lua require("luasnip").jump(-1)<cr>
