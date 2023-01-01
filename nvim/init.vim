@@ -478,7 +478,7 @@ cmp.setup {
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<tab>'] = cmp.mapping.confirm({ select = true }),
         }),
 
     snippet = {
@@ -501,8 +501,11 @@ require("luasnip.loaders.from_vscode").lazy_load({paths = vim.fn.stdpath("config
 EOF
 
 " (LuaSnip) Configure key bindings
-inoremap <c-j> <cmd>lua require("luasnip").expand_or_jump()<cr>
+imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand' : '<Tab>'
+inoremap <c-j> <cmd>lua require("luasnip").jump(1)<cr>
 inoremap <c-k> <cmd>lua require("luasnip").jump(-1)<cr>
+snoremap <c-j> <cmd>lua require("luasnip").jump(1)<cr>
+snoremap <c-k> <cmd>lua require("luasnip").jump(-1)<cr>
 
 " (nvim-ts-rainbow) Refresh rainbow parens
 au CursorHold * lua require("rainbow.internal").refresh()
