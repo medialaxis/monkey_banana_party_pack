@@ -167,6 +167,9 @@ noremap L $
 " Make Y behave as CD. I.e. yank to end of line
 nnoremap Y y$
 
+" Automatically re-read files if unmodified inside vim.
+set autoread
+
 " Check and reload (after updatetime ms) all modified files after any cursor movement
 au CursorHold * :checktime
 
