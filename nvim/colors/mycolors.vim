@@ -126,5 +126,7 @@ hi @preproc.bash ctermfg=darkcyan
 
 " Highlight identifier under cursor
 hi LspReferenceText cterm=bold ctermbg=darkgrey
+hi LspReferenceRead cterm=bold ctermbg=darkgrey
+hi LspReferenceWrite cterm=bold ctermbg=darkgrey
 
 "vim: sw=4
