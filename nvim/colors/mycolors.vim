@@ -122,6 +122,7 @@ hi @preproc.python   ctermfg=darkcyan
 hi @function.builtin.bash ctermfg=yellow
 hi @variable.bash ctermfg=5
 hi @punctuation.special.bash ctermfg=5
+hi @function.bash ctermfg=lightblue
 hi @preproc.bash ctermfg=darkcyan
 
 " Highlight identifier under cursor
