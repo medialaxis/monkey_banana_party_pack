@@ -19,6 +19,7 @@ Plug 'nvim-treesitter/playground' , {'commit': '3421bbbfec25a7c54ee041ffb9cb226b
 Plug 'numToStr/Comment.nvim', {'tag': 'v0.7.0'}
 Plug 'RRethy/nvim-treesitter-textsubjects', {'commit': '9e6c7a420bed75aca83ad8cbd5ea173a329489fa'}
 Plug 'zbirenbaum/copilot.lua', {'commit': '81eb5d1bc2eddad5ff0b4e3c1c4be5c09bdfaa63'}
+Plug 'mfussenegger/nvim-dap', {'tag': '0.4.0'}
 call plug#end()
 
 " Case insensistive
@@ -557,3 +558,34 @@ require('copilot').setup({
   }
 })
 EOF
+
+" (nvim-dap) Setup
+lua <<EOF
+local dap = require('dap')
+dap.adapters.cppdbg = {
+  id = 'cppdbg',
+  type = 'executable',
+  command = '/home/andreas/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+}
+
+dap.configurations.cpp = {
+  {
+    name = 'algot',
+    type = 'cppdbg',
+    request = 'launch',
+    MIMode = 'gdb',
+    miDebuggerServerAddress = 'localhost:1234',
+    miDebuggerPath = '/usr/bin/gdb',
+    cwd = '${workspaceFolder}',
+    program = vim.fn.getcwd() .. '/_build/algot',
+  },
+}
+EOF
+
+command! Breakpoint lua require('dap').toggle_breakpoint()
+command! Continue lua require('dap').continue()
+command! StepOver lua require('dap').step_over()
+command! StepInto lua require('dap').step_into()
+command! StepOut lua require('dap').step_out()
+command! RunToCursor lua require('dap').run_to_cursor()
+command! ReplOpen lua require('dap').repl.open()
