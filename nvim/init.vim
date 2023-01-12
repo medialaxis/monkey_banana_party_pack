@@ -580,6 +580,12 @@ dap.configurations.cpp = {
     program = vim.fn.getcwd() .. '/_build/algot',
   },
 }
+
+function backtrace()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.frames)
+end
+
 EOF
 
 command! Breakpoint lua require('dap').toggle_breakpoint()
@@ -589,3 +595,4 @@ command! StepInto lua require('dap').step_into()
 command! StepOut lua require('dap').step_out()
 command! RunToCursor lua require('dap').run_to_cursor()
 command! ReplOpen lua require('dap').repl.open()
+command! Backtrace lua backtrace()
