@@ -555,6 +555,9 @@ require('copilot').setup({
       prev = "<m-k>",
       dismiss = "<m-d>",
     },
+  },
+  filetypes = {
+      ["dap-repl"] = false,
   }
 })
 EOF
