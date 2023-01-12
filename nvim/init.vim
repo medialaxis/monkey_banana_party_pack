@@ -581,9 +581,24 @@ dap.configurations.cpp = {
   },
 }
 
-function backtrace()
+function show_backtrace()
     local widgets = require('dap.ui.widgets')
     widgets.centered_float(widgets.frames)
+end
+
+function show_threads()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.threads)
+end
+
+function show_scopes()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.scopes)
+end
+
+function show_expression()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.expression)
 end
 
 EOF
@@ -595,4 +610,7 @@ command! StepInto lua require('dap').step_into()
 command! StepOut lua require('dap').step_out()
 command! RunToCursor lua require('dap').run_to_cursor()
 command! ReplOpen lua require('dap').repl.open()
-command! Backtrace lua backtrace()
+command! Backtrace lua show_backtrace()
+command! Threads lua show_threads()
+command! Scopes lua show_scopes()
+command! Expression lua show_expression()
