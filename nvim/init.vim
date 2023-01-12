@@ -402,6 +402,8 @@ vim.diagnostic.config( {
     signs = false,
     })
 
+vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -425,7 +427,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-    vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+    vim.api.nvim_clear_autocmds({ group = "lsp_document_highlight", buffer = bufnr })
+
     vim.api.nvim_create_autocmd("CursorHold", {
         callback = vim.lsp.buf.document_highlight,
         buffer = bufnr,
