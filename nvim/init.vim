@@ -565,7 +565,7 @@ local dap = require('dap')
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = '/home/andreas/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+  command = '/home/andreas/.local/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
 }
 
 dap.configurations.cpp = {
