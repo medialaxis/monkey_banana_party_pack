@@ -584,7 +584,10 @@ dap.configurations.cpp = {
     setupCommands = {
         {
            text = "catch throw",
-        }
+        },
+        {
+           text = '-enable-pretty-printing',
+        },
     },
   },
 }
