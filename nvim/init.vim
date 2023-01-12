@@ -581,6 +581,11 @@ dap.configurations.cpp = {
     miDebuggerPath = '/usr/bin/gdb',
     cwd = '${workspaceFolder}',
     program = vim.fn.getcwd() .. '/_build/algot',
+    setupCommands = {
+        {
+           text = "catch throw",
+        }
+    },
   },
 }
 
