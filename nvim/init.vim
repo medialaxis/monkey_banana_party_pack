@@ -339,7 +339,10 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "cpp", "rust", "haskell", "python", "rust", "bash", "json", "vim", "lua", "cmake", "yaml", "css", "javascript", "zig" },
     highlight = {
         enable = true,
-        disable = {"python"},
+
+        -- NOTE: This is a workaround for a bug in nvim-treesitter. '{', '['
+        -- etc in strings causes wierd indentation.
+        additional_vim_regex_highlighting = true,
     },
     incremental_selection = {
         enable = true,
