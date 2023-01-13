@@ -61,7 +61,7 @@ def main():
     if sty:
         print(f"{user_host} {screen} {branch} {dir}\n{smiley} {prompt}{RESET} ")
     else:
-        print(f"{user_host} {branch} {dir}\n{smiley} {prompt}${RESET} ")
+        print(f"{user_host} {branch} {dir}\n{smiley} {prompt}{RESET} ")
 
 
 if __name__ == '__main__':
