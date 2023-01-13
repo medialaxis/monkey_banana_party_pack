@@ -3,6 +3,7 @@
 import os
 import socket
 import argparse
+import subprocess
 
 
 # ANSI escape codes
@@ -35,8 +36,13 @@ def main():
     # Get current hostname
     hostname = socket.gethostname()
 
-    # Get current git branch
-    branch = os.popen("git rev-parse --abbrev-ref HEAD").read().strip()
+    # Get current git branch. Handle error if not in a git repo. Suppress stderr.
+    try:
+        branch = subprocess.check_output(
+                ["git", "branch", "--show-current"],
+                stderr=subprocess.DEVNULL).decode("utf-8").strip()
+    except subprocess.CalledProcessError:
+        branch = None
 
     # Get current working directory and shorten it
     cwd = os.getcwd()
@@ -47,21 +53,21 @@ def main():
     sty = os.getenv("STY")
 
     if args.exit_code == 0:
-        smiley = f"{BOLDGREEN}:)"
+        smiley = f"{BOLDGREEN}:) "
     else:
-        smiley = f"{BOLDRED}:("
+        smiley = f"{BOLDRED}:( "
 
-    user_host = f"{BOLDGREEN}{user}@{hostname}{RESET}"
-    screen = f"{BOLDCYAN}(screen)"
-    branch = f"{BOLDWHITE}({branch})"
-    dir = f"{BOLDYELLOW}{cwd}"
-    prompt = f"{BOLDBLUE}$"
+    user_host = f"{BOLDGREEN}{user}@{hostname} "
+    screen = f"{BOLDCYAN}(screen) "
+    branch = f"{BOLDWHITE}({branch}) " if branch is not None else ""
+    dir = f"{BOLDYELLOW}{cwd} "
+    prompt = f"{BOLDBLUE}$ "
 
     # Print prompt with colors
     if sty:
-        print(f"{user_host} {screen} {branch} {dir}\n{smiley} {prompt}{RESET} ")
+        print(f"{user_host}{screen}{branch}{dir}\n{smiley}{prompt}{RESET}")
     else:
-        print(f"{user_host} {branch} {dir}\n{smiley} {prompt}{RESET} ")
+        print(f"{user_host}{branch}{dir}\n{smiley}{prompt}{RESET}")
 
 
 if __name__ == '__main__':
