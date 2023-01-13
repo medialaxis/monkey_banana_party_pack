@@ -339,6 +339,7 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "cpp", "rust", "haskell", "python", "rust", "bash", "json", "vim", "lua", "cmake", "yaml", "css", "javascript", "zig" },
     highlight = {
         enable = true,
+        disable = {"python"},
     },
     incremental_selection = {
         enable = true,
