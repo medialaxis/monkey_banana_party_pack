@@ -1,6 +1,6 @@
-use std::process::Command;
-use std::env;
 use argh::FromArgs;
+use std::env;
+use std::process::Command;
 
 // ANSI escape codes
 const _BLUE: &str = "\x1b[34m";
@@ -55,7 +55,9 @@ fn main() {
         .ok()
         .and_then(|output| {
             if output.status.success() {
-                String::from_utf8(output.stdout).ok().map(|s| s.trim().to_string())
+                String::from_utf8(output.stdout)
+                    .ok()
+                    .map(|s| s.trim().to_string())
             } else {
                 None
             }
@@ -88,5 +90,8 @@ fn main() {
     }
 
     // Print prompt with colors
-    print!("{}{}{}{}\n{}{}{}", user_host, screen, branch, dir, smiley, prompt, RESET);
+    print!(
+        "{}{}{}{}\n{}{}{}",
+        user_host, screen, branch, dir, smiley, prompt, RESET
+    );
 }
