@@ -72,7 +72,12 @@ fn main() {
         None => screen = "".to_string(),
     }
 
-    let branch = format!("{}({}) ", BOLDWHITE, git_branch.unwrap_or_else(|| "".to_string()));
+    let branch;
+    match git_branch {
+        Some(x) => branch = format!("{}({}) ", BOLDWHITE, x),
+        None => branch = "".to_string(),
+    }
+
     let dir = format!("{}{} ", BOLDYELLOW, cwd);
     let prompt = format!("{}$ ", BOLDBLUE);
 
