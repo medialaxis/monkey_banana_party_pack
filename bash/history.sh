@@ -1,6 +1,9 @@
 # Append history to history files after every command, not just when existing
 # bash.
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+_my_history_prompt_command()
+{
+    history -a
+}
 
 # Append to history rather than overwriting it.
 shopt -s histappend

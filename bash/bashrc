@@ -45,9 +45,6 @@ stty -ixon
 # Clear terminal on CTRL-L
 bind -x '"\C-l": clear;'
 
-# Clear the prompt first.
-PROMPT_COMMAND=""
-
 source prompt.sh
 source history.sh
 source terminal.sh
@@ -56,10 +53,6 @@ source fzf.sh
 source ls.sh
 # source /usr/share/lf/lfcd.sh
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-
-# This must be added last so that the exit code is saved before any other
-# commands clobber it.
-PROMPT_COMMAND="OK=\$?; $PROMPT_COMMAND"
 
 # Workaround for bug in QT (corrupts GUI in keepassxc)
 export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor

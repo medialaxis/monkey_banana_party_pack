@@ -2,12 +2,21 @@
 
 # This is the default prompt command. This prints a text in the terminal window
 # title.
-TERM_SYNC='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-PROMPT_COMMAND="$TERM_SYNC; $PROMPT_COMMAND"
+_my_term_sync()
+{
+    printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"
+}
 
-my_prompt()
+_my_prompt()
 {
     my_prompt.py -e $?
 }
 
-PS1="\$(my_prompt)"
+_my_prompt_command()
+{
+    _my_history_prompt_command
+    _my_term_sync
+}
+
+PS1="\$(_my_prompt)"
+PROMPT_COMMAND="_my_prompt_command"
