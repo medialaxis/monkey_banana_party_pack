@@ -446,17 +446,23 @@ local on_attach = function(client, bufnr)
     })
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local function create_capabilities(opts)
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- Disable LSP snippet support.
-capabilities.textDocument.completion.completionItem.snippetSupport = false
+    -- Disable LSP snippet support.
+    capabilities.textDocument.completion.completionItem.snippetSupport = false
 
---Suppress "multiple different client offset ..." warning.
-capabilities.offsetEncoding = "utf-8"
+    -- Suppress "multiple different client offset ..." warning.
+    if opts.utf8 then
+        capabilities.offsetEncoding = "utf-8"
+    end
+
+    return capabilities
+end
 
 require('lspconfig').clangd.setup {
     on_attach = on_attach,
-    capabilities = capabilities,
+    capabilities = create_capabilities({ utf8 = true }),
     cmd = {
         "clangd",
         "--background-index",
@@ -469,12 +475,12 @@ require('lspconfig').clangd.setup {
 
 require('lspconfig').pylsp.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = create_capabilities({ utf8 = true }),
 }
 
 require('lspconfig').rust_analyzer.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = create_capabilities({ utf8 = false }),
 }
 EOF
 
