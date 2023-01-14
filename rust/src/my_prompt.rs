@@ -38,7 +38,7 @@ fn main() {
     let args: MainCmd = argh::from_env();
 
     // Get current hostname
-    let hostname = hostname::get().unwrap().into_string().unwrap();
+    let hostname = whoami::hostname();
 
     // Get current username
     let username = whoami::username();
