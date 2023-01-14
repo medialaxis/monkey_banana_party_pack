@@ -3,3 +3,4 @@ _build/
 compile_commands.json
 .cache
 .netrwhist
+target/
