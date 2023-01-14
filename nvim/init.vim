@@ -342,7 +342,7 @@ require'nvim-treesitter.configs'.setup {
 
         -- NOTE: This is a workaround for a bug in nvim-treesitter. '{', '['
         -- etc in strings causes wierd indentation.
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = {"python"},
     },
     incremental_selection = {
         enable = true,
