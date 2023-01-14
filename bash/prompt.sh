@@ -5,4 +5,9 @@
 TERM_SYNC='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 PROMPT_COMMAND="$TERM_SYNC; $PROMPT_COMMAND"
 
-PS1="\$(my_prompt.py -e \$?)"
+my_prompt()
+{
+    my_prompt.py -e $?
+}
+
+PS1="\$(my_prompt)"
