@@ -1,5 +1,6 @@
 use std::process::Command;
 use std::env;
+use argh::FromArgs;
 
 // ANSI escape codes
 const _BLUE: &str = "\x1b[34m";
@@ -10,7 +11,7 @@ const _WHITE: &str = "\x1b[37m";
 const _CYAN: &str = "\x1b[36m";
 
 const BOLDBLUE: &str = "\x1b[1m\x1b[34m";
-const _BOLDRED: &str = "\x1b[1m\x1b[31m";
+const BOLDRED: &str = "\x1b[1m\x1b[31m";
 const BOLDGREEN: &str = "\x1b[1m\x1b[32m";
 const BOLDYELLOW: &str = "\x1b[1m\x1b[33m";
 const BOLDWHITE: &str = "\x1b[1m\x1b[37m";
@@ -25,7 +26,17 @@ fn shorten_path(path: &str) -> String {
     path
 }
 
+#[derive(FromArgs)]
+/// Print the command line prompt in bash
+struct MainCmd {
+    #[argh(option, short = 'e')]
+    /// exit code
+    exit_code: i32,
+}
+
 fn main() {
+    let args: MainCmd = argh::from_env();
+
     // Get current hostname
     let hostname = hostname::get().unwrap().into_string().unwrap();
 
@@ -65,7 +76,12 @@ fn main() {
     let dir = format!("{}{} ", BOLDYELLOW, cwd);
     let prompt = format!("{}$ ", BOLDBLUE);
 
+    let smiley;
+    match args.exit_code {
+        0 => smiley = format!("{}{}", BOLDGREEN, ":) "),
+        _ => smiley = format!("{}{}", BOLDRED, ":( "),
+    }
 
     // Print prompt with colors
-    print!("{}{}{}{}\n{}{}", user_host, screen, branch, dir, prompt, RESET);
+    print!("{}{}{}{}\n{}{}{}", user_host, screen, branch, dir, smiley, prompt, RESET);
 }
