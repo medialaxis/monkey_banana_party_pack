@@ -13,3 +13,6 @@ argh = "*"
 [[bin]]
 name = "my_prompt"
 path = "src/my_prompt.rs"
+
+[profile.release]
+overflow-checks = true
