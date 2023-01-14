@@ -9,7 +9,7 @@ _my_term_sync()
 
 _my_prompt()
 {
-    my_prompt.py -e $?
+    my_prompt -e $?
 }
 
 _my_prompt_command()
