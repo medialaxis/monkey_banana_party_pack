@@ -4,7 +4,7 @@ use walkdir::WalkDir;
 
 /// Strip current working directory from the beginning of a path.
 fn strip_prefix(p: &Path) -> &Path {
-    p.strip_prefix(std::env::current_dir().unwrap()).unwrap()
+    p.strip_prefix(".").unwrap()
 }
 
 fn ignore_file(entry: &DirEntry) -> bool {
@@ -20,9 +20,7 @@ fn ignore_file(entry: &DirEntry) -> bool {
 }
 
 fn main() {
-    let cwd = std::env::current_dir().unwrap();
-
-    let walker = WalkDir::new(cwd).into_iter();
+    let walker = WalkDir::new(".").into_iter();
     for entry in walker.filter_entry(|e| !ignore_file(e)) {
         if let Ok(entry) = entry {
             if !entry.file_type().is_file() {
