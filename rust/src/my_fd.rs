@@ -25,8 +25,16 @@ fn main() {
     let walker = WalkDir::new(cwd).into_iter();
     for entry in walker.filter_entry(|e| !is_hidden(e)) {
         if let Ok(entry) = entry {
+            if !entry.file_type().is_file() {
+                continue;
+            }
+
             let path = entry.path();
             let path = strip_prefix(path);
+
+            if path.as_os_str().is_empty() {
+                continue;
+            }
 
             println!("{}", path.display());
         }
