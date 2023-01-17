@@ -1,6 +1,7 @@
 use std::path::Path;
 use walkdir::DirEntry;
 use walkdir::WalkDir;
+use std::os::unix::ffi::OsStrExt;
 
 /// Strip current working directory from the beginning of a path.
 fn strip_prefix(p: &Path) -> &Path {
@@ -14,9 +15,8 @@ fn ignore_file(entry: &DirEntry) -> bool {
 
     entry
         .file_name()
-        .to_str()
-        .map(|s| s.starts_with("."))
-        .unwrap_or(false)
+        .as_bytes()
+        .starts_with(b".")
 }
 
 fn main() {
