@@ -4,7 +4,7 @@ use walkdir::WalkDir;
 
 /// Strip current working directory from the beginning of a path.
 fn strip_prefix(p: &Path) -> &Path {
-    p.strip_prefix(".").unwrap()
+    p.strip_prefix(".").unwrap_or(p)
 }
 
 fn ignore_file(entry: &DirEntry) -> bool {
