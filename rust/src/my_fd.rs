@@ -30,10 +30,6 @@ fn main() {
             let path = entry.path();
             let path = strip_prefix(path);
 
-            if path.as_os_str().is_empty() {
-                continue;
-            }
-
             println!("{}", path.display());
         }
     }
