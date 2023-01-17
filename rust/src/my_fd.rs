@@ -3,7 +3,6 @@ use walkdir::DirEntry;
 use walkdir::WalkDir;
 use std::os::unix::ffi::OsStrExt;
 
-/// Strip current working directory from the beginning of a path.
 fn strip_prefix(p: &Path) -> &Path {
     p.strip_prefix(".").unwrap_or(p)
 }
