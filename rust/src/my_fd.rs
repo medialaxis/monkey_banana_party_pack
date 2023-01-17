@@ -13,7 +13,11 @@ fn strip_prefix(p: &Path) -> &Path {
 
 fn main() {
     for entry in WalkDir::new(".") {
-        // Print the path of the file or directory without the leading "./"
-        println!("{}", strip_prefix(entry.unwrap().path()).display());
+        if let Ok(entry) = entry {
+            // Print the path of the file or directory without the leading "./"
+            let path = entry.path();
+            let path = strip_prefix(path);
+            println!("{}", path.display());
+        }
     }
 }
