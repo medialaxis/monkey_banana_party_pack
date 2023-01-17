@@ -1,7 +1,7 @@
+use std::os::unix::ffi::OsStrExt;
 use std::path::Path;
 use walkdir::DirEntry;
 use walkdir::WalkDir;
-use std::os::unix::ffi::OsStrExt;
 
 fn strip_prefix(p: &Path) -> &Path {
     p.strip_prefix(".").unwrap_or(p)
@@ -12,10 +12,7 @@ fn ignore_file(entry: &DirEntry) -> bool {
         return false;
     }
 
-    entry
-        .file_name()
-        .as_bytes()
-        .starts_with(b".")
+    entry.file_name().as_bytes().starts_with(b".")
 }
 
 fn main() {
