@@ -17,6 +17,12 @@ fn main() {
             // Print the path of the file or directory without the leading "./"
             let path = entry.path();
             let path = strip_prefix(path);
+
+            // Ignore hidden files
+            if path.starts_with(".") {
+                continue;
+            }
+
             println!("{}", path.display());
         }
     }
