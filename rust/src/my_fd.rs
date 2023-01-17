@@ -7,7 +7,7 @@ fn strip_prefix(p: &Path) -> &Path {
     p.strip_prefix(std::env::current_dir().unwrap()).unwrap()
 }
 
-fn is_hidden(entry: &DirEntry) -> bool {
+fn ignore_file(entry: &DirEntry) -> bool {
     if entry.file_name() == "." || entry.file_name() == ".." {
         return false;
     }
@@ -23,7 +23,7 @@ fn main() {
     let cwd = std::env::current_dir().unwrap();
 
     let walker = WalkDir::new(cwd).into_iter();
-    for entry in walker.filter_entry(|e| !is_hidden(e)) {
+    for entry in walker.filter_entry(|e| !ignore_file(e)) {
         if let Ok(entry) = entry {
             if !entry.file_type().is_file() {
                 continue;
