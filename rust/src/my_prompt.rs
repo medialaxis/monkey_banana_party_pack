@@ -50,7 +50,9 @@ fn main() {
 
     // Get current git branch
     let git_branch: Option<String> = Command::new("git")
-        .args(&["branch", "--show-current"])
+        .arg("rev-parse")
+        .arg("--abbrev-ref")
+        .arg("HEAD")
         .output()
         .ok()
         .and_then(|output| {
