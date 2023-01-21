@@ -5,7 +5,7 @@ use std::process::Command;
 // ANSI escape codes for PS1 in bash.
 //
 // Note that the \[ and \] are required to prevent bash from interpreting the escape codes. Without
-// this, bash not know where the cursor is.
+// this, bash not know where the cursor is. Readline will also not work.
 const _BLUE: &str = "\\[\\e[34m\\]";
 const _RED: &str = "\\[\\e[31m\\]";
 const _GREEN: &str = "\\[\\e[32m\\]";
