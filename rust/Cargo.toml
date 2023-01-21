@@ -9,6 +9,7 @@ edition = "2021"
 whoami = "*"
 argh = "*"
 walkdir = "*"
+strip-ansi-escapes = "*"
 
 [[bin]]
 name = "my_prompt"
@@ -17,6 +18,10 @@ path = "src/my_prompt.rs"
 [[bin]]
 name = "my_fd"
 path = "src/my_fd.rs"
+
+[[bin]]
+name = "errorfile"
+path = "src/errorfile.rs"
 
 [profile.release]
 overflow-checks = true
