@@ -1,6 +1,6 @@
 use std::fs::File;
 use std::io;
-use std::io::BufRead;
+use std::io::Read;
 use std::io::Write;
 use strip_ansi_escapes::strip;
 
@@ -18,16 +18,17 @@ fn main() {
     writeln!(file, "xxx: Entering directory `{}'", cwd.to_str().unwrap()).unwrap();
 
     loop {
-        let mut line = String::new();
-        let size = stdin.read_line(&mut line).unwrap();
+        let mut buf: [u8; 1024] = [0; 1024];
+
+        let size = stdin.read(&mut buf).unwrap();
         if size == 0 {
             break;
         }
 
-        stdout.write_all(line.as_bytes()).unwrap();
+        stdout.write_all(&buf).unwrap();
         stdout.flush().unwrap();
 
-        let stripped = strip(&line).unwrap();
+        let stripped = strip(&buf).unwrap();
         file.write_all(&stripped).unwrap();
     }
 }
