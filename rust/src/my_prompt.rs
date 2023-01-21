@@ -2,22 +2,25 @@ use argh::FromArgs;
 use std::env;
 use std::process::Command;
 
-// ANSI escape codes
-const _BLUE: &str = "\x1b[34m";
-const _RED: &str = "\x1b[31m";
-const _GREEN: &str = "\x1b[32m";
-const _YELLOW: &str = "\x1b[33m";
-const _WHITE: &str = "\x1b[37m";
-const _CYAN: &str = "\x1b[36m";
+// ANSI escape codes for PS1 in bash.
+//
+// Note that the \[ and \] are required to prevent bash from interpreting the escape codes. Without
+// this, bash not know where the cursor is.
+const _BLUE: &str = "\\[\\e[34m\\]";
+const _RED: &str = "\\[\\e[31m\\]";
+const _GREEN: &str = "\\[\\e[32m\\]";
+const _YELLOW: &str = "\\[\\e[33m\\]";
+const _WHITE: &str = "\\[\\e[37m\\]";
+const _CYAN: &str = "\\[\\e[36m\\]";
 
-const BOLDBLUE: &str = "\x1b[1m\x1b[34m";
-const BOLDRED: &str = "\x1b[1m\x1b[31m";
-const BOLDGREEN: &str = "\x1b[1m\x1b[32m";
-const BOLDYELLOW: &str = "\x1b[1m\x1b[33m";
-const BOLDWHITE: &str = "\x1b[1m\x1b[37m";
-const BOLDCYAN: &str = "\x1b[1m\x1b[36m";
+const BOLDBLUE: &str = "\\[\\e[1;34m\\]";
+const BOLDRED: &str = "\\[\\e[1;31m\\]";
+const BOLDGREEN: &str = "\\[\\e[1;32m\\]";
+const BOLDYELLOW: &str = "\\[\\e[1;33m\\]";
+const BOLDWHITE: &str = "\\[\\e[1;37m\\]";
+const BOLDCYAN: &str = "\\[\\e[1;36m\\]";
 
-const RESET: &str = "\x1b[0m";
+const RESET: &str = "\\[\\e[0m\\]";
 
 fn shorten_path(path: &str) -> String {
     let mut path = path.to_string();
