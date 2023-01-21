@@ -43,24 +43,24 @@ set match-hidden-files off
 $if mode=vi
   set keymap vi-insert
   # Search history. Must match the first characters
-  "\e[A": history-search-backward
-  "\e[B": history-search-forward
+#  "\e[A": history-search-backward
+#  "\e[B": history-search-forward
 
   # Search history. Must match the substring
-#  "\e[A": history-substring-search-backward
-#  "\e[B": history-substring-search-forward
+  "\e[A": history-substring-search-backward
+  "\e[B": history-substring-search-forward
 
   # Cycle tab completions.
 #  "\C-t": menu-complete
 
   set keymap vi-command
   # Search history. Must match the first characters
-  "\e[A": history-search-backward
-  "\e[B": history-search-forward
+#  "\e[A": history-search-backward
+#  "\e[B": history-search-forward
 
   # Search history. Must match the substring
-#  "\e[A": history-substring-search-backward
-#  "\e[B": history-substring-search-forward
+  "\e[A": history-substring-search-backward
+  "\e[B": history-substring-search-forward
 
   # Cycle tab completions.
 #  "\C-t": menu-complete

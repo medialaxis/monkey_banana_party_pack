@@ -1,3 +1,5 @@
 #!/bin/bash
-$* 2>&1 | stripcolor | tee /tmp/output.log
-exit ${PIPESTATUS[0]}
+
+set -euo pipefail
+
+unbuffer "$@" | errorfile
