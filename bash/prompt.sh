@@ -14,9 +14,9 @@ _my_prompt()
 
 _my_prompt_command()
 {
+    PS1="$(_my_prompt)"
     _my_history_prompt_command
     _my_term_sync
 }
 
-PS1="\$(_my_prompt)"
 PROMPT_COMMAND="_my_prompt_command"
