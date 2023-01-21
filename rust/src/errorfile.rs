@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io;
 use std::io::Read;
 use std::io::Write;
-use strip_ansi_escapes::strip;
+use strip_ansi_escapes::Writer;
 
 fn main() {
     let stdin = io::stdin();
@@ -11,11 +11,17 @@ fn main() {
     let stdout = io::stdout();
     let mut stdout = stdout.lock();
 
-    let mut file = File::create("/tmp/output.log").unwrap();
+    let file = File::create("/tmp/output.log").unwrap();
+    let mut writer = Writer::new(file);
 
     // Print a dummy directory line so that vim understands where we are.
     let cwd = std::env::current_dir().unwrap();
-    writeln!(file, "xxx: Entering directory `{}'", cwd.to_str().unwrap()).unwrap();
+    writeln!(
+        writer,
+        "xxx: Entering directory `{}'",
+        cwd.to_str().unwrap()
+    )
+    .unwrap();
 
     loop {
         let mut buf: [u8; 1024] = [0; 1024];
@@ -25,10 +31,9 @@ fn main() {
             break;
         }
 
-        stdout.write_all(&buf).unwrap();
+        stdout.write_all(&buf[0..size]).unwrap();
         stdout.flush().unwrap();
 
-        let stripped = strip(&buf).unwrap();
-        file.write_all(&stripped).unwrap();
+        writer.write_all(&buf[0..size]).unwrap();
     }
 }
