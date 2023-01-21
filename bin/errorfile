@@ -1,2 +1,1 @@
-echo "xxx: Entering directory \`$PWD'" > /tmp/output.log
-tee -a /tmp/output.log
+../rust/target/release/errorfile

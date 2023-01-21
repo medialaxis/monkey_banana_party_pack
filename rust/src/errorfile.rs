@@ -11,7 +11,7 @@ fn main() {
     let stdout = io::stdout();
     let mut stdout = stdout.lock();
 
-    let mut file = File::create("output.log").unwrap();
+    let mut file = File::create("/tmp/output.log").unwrap();
 
     // Print a dummy directory line so that vim understands where we are.
     let cwd = std::env::current_dir().unwrap();
