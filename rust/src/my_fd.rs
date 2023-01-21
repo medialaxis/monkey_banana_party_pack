@@ -17,16 +17,14 @@ fn ignore_file(entry: &DirEntry) -> bool {
 
 fn main() {
     let walker = WalkDir::new(".").into_iter();
-    for entry in walker.filter_entry(|e| !ignore_file(e)) {
-        if let Ok(entry) = entry {
-            if !entry.file_type().is_file() {
-                continue;
-            }
-
-            let path = entry.path();
-            let path = strip_prefix(path);
-
-            println!("{}", path.display());
+    for entry in walker.filter_entry(|e| !ignore_file(e)).flatten() {
+        if !entry.file_type().is_file() {
+            continue;
         }
+
+        let path = entry.path();
+        let path = strip_prefix(path);
+
+        println!("{}", path.display());
     }
 }

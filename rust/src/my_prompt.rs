@@ -73,26 +73,23 @@ fn main() {
 
     let user_host = format!("{}{}@{} ", BOLDGREEN, username, hostname);
 
-    let screen;
-    match sty {
-        Some(_) => screen = format!("{}(screen) ", BOLDCYAN),
-        None => screen = "".to_string(),
-    }
+    let screen = match sty {
+        Some(_) => format!("{}(screen) ", BOLDCYAN),
+        None => "".to_string(),
+    };
 
-    let branch;
-    match git_branch {
-        Some(x) => branch = format!("{}({}) ", BOLDWHITE, x),
-        None => branch = "".to_string(),
-    }
+    let branch = match git_branch {
+        Some(x) => format!("{}({}) ", BOLDWHITE, x),
+        None => "".to_string(),
+    };
 
     let dir = format!("{}{} ", BOLDYELLOW, cwd);
     let prompt = format!("{}$ ", BOLDBLUE);
 
-    let smiley;
-    match args.exit_code {
-        0 => smiley = format!("{}{}", BOLDGREEN, ":) "),
-        _ => smiley = format!("{}{}", BOLDRED, ":( "),
-    }
+    let smiley = match args.exit_code {
+        0 => format!("{}{}", BOLDGREEN, ":) "),
+        _ => format!("{}{}", BOLDRED, ":( "),
+    };
 
     // Print prompt with colors
     print!(

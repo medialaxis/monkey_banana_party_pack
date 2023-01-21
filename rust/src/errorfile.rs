@@ -24,7 +24,7 @@ fn main() {
             break;
         }
 
-        stdout.write_all(&line.as_bytes()).unwrap();
+        stdout.write_all(line.as_bytes()).unwrap();
         stdout.flush().unwrap();
 
         let stripped = strip(&line).unwrap();
