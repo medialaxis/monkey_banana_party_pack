@@ -23,9 +23,9 @@ fn main() {
     )
     .unwrap();
 
-    loop {
-        let mut buf: [u8; 1024] = [0; 1024];
+    let mut buf: [u8; 1024] = [0; 1024];
 
+    loop {
         let size = stdin.read(&mut buf).unwrap();
         if size == 0 {
             break;
