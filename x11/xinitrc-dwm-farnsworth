@@ -18,6 +18,7 @@ udiskie -t -N &
 # pactl stat > /dev/null
 # update-audio
 # mykeyboard
+picom &
 dwmstatus &
 dunst &
 feh --bg-fill wallpapers/simon_stålenhag_esso.jpg
