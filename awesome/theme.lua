@@ -31,6 +31,9 @@ theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
+-- Disable application icons
+theme.tasklist_disable_icon = true
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
