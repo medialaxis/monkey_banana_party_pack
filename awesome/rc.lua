@@ -107,7 +107,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%Y-%m-%d W%V %a %H:%M:%S")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
