@@ -293,9 +293,9 @@ globalkeys = gears.table.join(
 --              {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey, "Shift"   }, "j",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "k",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "k",     function () awful.tag.incmwfact( 0.05)          end,
+              {description = "increase master width factor", group = "layout"}),
 
     awful.key({ modkey,           }, "l",     function () awful.client.focus.bydirection("right")          end,
               {description = "focus right", group = "layout"}),
