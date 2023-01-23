@@ -219,6 +219,15 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+local function swap_master()
+    if client.focus == awful.client.getmaster() then
+        awful.client.swap.byidx(1)
+        awful.client.focus.byidx(-1)
+    else
+        awful.client.setmaster(client.focus)
+    end
+end
+
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
@@ -229,6 +238,8 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({ modkey,           }, "Return",      swap_master,
+              {description="swap master", group="awesome"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
 --    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
