@@ -1,3 +1,10 @@
+-- Get HOME environment variable
+local home = os.getenv("HOME")
+
+-- Add paths to my plugins
+package.path = package.path .. ";" .. string.format("%s/.local/share/awesome/plugins/?.lua", home)
+package.path = package.path .. ";" .. string.format("%s/.local/share/awesome/plugins/?/init.lua", home)
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -6,14 +13,21 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
+-- Lain
+local lain = require("lain")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 -- require("awful.hotkeys_popup.keys")
@@ -64,6 +78,7 @@ awful.layout.layouts = {
 --    awful.layout.suit.floating,
 --    awful.layout.suit.tile,
     awful.layout.suit.tile.left,
+    lain.layout.centerwork,
 --    awful.layout.suit.tile.bottom,
 --    awful.layout.suit.tile.top,
 --    awful.layout.suit.fair,
