@@ -18,5 +18,3 @@ plugin()
 }
 
 plugin https://github.com/lcpz/lain 88f5a8abd2649b348ffec433a24a263b37f122c0
-
-"$@"
