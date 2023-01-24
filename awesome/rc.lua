@@ -219,6 +219,7 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+-- TODO(aedlund) this can be implemented by just swap (?)
 local function swap_master()
     if client.focus == awful.client.getmaster() then
         awful.client.swap.byidx(1)
