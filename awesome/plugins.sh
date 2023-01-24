@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 plugin()
 {
     local remote=$1
