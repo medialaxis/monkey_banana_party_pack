@@ -1,9 +1,13 @@
 -- Get HOME environment variable
 local home = os.getenv("HOME")
 
+local function add_package_path(path)
+    package.path = package.path .. ";" .. path .. "/?.lua"
+    package.path = package.path .. ";" .. path .. "/?/init.lua"
+end
+
 -- Add paths to my plugins
-package.path = package.path .. ";" .. string.format("%s/.local/share/awesome/plugins/?.lua", home)
-package.path = package.path .. ";" .. string.format("%s/.local/share/awesome/plugins/?/init.lua", home)
+add_package_path(string.format("%s/.local/share/awesome/plugins", home))
 
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
