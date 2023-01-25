@@ -45,7 +45,7 @@ fn get_audio() -> String {
                 None
             }
         })
-        .unwrap()
+        .unwrap_or("ERROR".to_string())
 }
 
 // Get load average using a library
