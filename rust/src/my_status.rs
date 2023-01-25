@@ -1,3 +1,6 @@
+use libc;
+use std::ffi::c_double;
+use std::ffi::c_int;
 use std::process::Command;
 
 // Get system status from systemctl.
@@ -46,19 +49,31 @@ fn get_audio() -> String {
 
 // Get load average using a library
 fn get_load() -> String {
-    "ERROR".to_string()
+    unsafe {
+        // array of 3 doubles
+        let mut avgs: [c_double; 3] = [0.0, 0.0, 0.0];
+        let errno = libc::getloadavg(avgs.as_mut_ptr(), avgs.len() as c_int);
+        if errno == -1 {
+            return "ERROR".to_string();
+        }
+
+        format!("{:.2}", avgs[0])
+    }
 }
 
 fn get_mem() -> String {
     "ERROR".to_string()
 }
 
+// Get vidememory using the following command:
+// nvidia-smi -q -x | xmllint --xpath 'string(/nvidia_smi_log/gpu/fb_memory_usage/free)' -
+// Run the above as a shell command
 fn get_vmem() -> String {
     "ERROR".to_string()
 }
 
 fn get_root_space() -> String {
-    "ERROR".to_string()
+    return "ERROR".to_string();
 }
 
 fn get_extra_space() -> String {

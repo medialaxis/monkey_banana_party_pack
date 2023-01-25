@@ -10,6 +10,7 @@ whoami = "*"
 argh = "*"
 walkdir = "*"
 strip-ansi-escapes = "*"
+libc = "*"
 
 [[bin]]
 name = "my_prompt"
