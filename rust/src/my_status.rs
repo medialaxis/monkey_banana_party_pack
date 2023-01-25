@@ -54,9 +54,9 @@ fn get_audio() -> String {
 fn get_load() -> String {
     let mut avgs: [c_double; 3] = [0.0, 0.0, 0.0];
 
-    let errno = unsafe { libc::getloadavg(avgs.as_mut_ptr(), avgs.len() as c_int) };
+    let rv = unsafe { libc::getloadavg(avgs.as_mut_ptr(), avgs.len() as c_int) };
 
-    if errno < 0 {
+    if rv < 0 {
         return "ERROR".to_string();
     }
 
@@ -88,9 +88,9 @@ fn get_vmem() -> String {
 fn get_space(path: &str) -> String {
     let mut stat: libc::statvfs = unsafe { std::mem::zeroed() };
 
-    let errno = unsafe { libc::statvfs(path.as_ptr() as *const c_char, &mut stat) };
+    let rv = unsafe { libc::statvfs(path.as_ptr() as *const c_char, &mut stat) };
 
-    if errno < 0 {
+    if rv < 0 {
         return "ERROR".to_string();
     }
 
