@@ -23,5 +23,9 @@ path = "src/my_fd.rs"
 name = "errorfile"
 path = "src/errorfile.rs"
 
+[[bin]]
+name = "my_status"
+path = "src/my_status.rs"
+
 [profile.release]
 overflow-checks = true
