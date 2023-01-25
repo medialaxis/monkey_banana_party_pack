@@ -1,6 +1,7 @@
 use libc;
 use std::ffi::c_double;
 use std::ffi::c_int;
+use std::ffi::c_char;
 use std::process::Command;
 
 // Get system status from systemctl.
@@ -84,12 +85,25 @@ fn get_vmem() -> String {
         .unwrap_or("ERROR".to_string())
 }
 
+fn get_space(path: &str) -> String {
+    let mut stat: libc::statvfs = unsafe { std::mem::zeroed() };
+
+    let errno = unsafe { libc::statvfs(path.as_ptr() as *const c_char, &mut stat) };
+
+    if errno < 0 {
+        return "ERROR".to_string();
+    }
+
+    let bytes = stat.f_bavail * stat.f_bsize;
+    format!("{:.2} GiB", bytes as f64 / (1024.0 * 1024.0 * 1024.0))
+}
+
 fn get_root_space() -> String {
-    return "ERROR".to_string();
+    return get_space("/");
 }
 
 fn get_extra_space() -> String {
-    "ERROR".to_string()
+    return get_space("/mnt/extra");
 }
 
 fn main() {
