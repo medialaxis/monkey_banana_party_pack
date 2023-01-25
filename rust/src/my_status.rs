@@ -66,11 +66,22 @@ fn get_mem() -> String {
     "ERROR".to_string()
 }
 
-// Get vidememory using the following command:
-// nvidia-smi -q -x | xmllint --xpath 'string(/nvidia_smi_log/gpu/fb_memory_usage/free)' -
-// Run the above as a shell command
 fn get_vmem() -> String {
-    "ERROR".to_string()
+    Command::new("sh")
+        .arg("-c")
+        .arg("nvidia-smi -q -x | xmllint --xpath 'string(/nvidia_smi_log/gpu/fb_memory_usage/free)' -")
+        .output()
+        .ok()
+        .and_then(|output| {
+            if output.status.success() {
+                String::from_utf8(output.stdout)
+                    .ok()
+                    .map(|s| s.trim().to_string())
+            } else {
+                None
+            }
+        })
+        .unwrap_or("ERROR".to_string())
 }
 
 fn get_root_space() -> String {
