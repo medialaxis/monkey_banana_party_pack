@@ -50,16 +50,15 @@ fn get_audio() -> String {
 
 // Get load average using a library
 fn get_load() -> String {
-    unsafe {
-        // array of 3 doubles
-        let mut avgs: [c_double; 3] = [0.0, 0.0, 0.0];
-        let errno = libc::getloadavg(avgs.as_mut_ptr(), avgs.len() as c_int);
-        if errno == -1 {
-            return "ERROR".to_string();
-        }
+    let mut avgs: [c_double; 3] = [0.0, 0.0, 0.0];
 
-        format!("{:.2}", avgs[0])
+    let errno = unsafe { libc::getloadavg(avgs.as_mut_ptr(), avgs.len() as c_int) };
+
+    if errno == -1 {
+        return "ERROR".to_string();
     }
+
+    format!("{:.2}", avgs[0])
 }
 
 fn get_mem() -> String {
