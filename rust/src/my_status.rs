@@ -7,6 +7,7 @@ use std::process::Command;
 // Return "OK" is status is "running"
 // Return "ERROR" if status is "failed"
 // TODO(aedlund) return "ok" or "error"
+// TODO(aedlund) parse using regex
 fn get_status() -> String {
     // Use 'systemctl show --property=SystemState' to get status.
     // This command returns SystemState=<status>
