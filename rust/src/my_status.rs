@@ -54,7 +54,7 @@ fn get_load() -> String {
 
     let errno = unsafe { libc::getloadavg(avgs.as_mut_ptr(), avgs.len() as c_int) };
 
-    if errno == -1 {
+    if errno < 0 {
         return "ERROR".to_string();
     }
 
