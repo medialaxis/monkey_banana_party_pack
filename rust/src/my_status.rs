@@ -21,8 +21,9 @@ fn get_status() -> String {
         .and_then(|output| String::from_utf8(output).ok().map(|s| s.trim().to_string()))
         .and_then(|s| {
             if s == "SystemState=running" {
-                Some("OK".to_string())
-            } else {
+                Some("ok".to_string())
+            }
+            else {
                 None
             }
         })
