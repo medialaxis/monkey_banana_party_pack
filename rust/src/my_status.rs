@@ -137,7 +137,7 @@ fn get_extra_space() -> String {
     get_space("/mnt/extra")
 }
 
-fn main() {
+fn print_status_line() {
     let state = get_status();
     let audio = get_audio();
     let load = get_load();
@@ -150,4 +150,11 @@ fn main() {
         "sys: {}|♪: {}|load: {}|mem: {}|vmem: {}|root: {}|extra: {}",
         state, audio, load, mem, vmem, root_space, extra_space
     );
+}
+
+fn main() {
+    loop {
+        print_status_line();
+        std::thread::sleep(std::time::Duration::from_secs(1));
+    }
 }
