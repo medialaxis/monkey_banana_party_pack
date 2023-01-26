@@ -69,14 +69,14 @@ fn get_mem() -> String {
     for line in std::io::BufReader::new(file).lines() {
         let line = match line {
             Ok(l) => l,
-            Err(_) => return "ERROR".to_string(),
+            Err(_) => continue,
         };
 
         // Split the line into key and value
         let parts = line.split(':');
         let parts: Vec<&str> = parts.collect();
 
-        if parts.len() != 2 {
+        if parts.len() < 2 {
             continue;
         }
 
@@ -85,10 +85,15 @@ fn get_mem() -> String {
 
         // If the key is MemAvailable, return the value
         if key == "MemAvailable" {
-            let mut parts = value.split_whitespace();
+            let parts = value.split_whitespace();
+            let parts: Vec<&str> = parts.collect();
 
-            let value = parts.next().unwrap();
-            let value = value.parse::<f64>().unwrap();
+            if parts.len() < 1 {
+                continue;
+            }
+
+            let value = parts[0];
+            let value: f64 = value.parse().unwrap();
 
             return format!("{:.2} GiB", (value / 1024.0 / 1024.0));
         }
