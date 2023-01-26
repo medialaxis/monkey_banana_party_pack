@@ -1,4 +1,3 @@
-use libc;
 use std::ffi::c_char;
 use std::ffi::c_double;
 use std::ffi::c_int;
@@ -28,7 +27,7 @@ fn get_status() -> String {
                 None
             }
         })
-        .unwrap_or("ERROR".to_string())
+        .unwrap_or_else(|| "ERROR".to_string())
 }
 
 fn get_audio() -> String {
@@ -45,7 +44,7 @@ fn get_audio() -> String {
                 None
             }
         })
-        .unwrap_or("ERROR".to_string())
+        .unwrap_or_else(|| "ERROR".to_string())
 }
 
 fn get_load() -> String {
@@ -114,11 +113,11 @@ fn get_vmem() -> String {
                 None
             }
         })
-        .unwrap_or("ERROR".to_string())
+        .unwrap_or_else(|| "ERROR".to_string())
 }
 
 fn get_space(path: &str) -> String {
-    let path: CString = CString::new(path.clone()).unwrap();
+    let path: CString = CString::new(path).unwrap();
     let mut stat: libc::statvfs = unsafe { std::mem::zeroed() };
 
     let rv = unsafe { libc::statvfs(path.as_ptr() as *const c_char, &mut stat) };
@@ -132,11 +131,11 @@ fn get_space(path: &str) -> String {
 }
 
 fn get_root_space() -> String {
-    return get_space("/");
+    get_space("/")
 }
 
 fn get_extra_space() -> String {
-    return get_space("/mnt/extra");
+    get_space("/mnt/extra")
 }
 
 fn main() {
