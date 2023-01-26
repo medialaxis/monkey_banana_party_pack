@@ -3,6 +3,8 @@ use std::ffi::c_char;
 use std::ffi::c_double;
 use std::ffi::c_int;
 use std::ffi::CString;
+use std::fs::File;
+use std::io::BufRead;
 use std::process::Command;
 
 fn get_status() -> String {
@@ -22,8 +24,7 @@ fn get_status() -> String {
         .and_then(|s| {
             if s == "SystemState=running" {
                 Some("ok".to_string())
-            }
-            else {
+            } else {
                 None
             }
         })
@@ -60,6 +61,41 @@ fn get_load() -> String {
 }
 
 fn get_mem() -> String {
+    // Open the meminfo file
+    let file: File = match File::open("/proc/meminfo").ok() {
+        Some(f) => f,
+        None => return "ERROR".to_string(),
+    };
+
+    // Iterate over the lines of the file
+    for line in std::io::BufReader::new(file).lines() {
+        let line = match line {
+            Ok(l) => l,
+            Err(_) => return "ERROR".to_string(),
+        };
+
+        // Split the line into key and value
+        let parts = line.split(':');
+        let parts: Vec<&str> = parts.collect();
+
+        if parts.len() != 2 {
+            continue;
+        }
+
+        let key = parts[0];
+        let value = parts[1];
+
+        // If the key is MemAvailable, return the value
+        if key == "MemAvailable" {
+            let mut parts = value.split_whitespace();
+
+            let value = parts.next().unwrap();
+            let value = value.parse::<f64>().unwrap();
+
+            return format!("{} GiB", (value / 1024.0 / 1024.0).round());
+        }
+    }
+
     "ERROR".to_string()
 }
 
