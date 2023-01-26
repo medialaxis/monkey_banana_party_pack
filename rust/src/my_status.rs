@@ -90,7 +90,7 @@ fn get_mem() -> String {
             let value = parts.next().unwrap();
             let value = value.parse::<f64>().unwrap();
 
-            return format!("{} GiB", (value / 1024.0 / 1024.0).round());
+            return format!("{:.2} GiB", (value / 1024.0 / 1024.0));
         }
     }
 
