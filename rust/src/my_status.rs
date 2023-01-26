@@ -30,7 +30,6 @@ fn get_status() -> String {
         .unwrap_or("ERROR".to_string())
 }
 
-// Get volume using 'pamixer --get-volume-human'
 fn get_audio() -> String {
     Command::new("pamixer")
         .arg("--get-volume-human")
@@ -48,7 +47,6 @@ fn get_audio() -> String {
         .unwrap_or("ERROR".to_string())
 }
 
-// Get load average using a library
 fn get_load() -> String {
     let mut avgs: [c_double; 3] = [0.0, 0.0, 0.0];
 
