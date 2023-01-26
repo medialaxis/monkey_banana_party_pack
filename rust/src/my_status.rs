@@ -5,14 +5,7 @@ use std::ffi::c_int;
 use std::ffi::CString;
 use std::process::Command;
 
-// Get system status from systemctl.
-// Return "OK" is status is "running"
-// Return "ERROR" if status is "failed"
-// TODO(aedlund) return "ok" or "error"
-// TODO(aedlund) parse using regex
 fn get_status() -> String {
-    // Use 'systemctl show --property=SystemState' to get status.
-    // This command returns SystemState=<status>
     Command::new("systemctl")
         .arg("show")
         .arg("--property=SystemState")
