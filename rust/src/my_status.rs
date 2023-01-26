@@ -1,3 +1,4 @@
+use std::ffi::CString;
 use libc;
 use std::ffi::c_double;
 use std::ffi::c_int;
@@ -86,6 +87,7 @@ fn get_vmem() -> String {
 }
 
 fn get_space(path: &str) -> String {
+    let path: CString = CString::new(path.clone()).unwrap();
     let mut stat: libc::statvfs = unsafe { std::mem::zeroed() };
 
     let rv = unsafe { libc::statvfs(path.as_ptr() as *const c_char, &mut stat) };
