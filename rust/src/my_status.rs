@@ -37,13 +37,12 @@ fn get_audio() -> String {
         .ok()
         .and_then(|output| {
             if output.status.success() {
-                String::from_utf8(output.stdout)
-                    .ok()
-                    .map(|s| s.trim().to_string())
+                Some(output.stdout)
             } else {
                 None
             }
         })
+        .and_then(|output| String::from_utf8(output).ok().map(|s| s.trim().to_string()))
         .unwrap_or_else(|| "ERROR".to_string())
 }
 
