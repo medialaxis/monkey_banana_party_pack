@@ -1,8 +1,8 @@
-use std::ffi::CString;
 use libc;
+use std::ffi::c_char;
 use std::ffi::c_double;
 use std::ffi::c_int;
-use std::ffi::c_char;
+use std::ffi::CString;
 use std::process::Command;
 
 // Get system status from systemctl.
@@ -20,17 +20,20 @@ fn get_status() -> String {
         .ok()
         .and_then(|output| {
             if output.status.success() {
-                String::from_utf8(output.stdout)
-                    .ok()
-                    .map(|s| s.trim().to_string())
+                Some(output.stdout)
             } else {
                 None
             }
         })
-        .unwrap()
-        .split("=")
-        .collect::<Vec<&str>>()[1]
-        .to_string()
+        .and_then(|output| String::from_utf8(output).ok().map(|s| s.trim().to_string()))
+        .and_then(|s| {
+            if s == "SystemState=running" {
+                Some("OK".to_string())
+            } else {
+                None
+            }
+        })
+        .unwrap_or("ERROR".to_string())
 }
 
 // Get volume using 'pamixer --get-volume-human'
