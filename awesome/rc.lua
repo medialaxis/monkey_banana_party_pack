@@ -381,7 +381,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() awful.spawn("rofi -show combi -modes combi -combi-modes window,drun,run") end,
               {description = "run application", group = "launcher"}),
     awful.key({ modkey }, "w", function() awful.spawn("rofi -show window") end,
-              {description = "show windows", group = "launcher"})
+              {description = "show windows", group = "launcher"}),
+
+    awful.key({ }, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") end,
+              {description = "mute audio", group = "audio"}),
+    awful.key({ }, "XF86AudioRaiseVolume", function() awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +1%") end,
+              {description = "raise volume", group = "audio"}),
+    awful.key({ }, "XF86AudioLowerVolume", function() awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -1%") end,
+                {description = "lower volume", group = "audio"})
 )
 
 clientkeys = gears.table.join(
