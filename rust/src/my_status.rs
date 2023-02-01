@@ -120,6 +120,18 @@ fn get_vmem() -> String {
                 .ok()
                 .map(|s| s.trim().to_string())
         })
+        .and_then(|s| {
+            let parts = s.split_whitespace();
+            let parts: Vec<&str> = parts.collect();
+
+            if parts.is_empty() {
+                None
+            } else {
+                let mem_mib: f64 = parts[0].parse().unwrap();
+                let mem_gib = mem_mib / 1024.0;
+                Some(format!("{:.2} GiB", mem_gib))
+            }
+        })
         .unwrap_or_else(|| "ERROR".to_string())
 }
 
