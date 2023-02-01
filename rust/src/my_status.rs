@@ -115,10 +115,10 @@ fn get_vmem() -> String {
                 None
             }
         })
-        .and_then(|stdout| {
-            String::from_utf8(stdout)
-               .ok()
-               .map(|s| s.trim().to_string())
+        .and_then(|s| {
+            String::from_utf8(s)
+                .ok()
+                .map(|s| s.trim().to_string())
         })
         .unwrap_or_else(|| "ERROR".to_string())
 }
