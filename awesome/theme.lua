@@ -9,6 +9,10 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
+local home = os.getenv("HOME")
+local plugin_path = string.format("%s/.local/share/awesome/plugins", home)
+local lain_path = string.format("%s/lain/", plugin_path)
+
 local theme = {}
 
 theme.font          = "sans 10"
@@ -120,6 +124,7 @@ theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
 theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
+theme.layout_centerwork = lain_path.."icons/layout/zenburn/centerwork.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
