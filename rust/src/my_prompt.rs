@@ -92,7 +92,5 @@ fn main() {
     };
 
     // Print prompt with colors
-    print!(
-        "{user_host}{screen}{branch}{dir}\n{smiley}{prompt}{RESET}"
-    );
+    print!("{user_host}{screen}{branch}{dir}\n{smiley}{prompt}{RESET}");
 }

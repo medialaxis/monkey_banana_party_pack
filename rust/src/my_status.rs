@@ -116,9 +116,9 @@ fn get_vmem() -> String {
             }
         })
         .and_then(|stdout| {
-                String::from_utf8(stdout)
-                    .ok()
-                    .map(|s| s.trim().to_string())
+            String::from_utf8(stdout)
+               .ok()
+               .map(|s| s.trim().to_string())
         })
         .unwrap_or_else(|| "ERROR".to_string())
 }
