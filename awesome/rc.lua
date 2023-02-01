@@ -128,6 +128,14 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock("%Y-%m-%d W%V %a %H:%M:%S", 1)
 
+-- Create a textbox widget
+mytextbox = wibox.widget.textbox()
+awful.spawn.with_line_callback("my_status", {
+    stdout = function(line)
+        mytextbox:set_text(line)
+    end
+})
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -230,6 +238,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
+            mytextbox,
             mytextclock,
             wibox.widget.systray(),
             s.mylayoutbox,
