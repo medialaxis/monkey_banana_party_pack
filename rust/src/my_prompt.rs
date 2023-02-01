@@ -71,29 +71,28 @@ fn main() {
     // Get STY (screen session name)
     let sty = env::var("STY").ok();
 
-    let user_host = format!("{}{}@{} ", BOLDGREEN, username, hostname);
+    let user_host = format!("{BOLDGREEN}{username}@{hostname} ");
 
     let screen = match sty {
-        Some(_) => format!("{}(screen) ", BOLDCYAN),
+        Some(_) => format!("{BOLDCYAN}(screen) "),
         None => "".to_string(),
     };
 
     let branch = match git_branch {
-        Some(x) => format!("{}({}) ", BOLDWHITE, x),
+        Some(x) => format!("{BOLDWHITE}({x}) "),
         None => "".to_string(),
     };
 
-    let dir = format!("{}{} ", BOLDYELLOW, cwd);
-    let prompt = format!("{}$ ", BOLDBLUE);
+    let dir = format!("{BOLDYELLOW}{cwd} ");
+    let prompt = format!("{BOLDBLUE}$ ");
 
     let smiley = match args.exit_code {
-        0 => format!("{}{}", BOLDGREEN, ":) "),
-        _ => format!("{}{}", BOLDRED, ":( "),
+        0 => format!("{BOLDGREEN}:) "),
+        _ => format!("{BOLDRED}:( "),
     };
 
     // Print prompt with colors
     print!(
-        "{}{}{}{}\n{}{}{}",
-        user_host, screen, branch, dir, smiley, prompt, RESET
+        "{user_host}{screen}{branch}{dir}\n{smiley}{prompt}{RESET}"
     );
 }

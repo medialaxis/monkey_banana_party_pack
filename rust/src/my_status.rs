@@ -88,7 +88,7 @@ fn get_mem() -> String {
             let parts = value.split_whitespace();
             let parts: Vec<&str> = parts.collect();
 
-            if parts.len() < 1 {
+            if parts.is_empty() {
                 continue;
             }
 
@@ -110,12 +110,15 @@ fn get_vmem() -> String {
         .ok()
         .and_then(|output| {
             if output.status.success() {
-                String::from_utf8(output.stdout)
-                    .ok()
-                    .map(|s| s.trim().to_string())
+                Some(output.stdout)
             } else {
                 None
             }
+        })
+        .and_then(|stdout| {
+                String::from_utf8(stdout)
+                    .ok()
+                    .map(|s| s.trim().to_string())
         })
         .unwrap_or_else(|| "ERROR".to_string())
 }
@@ -152,8 +155,7 @@ fn print_status_line() {
     let extra_space = get_extra_space();
 
     println!(
-        "sys: {}|♪: {}|load: {}|mem: {}|vmem: {}|root: {}|extra: {}",
-        state, audio, load, mem, vmem, root_space, extra_space
+        "sys: {state}|♪: {audio}|load: {load}|mem: {mem}|vmem: {vmem}|root: {root_space}|extra: {extra_space}"
     );
 }
 
