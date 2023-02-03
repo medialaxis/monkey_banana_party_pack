@@ -51,10 +51,13 @@ source terminal.sh
 source anki.sh
 source fzf.sh
 source ls.sh
+source br.sh
+
 # source /usr/share/lf/lfcd.sh
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 # Workaround for bug in QT (corrupts GUI in keepassxc)
 export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
+
 
 popd > /dev/null
