@@ -1,2 +1,2 @@
 cmd trash %trash-put $fx
-autoquit on
+set autoquit on
