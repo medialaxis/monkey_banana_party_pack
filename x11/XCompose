@@ -134,7 +134,7 @@ include "%L"
 <Multi_key> <D> <I> : "∬"
 <Multi_key> <I> <o> : "∮"
 
-# Circled
+# Circles
 <Multi_key> <0> <period> : "⊙"
 <Multi_key> <0> <2> : "⊚"
 <Multi_key> <0> <2> : "⊚"
