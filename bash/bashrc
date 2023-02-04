@@ -1,7 +1,5 @@
 export MONKEY=$HOME/.config/monkey_banana_party_pack
 
-pushd "$MONKEY/bash" > /dev/null
-
 # Enable minor spell checking for directory names.
 shopt -s cdspell
 
@@ -13,16 +11,6 @@ shopt -s cmdhist
 
 # Hostname completion after @
 shopt -s hostcomplete
-
-# Set PATH
-export PATH=$HOME/bin:$PATH
-export PATH=$HOME/.config/monkey_banana_party_pack/bin:$PATH
-export PATH=$HOME/.cabal/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-
-# Editor settings
-export EDITOR=nvim
 
 # Misc aliases
 alias cal='cal -mw'
@@ -45,19 +33,75 @@ stty -ixon
 # Clear terminal on CTRL-L
 bind -x '"\C-l": clear;'
 
-source prompt.sh
-source history.sh
-source terminal.sh
-source anki.sh
-source fzf.sh
-source ls.sh
-source br.sh
+# https://wiki.archlinux.org/index.php/Bash/Prompt_customization
+
+# This is the default prompt command. This prints a text in the terminal window
+# title.
+_my_term_sync()
+{
+    printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"
+}
+
+_my_prompt()
+{
+    my_prompt -e $?
+}
+
+_my_prompt_command()
+{
+    PS1="$(_my_prompt)"
+    _my_history_prompt_command
+    _my_term_sync
+}
+
+PROMPT_COMMAND="_my_prompt_command"
+
+# Append history to history files after every command, not just when existing
+# bash.
+_my_history_prompt_command()
+{
+    history -a
+}
+
+# Append to history rather than overwriting it.
+shopt -s histappend
+
+# Causes all previous lines matching the current line to be removed from the
+# history list before that line is saved
+export HISTCONTROL=ignoredups
+
+# Erase all matching lines before adding the new one
+# export HISTCONTROL=erasedups
+
+# Do not truncate history file when this variable is unset
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+
+# Add timestamp to each history entry
+# export HISTTIMEFORMAT="%Y-%m-%d"
+
+# Turn on 256 color support...
+if [ "x$TERM" = "xxterm" ]
+then
+    export TERM="xterm-256color"
+fi
+
+# Enable FZF completion (**<tab>)
+source /usr/share/fzf/completion.bash
+source /usr/share/fzf/key-bindings.bash
+_fzf_setup_completion path git okular vim mplayer nvim nv
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_ALT_C_COMMAND='dirlist'
+export FZF_CTRL_T_COMMAND='filelist'
+
+eval $(dircolors -b $MONKEY/bash/dir_colors)
+
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -l'
+alias lla='ls -la'
+
+eval "$(broot --print-shell-function bash)"
 
 # source /usr/share/lf/lfcd.sh
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-
-# Workaround for bug in QT (corrupts GUI in keepassxc)
-export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
-
-
-popd > /dev/null
