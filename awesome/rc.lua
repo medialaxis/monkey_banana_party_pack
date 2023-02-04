@@ -307,15 +307,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
 
---    awful.key({ modkey,           }, "Tab",
---        function ()
---            awful.client.focus.history.previous()
---            if client.focus then
---                client.focus:raise()
---            end
---        end,
---        {description = "go back", group = "client"}),
-
     -- Awesome
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -323,50 +314,6 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Control"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-
---    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
---              {description = "increase the number of master clients", group = "layout"}),
---    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
---              {description = "decrease the number of master clients", group = "layout"}),
---    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
---              {description = "increase the number of columns", group = "layout"}),
---    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
---              {description = "decrease the number of columns", group = "layout"}),
---    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
---              {description = "select next", group = "layout"}),
---    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
---              {description = "select previous", group = "layout"}),
-
---    awful.key({ modkey, "Control" }, "n",
---              function ()
---                  local c = awful.client.restore()
---                  -- Focus restored client
---                  if c then
---                    c:emit_signal(
---                        "request::activate", "key.unminimize", {raise = true}
---                    )
---                  end
---              end,
---              {description = "restore minimized", group = "client"}),
-
-    -- Prompt
---    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
---              {description = "run prompt", group = "launcher"}),
---
---    awful.key({ modkey }, "x",
---              function ()
---                  awful.prompt.run {
---                    prompt       = "Run Lua code: ",
---                    textbox      = awful.screen.focused().mypromptbox.widget,
---                    exe_callback = awful.util.eval,
---                    history_path = awful.util.get_cache_dir() .. "/history_eval"
---                  }
---              end,
---              {description = "lua execute prompt", group = "awesome"}),
-
-    -- Menubar
---    awful.key({ modkey }, "p", function() menubar.show() end,
---              {description = "show the menubar", group = "launcher"})
 
     -- Audio
     awful.key({ }, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") end,
