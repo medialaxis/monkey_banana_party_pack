@@ -14,9 +14,10 @@ export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
 # This workaround fixes wierd graphical glitches in the GUI.
 export ANKI_NOHIGHDPI=1
 
-# Start the X server if this is /dev/tty1
-if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty2" ]; then
-    startx
+if [ "$(tty)" = "/dev/tty1" ]; then
+    echo "Console login. Run 'startx'"
+elif [ "$(tty)" = "/dev/tty2" ]; then
+    echo "Console login. Run 'startx'"
 else
     [[ -f ~/.bashrc ]] && . ~/.bashrc
 fi
