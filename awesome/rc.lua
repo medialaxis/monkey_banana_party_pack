@@ -73,7 +73,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- Default modkey. Mod4 is the windows key.
 modkey = "Mod4"
 
--- Table of layouts to cover with awful.layout.inc, order matters.
+-- Table of used layouts.
 awful.layout.layouts = {
     awful.layout.suit.tile.left,
     lain.layout.centerwork,
