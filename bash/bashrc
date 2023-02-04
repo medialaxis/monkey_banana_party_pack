@@ -1,3 +1,5 @@
+# Setup an interactive bash shell.
+
 export MONKEY=$HOME/.config/monkey_banana_party_pack
 
 # Enable minor spell checking for directory names.

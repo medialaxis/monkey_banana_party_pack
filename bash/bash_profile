@@ -1,3 +1,5 @@
+# Setup the environment for the entire session.
+
 # Set PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.config/monkey_banana_party_pack/bin:$PATH
