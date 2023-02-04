@@ -32,7 +32,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Lain
 local lain = require("lain")
 
--- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
@@ -55,16 +54,11 @@ do
         in_error = false
     end)
 end
--- }}}
 
--- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(string.format("%s/.config/awesome/theme.lua", home))
 
--- This is used later as the default terminal and editor to run.
 terminal = "st scroll"
-editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey. Mod4 is the windows key.
 modkey = "Mod4"
@@ -75,34 +69,7 @@ awful.layout.layouts = {
     lain.layout.centerwork,
     awful.layout.suit.max,
 }
--- }}}
 
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
-}
-
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
-
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
-
--- Keyboard map indicator and switcher
--- mykeyboardlayout = awful.widget.keyboardlayout()
-
--- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock("%Y-%m-%d W%V %a %H:%M:%S", 1)
 
@@ -144,9 +111,6 @@ local tasklist_buttons = gears.table.join(
                                                   )
                                               end
                                           end),
---                     awful.button({ }, 3, function()
---                                              awful.menu.client_list({ theme = { width = 250 } })
---                                          end),
                      awful.button({ }, 4, function ()
                                               awful.client.focus.byidx(1)
                                           end),
@@ -208,7 +172,6 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
---            mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
@@ -223,7 +186,6 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 end)
--- }}}
 
 -- TODO(aedlund) this can be implemented by just swap (?)
 local function swap_master()
@@ -235,17 +197,11 @@ local function swap_master()
     end
 end
 
--- {{{ Mouse bindings
 root.buttons(gears.table.join(
---    awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
--- }}}
 
--- {{{ Key bindings
-
--- Setup global keys
 globalkeys = gears.table.join(
     -- Tag
     awful.key({ modkey,           }, "Tab", awful.tag.history.restore,
@@ -304,7 +260,6 @@ globalkeys = gears.table.join(
                 {description = "lower volume", group = "audio"})
 )
 
--- Setup client keys
 clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
         function (c)
@@ -348,9 +303,7 @@ clientbuttons = gears.table.join(
     end)
 )
 
--- Set keys
 root.keys(globalkeys)
--- }}}
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -464,11 +417,6 @@ client.connect_signal("request::titlebars", function(c)
         layout = wibox.layout.align.horizontal
     }
 end)
-
--- Enable sloppy focus, so that focus follows mouse.
--- client.connect_signal("mouse::enter", function(c)
---     c:emit_signal("request::activate", "mouse_enter", {raise = false})
--- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
