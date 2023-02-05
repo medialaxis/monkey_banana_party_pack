@@ -105,8 +105,10 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
--- theme.root_color = "#2596be"
-theme.wallpaper = string.format("%s/wallpapers/simon_stålenhag_esso.jpg", home)
+theme.root_color = "#2596be"
+theme.root_color = "#76b5c5"
+
+-- theme.wallpaper = string.format("%s/wallpapers/simon_stålenhag_esso.jpg", home)
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
