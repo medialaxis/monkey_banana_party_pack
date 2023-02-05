@@ -58,10 +58,10 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(string.format("%s/.config/awesome/theme.lua", home))
 
-terminal = "st scroll"
+local terminal = "st scroll"
 
 -- Default modkey. Mod4 is the windows key.
-modkey = "Mod4"
+local modkey = "Mod4"
 
 -- Table of used layouts.
 awful.layout.layouts = {
@@ -71,10 +71,10 @@ awful.layout.layouts = {
 }
 
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock("%Y-%m-%d W%V %a %H:%M:%S", 1)
+local mytextclock = wibox.widget.textclock("%Y-%m-%d W%V %a %H:%M:%S", 1)
 
 -- Create a textbox widget
-mytextbox = wibox.widget.textbox()
+local mytextbox = wibox.widget.textbox()
 awful.spawn.with_line_callback("my_status", {
     stdout = function(line)
         mytextbox:set_text(line)
@@ -200,7 +200,7 @@ root.buttons(gears.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
     -- Tag
     awful.key({ modkey,           }, "Tab", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
@@ -258,7 +258,7 @@ globalkeys = gears.table.join(
                 {description = "lower volume", group = "audio"})
 )
 
-clientkeys = gears.table.join(
+local clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
