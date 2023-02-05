@@ -226,6 +226,8 @@ local globalkeys = gears.table.join(
               {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "Up",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
+    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+              {description = "select next", group = "layout"}),
 
     -- Client
     awful.key({ modkey, "Shift"   }, "Return",      swap_master,
