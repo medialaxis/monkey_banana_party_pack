@@ -107,6 +107,8 @@ theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/m
 
 theme.root_color = "#2596be"
 theme.root_color = "#76b5c5"
+theme.root_color = "#68c3f7"
+theme.root_color = "#8bcbf0"
 
 -- theme.wallpaper = string.format("%s/wallpapers/simon_stålenhag_esso.jpg", home)
 
