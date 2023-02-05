@@ -119,12 +119,14 @@ local tasklist_buttons = gears.table.join(
                                           end))
 
 local function set_wallpaper(s)
+    local root_color = beautiful.root_color or "#000000"
+    gears.wallpaper.set(root_color)
+
     if beautiful.wallpaper then
         local wallpaper = beautiful.wallpaper
+
         if type(wallpaper) == "function" then
             gears.wallpaper.maximized(wallpaper(s), s, true)
-        elseif type(wallpaper) == "string" then
-            gears.wallpaper.set(wallpaper)
         else
             gears.wallpaper.maximized(wallpaper, s, true)
         end
