@@ -17,8 +17,12 @@ export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
 export ANKI_NOHIGHDPI=1
 
 if [ "$(tty)" = "/dev/tty1" ]; then
+    # Disable history file in order to prevent truncating it.
+    unset HISTFILE
     echo "Console login. Run 'startx'"
 elif [ "$(tty)" = "/dev/tty2" ]; then
+    # Disable history file in order to prevent truncating it.
+    unset HISTFILE
     echo "Console login. Run 'startx'"
 else
     [[ -f ~/.bashrc ]] && . ~/.bashrc
