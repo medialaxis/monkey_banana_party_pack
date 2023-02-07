@@ -1,3 +1,8 @@
+# Prevent .bashrc from running in non-interactive shells. This typically
+# happens when running "ssh <host> <command>". Bash has a special case when
+# running in remote shell.
+[[ $- != *i* ]] && return
+
 # Setup an interactive bash shell.
 
 export MONKEY=$HOME/.config/monkey_banana_party_pack
