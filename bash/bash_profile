@@ -19,11 +19,13 @@ export ANKI_NOHIGHDPI=1
 if [ "$(tty)" = "/dev/tty1" ]; then
     # Disable history file in order to prevent truncating it.
     unset HISTFILE
-    echo "Console login. Run 'startx'"
+    startx
+    exit
 elif [ "$(tty)" = "/dev/tty2" ]; then
     # Disable history file in order to prevent truncating it.
     unset HISTFILE
-    echo "Console login. Run 'startx'"
+    startx
+    exit
 else
     [[ -f ~/.bashrc ]] && . ~/.bashrc
 fi
