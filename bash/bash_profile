@@ -20,12 +20,10 @@ if [ "$(tty)" = "/dev/tty1" ]; then
     # Disable history file in order to prevent truncating it.
     unset HISTFILE
     startx
-    exit
 elif [ "$(tty)" = "/dev/tty2" ]; then
     # Disable history file in order to prevent truncating it.
     unset HISTFILE
     startx
-    exit
 else
     [[ -f ~/.bashrc ]] && . ~/.bashrc
 fi
