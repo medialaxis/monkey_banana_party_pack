@@ -177,7 +177,7 @@ fn print_status_line_hermes() {
     let mem = get_mem();
     let root_space = get_root_space();
 
-    println!("sys: {state}|load: {load}|mem: {mem}|root: {root_space}|");
+    println!("sys: {state} | load: {load} | mem: {mem} | root: {root_space} | ");
 }
 
 fn print_status_line() {
