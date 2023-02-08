@@ -157,7 +157,7 @@ fn get_extra_space() -> String {
     get_space("/mnt/extra")
 }
 
-fn print_status_line() {
+fn print_status_line_farnsworth() {
     let state = get_status();
     let audio = get_audio();
     let load = get_load();
@@ -169,6 +169,26 @@ fn print_status_line() {
     println!(
         "sys: {state}|♪: {audio}|load: {load}|mem: {mem}|vmem: {vmem}|root: {root_space}|extra: {extra_space}|"
     );
+}
+
+fn print_status_line_hermes() {
+    let state = get_status();
+    let load = get_load();
+    let mem = get_mem();
+    let root_space = get_root_space();
+
+    println!("sys: {state}|load: {load}|mem: {mem}|root: {root_space}|");
+}
+
+fn print_status_line() {
+    // Get current hostname
+    let hostname = whoami::hostname();
+
+    match hostname.as_str() {
+        "farnsworth" => print_status_line_farnsworth(),
+        "hermes" => print_status_line_hermes(),
+        _ => println!("ERROR"),
+    }
 }
 
 fn main() {
