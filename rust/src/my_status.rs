@@ -167,7 +167,7 @@ fn print_status_line_farnsworth() {
     let extra_space = get_extra_space();
 
     println!(
-        "sys: {state}|♪: {audio}|load: {load}|mem: {mem}|vmem: {vmem}|root: {root_space}|extra: {extra_space}|"
+        "sys: {state} | ♪: {audio} | load: {load} | mem: {mem} | vmem: {vmem} | root: {root_space} | extra: {extra_space} | "
     );
 }
 
