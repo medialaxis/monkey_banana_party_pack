@@ -1,0 +1,19 @@
+# https://wiki.archlinux.org/index.php/Xinit
+
+# Load .Xresources into X. Without this, .Xresources does not work.
+xrdb -merge "$HOME/.Xresources"
+
+# Enable screen saver
+xset s on
+xset s 600 600
+
+# Start awesome
+redshift-gtk -l 58:16 &
+udiskie -t -N &
+dunst &
+nm-applet &
+xscreensaver --no-splash &
+cbatticon BAT0 &
+cbatticon BAT1 &
+eval $(ssh-agent)
+exec awesome
