@@ -129,7 +129,7 @@ fn get_vmem() -> String {
             } else {
                 let mem_mib: f64 = parts[0].parse().unwrap();
                 let mem_gib = mem_mib / 1024.0;
-                Some(format!("{:.2} GiB", mem_gib))
+                Some(format!("{mem_gib:.2} GiB"))
             }
         })
         .unwrap_or_else(|| "ERROR".to_string())
