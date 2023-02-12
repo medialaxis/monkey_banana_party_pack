@@ -58,7 +58,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(string.format("%s/.config/awesome/theme.lua", home))
 
-local terminal = "st scroll"
+local terminal = "st"
 
 -- Default modkey. Mod4 is the windows key.
 local modkey = "Mod4"
