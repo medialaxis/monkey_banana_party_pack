@@ -6,64 +6,54 @@ use std::fs::File;
 use std::io::BufRead;
 use std::process::Command;
 
-fn get_status() -> String {
-    Command::new("systemctl")
+fn get_status() -> Option<String> {
+    let output = Command::new("systemctl")
         .arg("show")
         .arg("--property=SystemState")
         .output()
-        .ok()
-        .and_then(|output| {
-            if output.status.success() {
-                Some(output.stdout)
-            } else {
-                None
-            }
-        })
-        .and_then(|output| String::from_utf8(output).ok().map(|s| s.trim().to_string()))
-        .and_then(|s| {
-            if s == "SystemState=running" {
-                Some("ok".to_string())
-            } else {
-                None
-            }
-        })
-        .unwrap_or_else(|| "ERROR".to_string())
+        .ok()?;
+
+    if !output.status.success() {
+        return None;
+    }
+
+    let output = String::from_utf8(output.stdout).ok()?.trim().to_string();
+
+    if output != "SystemState=running" {
+        return None;
+    }
+
+    Some("ok".to_string())
 }
 
-fn get_audio() -> String {
-    Command::new("pamixer")
+fn get_audio() -> Option<String> {
+    let output = Command::new("pamixer")
         .arg("--get-volume-human")
         .output()
-        .ok()
-        .and_then(|output| {
-            if output.status.success() {
-                Some(output.stdout)
-            } else {
-                None
-            }
-        })
-        .and_then(|output| String::from_utf8(output).ok().map(|s| s.trim().to_string()))
-        .unwrap_or_else(|| "ERROR".to_string())
+        .ok()?;
+
+    if !output.status.success() {
+        return None;
+    }
+
+    Some(String::from_utf8(output.stdout).ok()?.trim().to_string())
 }
 
-fn get_load() -> String {
+fn get_load() -> Option<String> {
     let mut avgs: [c_double; 3] = [0.0, 0.0, 0.0];
 
     let rv = unsafe { libc::getloadavg(avgs.as_mut_ptr(), avgs.len() as c_int) };
 
     if rv < 0 {
-        return "ERROR".to_string();
+        return None;
     }
 
-    format!("{:.2}", avgs[0])
+    Some(format!("{:.2}", avgs[0]))
 }
 
-fn get_mem() -> String {
+fn get_mem() -> Option<String> {
     // Open the meminfo file
-    let file: File = match File::open("/proc/meminfo").ok() {
-        Some(f) => f,
-        None => return "ERROR".to_string(),
-    };
+    let file: File = File::open("/proc/meminfo").ok()?;
 
     // Iterate over the lines of the file
     for line in std::io::BufReader::new(file).lines() {
@@ -95,76 +85,71 @@ fn get_mem() -> String {
             let value = parts[0];
             let value: f64 = value.parse().unwrap();
 
-            return format!("{:.2} GiB", (value / 1024.0 / 1024.0));
+            return Some(format!("{:.2} GiB", (value / 1024.0 / 1024.0)));
         }
     }
 
-    "ERROR".to_string()
+    None
 }
 
-fn get_vmem() -> String {
-    Command::new("sh")
+fn get_vmem() -> Option<String> {
+    let output = Command::new("sh")
         .arg("-c")
         .arg("nvidia-smi -q -x | xmllint --xpath 'string(/nvidia_smi_log/gpu/fb_memory_usage/free)' -")
         .output()
-        .ok()
-        .and_then(|output| {
-            if output.status.success() {
-                Some(output.stdout)
-            } else {
-                None
-            }
-        })
-        .and_then(|s| {
-            String::from_utf8(s)
-                .ok()
-                .map(|s| s.trim().to_string())
-        })
-        .and_then(|s| {
-            let parts = s.split_whitespace();
-            let parts: Vec<&str> = parts.collect();
+        .ok()?;
 
-            if parts.is_empty() {
-                None
-            } else {
-                let mem_mib: f64 = parts[0].parse().unwrap();
-                let mem_gib = mem_mib / 1024.0;
-                Some(format!("{mem_gib:.2} GiB"))
-            }
-        })
-        .unwrap_or_else(|| "ERROR".to_string())
+    if !output.status.success() {
+        return None;
+    }
+
+    let output = String::from_utf8(output.stdout).ok()?.trim().to_string();
+
+    let parts = output.split_whitespace();
+    let parts: Vec<&str> = parts.collect();
+
+    if parts.is_empty() {
+        None
+    } else {
+        let mem_mib: f64 = parts[0].parse().unwrap();
+        let mem_gib = mem_mib / 1024.0;
+        Some(format!("{mem_gib:.2} GiB"))
+    }
 }
 
-fn get_space(path: &str) -> String {
+fn get_space(path: &str) -> Option<String> {
     let path: CString = CString::new(path).unwrap();
     let mut stat: libc::statvfs = unsafe { std::mem::zeroed() };
 
     let rv = unsafe { libc::statvfs(path.as_ptr() as *const c_char, &mut stat) };
 
     if rv < 0 {
-        return "ERROR".to_string();
+        return None;
     }
 
     let bytes = stat.f_bavail * stat.f_bsize;
-    format!("{:.2} GiB", bytes as f64 / (1024.0 * 1024.0 * 1024.0))
+    Some(format!(
+        "{:.2} GiB",
+        bytes as f64 / (1024.0 * 1024.0 * 1024.0)
+    ))
 }
 
-fn get_root_space() -> String {
+fn get_root_space() -> Option<String> {
     get_space("/")
 }
 
-fn get_extra_space() -> String {
+fn get_extra_space() -> Option<String> {
     get_space("/mnt/extra")
 }
 
 fn print_status_line_farnsworth() {
-    let state = get_status();
-    let audio = get_audio();
-    let load = get_load();
-    let mem = get_mem();
-    let vmem = get_vmem();
-    let root_space = get_root_space();
-    let extra_space = get_extra_space();
+    let state = get_status().unwrap_or_else(|| "ERROR".to_string());
+    let audio = get_audio().unwrap_or_else(|| "ERROR".to_string());
+    let load = get_load().unwrap_or_else(|| "ERROR".to_string());
+    let mem = get_mem().unwrap_or_else(|| "ERROR".to_string());
+    let vmem = get_vmem().unwrap_or_else(|| "ERROR".to_string());
+    let root_space = get_root_space().unwrap_or_else(|| "ERROR".to_string());
+    let extra_space = get_extra_space().unwrap_or_else(|| "ERROR".to_string());
 
     println!(
         "sys: {state} | ♪: {audio} | load: {load} | mem: {mem} | vmem: {vmem} | root: {root_space} | extra: {extra_space} | "
@@ -172,10 +157,10 @@ fn print_status_line_farnsworth() {
 }
 
 fn print_status_line_hermes() {
-    let state = get_status();
-    let load = get_load();
-    let mem = get_mem();
-    let root_space = get_root_space();
+    let state = get_status().unwrap_or_else(|| "ERROR".to_string());
+    let load = get_load().unwrap_or_else(|| "ERROR".to_string());
+    let mem = get_mem().unwrap_or_else(|| "ERROR".to_string());
+    let root_space = get_root_space().unwrap_or_else(|| "ERROR".to_string());
 
     println!("sys: {state} | load: {load} | mem: {mem} | root: {root_space} | ");
 }
