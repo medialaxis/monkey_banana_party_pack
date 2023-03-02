@@ -6,37 +6,27 @@ use std::fs::File;
 use std::io::BufRead;
 use std::process::Command;
 
+fn run(cmd: &[&str]) -> Option<String> {
+    let output = Command::new(cmd[0]).args(&cmd[1..]).output().ok()?;
+    if output.status.success() {
+        Some(String::from_utf8(output.stdout).ok()?)
+    } else {
+        None
+    }
+}
+
 fn get_status() -> Option<String> {
-    let output = Command::new("systemctl")
-        .arg("show")
-        .arg("--property=SystemState")
-        .output()
-        .ok()?;
+    let output = run(&["systemctl", "show", "--property=SystemState"])?;
 
-    if !output.status.success() {
-        return None;
+    if output.trim() == "SystemState=running" {
+        Some("ok".to_string())
+    } else {
+        None
     }
-
-    let output = String::from_utf8(output.stdout).ok()?.trim().to_string();
-
-    if output != "SystemState=running" {
-        return None;
-    }
-
-    Some("ok".to_string())
 }
 
 fn get_audio() -> Option<String> {
-    let output = Command::new("pamixer")
-        .arg("--get-volume-human")
-        .output()
-        .ok()?;
-
-    if !output.status.success() {
-        return None;
-    }
-
-    Some(String::from_utf8(output.stdout).ok()?.trim().to_string())
+    Some(run(&["pamixer", "--get-volume-human"])?.trim().to_string())
 }
 
 fn get_load() -> Option<String> {
@@ -93,17 +83,11 @@ fn get_mem() -> Option<String> {
 }
 
 fn get_vmem() -> Option<String> {
-    let output = Command::new("sh")
-        .arg("-c")
-        .arg("nvidia-smi -q -x | xmllint --xpath 'string(/nvidia_smi_log/gpu/fb_memory_usage/free)' -")
-        .output()
-        .ok()?;
-
-    if !output.status.success() {
-        return None;
-    }
-
-    let output = String::from_utf8(output.stdout).ok()?.trim().to_string();
+    let output = run(&[
+        "sh",
+        "-c",
+        "nvidia-smi -q -x | xmllint --xpath 'string(/nvidia_smi_log/gpu/fb_memory_usage/free)' -",
+    ])?;
 
     let parts = output.split_whitespace();
     let parts: Vec<&str> = parts.collect();
