@@ -213,6 +213,8 @@ local globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey }, "p", function() awful.spawn("rofi -show combi -modes combi -combi-modes window,drun,run") end,
               {description = "run application", group = "launcher"}),
+    awful.key({ modkey }, "c", function() awful.spawn("rofi -modi \"clipboard:greenclip print\" -show clipboard") end,
+              {description = "run application", group = "launcher"}),
     awful.key({ modkey }, "w", function() awful.spawn("rofi -show window") end,
               {description = "show windows", group = "launcher"}),
 
