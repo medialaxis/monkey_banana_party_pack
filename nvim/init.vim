@@ -234,7 +234,7 @@ set noswapfile
 set clipboard=unnamed
 
 " Automatically yank to primary on release of left mouse button
-vmap <LeftRelease> "*yg
+" vmap <LeftRelease> "*yg
 
 " Set the default colorscheme
 colorscheme mycolors
