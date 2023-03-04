@@ -231,7 +231,7 @@ set noswapfile
 
 " Yank to x windows cut register ('*'). This works with simple selection with
 " mouse.
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 " Automatically yank to primary on release of left mouse button
 " vmap <LeftRelease> "*yg
