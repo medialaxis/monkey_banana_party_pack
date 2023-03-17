@@ -13,6 +13,7 @@ Plug 'neovim/nvim-lspconfig', {'tag': 'v0.1.4'}
 Plug 'hrsh7th/nvim-cmp', {'commit': '8bbaeda725d5db6e4e1be2867a64b43bf547cf06'}
 Plug 'hrsh7th/cmp-nvim-lsp', {'commit': '59224771f91b86d1de12570b4070fe4ad7cd1eeb'}
 Plug 'hrsh7th/cmp-path', {'commit': '91ff86cd9c29299a64f968ebb45846c485725f23'}
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help', {'commit': '3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1' }
 Plug 'L3MON4D3/LuaSnip' , {'tag': 'v1.*'}
 Plug 'saadparwaiz1/cmp_luasnip', {'commit': '18095520391186d634a0045dacaa346291096566'}
 Plug 'nvim-treesitter/playground' , {'commit': '3421bbbfec25a7c54ee041ffb9cb226b69b2b995'}
@@ -508,6 +509,7 @@ cmp.setup {
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
         { name = 'path' },
+        { name = 'nvim_lsp_signature_help' },
         },
 }
 EOF
