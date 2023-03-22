@@ -217,6 +217,8 @@ local globalkeys = gears.table.join(
               {description = "run application", group = "launcher"}),
     awful.key({ modkey }, "w", function() awful.spawn("rofi -show window") end,
               {description = "show windows", group = "launcher"}),
+    awful.key({ modkey }, "k", function() awful.spawn("xscreensaver-command -lock") end,
+              {description = "lock screensaver", group = "launcher"}),
 
     -- Layout
     awful.key({ modkey,           }, "l",     function () awful.client.focus.bydirection("right")          end,
