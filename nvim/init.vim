@@ -5,7 +5,7 @@ Plug 'junegunn/fzf.vim', {'commit': '9ceac718026fd39498d95ff04fa04d3e40c465d7'}
 Plug 'tikhomirov/vim-glsl', {'commit': 'bfd330a271933c3372fcfa8ce052970746c8e9dd'}
 Plug 'tpope/vim-fugitive', {'tag': 'v3.*'}
 Plug 'ton/vim-alternate', {'commit': '57a6d2797b3bec39f5c075104082b0c0835535ed'}
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.8.1'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'tag': 'v0.9.0'}
 Plug 'medialaxis/nvim-ts-rainbow', {'branch': 'refresh-buffers'}
 Plug 'phaazon/hop.nvim', {'tag': 'v2.*'}
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.*'}
