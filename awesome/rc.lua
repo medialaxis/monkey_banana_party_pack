@@ -274,8 +274,10 @@ local clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
-              {description = "close", group = "client"})
+    awful.key({ modkey,           }, "d", awful.client.floating.toggle,
+        {description = "toggle floating", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "c", function (c) c:kill() end,
+        {description = "close", group = "client"})
 )
 
 -- Bind all key numbers to tags.
