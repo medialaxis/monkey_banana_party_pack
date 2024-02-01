@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -euo pipefail
-
-git add .
-git commit -amsnap || true
-test -v NOPUSH || git push
