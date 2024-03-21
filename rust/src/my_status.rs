@@ -149,6 +149,15 @@ fn print_status_line_hermes() {
     println!("sys: {state} | load: {load} | mem: {mem} | root: {root_space} | ");
 }
 
+fn print_status_line_zoidberg() {
+    let state = get_status().unwrap_or_else(|| "ERROR".to_string());
+    let load = get_load().unwrap_or_else(|| "ERROR".to_string());
+    let mem = get_mem().unwrap_or_else(|| "ERROR".to_string());
+    let root_space = get_root_space().unwrap_or_else(|| "ERROR".to_string());
+
+    println!("sys: {state} | load: {load} | mem: {mem} | root: {root_space} | ");
+}
+
 fn print_status_line() {
     // Get current hostname
     let hostname = whoami::hostname();
@@ -156,6 +165,7 @@ fn print_status_line() {
     match hostname.as_str() {
         "farnsworth" => print_status_line_farnsworth(),
         "hermes" => print_status_line_hermes(),
+        "zoidberg" => print_status_line_zoidberg(),
         _ => println!("ERROR"),
     }
 }
