@@ -6,6 +6,12 @@ use std::fs::File;
 use std::io::BufRead;
 use std::process::Command;
 
+fn reset_sigpipe() {
+    unsafe {
+        libc::signal(libc::SIGPIPE, libc::SIG_DFL);
+    }
+}
+
 fn run(cmd: &[&str]) -> Option<String> {
     let output = Command::new(cmd[0]).args(&cmd[1..]).output().ok()?;
     if output.status.success() {
@@ -171,6 +177,8 @@ fn print_status_line() {
 }
 
 fn main() {
+    reset_sigpipe();
+
     loop {
         print_status_line();
         std::thread::sleep(std::time::Duration::from_secs(1));
