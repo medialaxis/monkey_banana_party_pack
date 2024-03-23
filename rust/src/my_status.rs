@@ -177,6 +177,9 @@ fn print_status_line() {
 }
 
 fn main() {
+    // Restored correct handling of SIGPIPE. Rust's default is to override the SIGPIPE handler so
+    // that println!() returns an error value instead. This error is unwrapped and causes the
+    // program to crash with a backtrace.
     reset_sigpipe();
 
     loop {
