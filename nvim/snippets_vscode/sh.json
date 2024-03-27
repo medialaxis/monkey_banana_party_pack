@@ -2,5 +2,9 @@
     "shebang": {
         "prefix": "bash",
         "body": "#!/bin/bash"
+    },
+    "error": {
+        "prefix": "pipefail",
+        "body": "set -euo pipefail"
     }
 }
