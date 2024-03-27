@@ -144,7 +144,6 @@ let mapleader = " "
 
 " Set up some useful keyboard mappings
 nnoremap <F2> :e scratch<CR>
-nnoremap <F4> :!git snap<CR><CR>
 nnoremap <F5> :wa<CR>
 nnoremap <F6> :Files<CR>
 nnoremap <F7> :Tags<CR>
